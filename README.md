@@ -5,7 +5,7 @@
 
 目录为下:arrow_down:
 
-## 基础知识
+## 前端基础
 
 ### JavaScript
 
@@ -17,3 +17,7 @@
 
 - Flux
   - [看漫画学Flux](https://github.com/duyue6002/Blog/issues/2)
+
+## CS基础
+
+- [计算机网络](https://github.com/duyue6002/Blog/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+%E7%BD%91%E7%BB%9C)
