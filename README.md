@@ -10,6 +10,7 @@
 ### JavaScript
 
 - [你不知道的JS（上）](https://github.com/duyue6002/Blog/issues/1)
+- [学习JS数据结构与算法](https://github.com/duyue6002/Blog/issues/9)
 
 ## 框架和类库
 
