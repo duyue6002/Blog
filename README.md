@@ -9,8 +9,16 @@
 
 ### JavaScript
 
-- [你不知道的JS（上）](https://github.com/duyue6002/Blog/issues/1)
+#### 读书笔记
+
+- [你不知道的JS（上）作用域与闭包](https://github.com/duyue6002/Blog/issues/1)
+- [你不知道的JS（上）this和对象原型](https://github.com/duyue6002/Blog/issues/12)
+- [你不知道的JS（中）类型和语法](https://github.com/duyue6002/Blog/issues/13)
 - [学习JS数据结构与算法](https://github.com/duyue6002/Blog/issues/9)
+
+#### 个人总结
+
+- [循环中的闭包](https://github.com/duyue6002/Blog/issues/11)
 
 ## 框架和类库
 
@@ -18,7 +26,3 @@
 
 - Flux
   - [看漫画学Flux](https://github.com/duyue6002/Blog/issues/2)
-
-## CS基础
-
-- [计算机网络](https://github.com/duyue6002/Blog/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+%E7%BD%91%E7%BB%9C)
