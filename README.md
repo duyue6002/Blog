@@ -19,6 +19,13 @@
 #### 个人总结
 
 - [循环中的闭包](https://github.com/duyue6002/Blog/issues/11)
+- [正则表达式](https://github.com/duyue6002/Blog/issues/19)
+- [排序算法](https://github.com/duyue6002/Blog/issues/16)
+
+### CSS
+
+- [CSS布局](https://github.com/duyue6002/Blog/issues/14)
+- [CSS Tricks 自实现](https://github.com/duyue6002/Blog/issues/15)
 
 ## 框架和类库
 
