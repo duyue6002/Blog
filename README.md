@@ -30,6 +30,7 @@
 ### 浏览器
 
 - [跨域](https://github.com/duyue6002/Blog/issues/20)
+- [原生Ajax及HTTP响应码](https://github.com/duyue6002/Blog/issues/4)
 
 ## 框架和类库
 
