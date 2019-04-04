@@ -36,5 +36,5 @@
 
 ### React
 
-- Flux
-  - [看漫画学Flux](https://github.com/duyue6002/Blog/issues/2)
+- [[译]什么时候用Component或PureComponent](https://github.com/duyue6002/Blog/issues/24)
+
