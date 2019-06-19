@@ -107,6 +107,21 @@ L === null;
 return false;
 ```
 
+## 与 typeof 比较
+
+typeof 的返回值只有：
+
+```js
+"number", "string", "boolean", "undefined", "function", "object"
+```
+
+- 基本类型，除 null 外，返回正确结果
+- 引用类型，除 function 外，返回 object
+- null，返回 object
+- function，返回 function
+
+所以对于除 null 外的基本类型，使用 typeof 检测，引用类型使用 instanceof 更准确。
+
 > 参考文章
 >
 > - [从 \_\_proto\_\_ 和 prototype 来深入理解 JS 对象和原型链](https://github.com/creeperyang/blog/issues/9)
