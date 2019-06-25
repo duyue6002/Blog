@@ -9,6 +9,10 @@
 - [正则表达式](https://github.com/duyue6002/Blog/issues/19)
 - [排序算法](https://github.com/duyue6002/Blog/issues/16)
 
+## HTML
+
+- [head 里装了什么](https://duyue6002.github.io/Blog/#/html/head)
+
 ## CSS
 
 - [CSS 布局](https://github.com/duyue6002/Blog/issues/14)
