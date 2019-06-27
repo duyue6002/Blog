@@ -2,6 +2,7 @@
 
   - [你不知道的 JS](js/YouDontKnowJS.md)
   - [理解 instanceof](js/instanceof.md)
+  - [学习 Promise](js/promise.md)
 
 - HTML
 
