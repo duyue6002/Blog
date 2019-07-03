@@ -212,3 +212,83 @@ timeoutPromise(taskPromise, 1000)
     console.log("time out", err);
   });
 ```
+
+根据上面的基础再做改动，得到一个超时则取消 XHR 请求的功能。
+
+```js
+function copyOwnFrom(target, source) {
+  Object.getOwnPropertyNames(source).forEach(function(propName) {
+    Object.defineProperty(
+      target,
+      propName,
+      Object.getOwnPropertyDescriptor(source, propName)
+    );
+  });
+}
+
+function TimeoutError() {
+  let superInstance = Error.apply(null, arguments);
+  copyOwnFrom(this, superInstance);
+}
+
+TimeoutError.prototype = Object.create(Error.prototype);
+TimeoutError.prototype.constructor = TimeoutError;
+
+function delayPromise(ms) {
+  return new Promise(resolve => {
+    setTimeout(resolve, ms);
+  });
+}
+
+function timeoutPromise(promise, ms) {
+  let timeout = delayPromise(ms).then(() => {
+    return Promise.reject(new TimeoutError(`Time out for ${ms} ms`));
+  });
+  return Promise.race([promise, timeout]);
+}
+
+function cancelableXHR(URL) {
+  let req = new XMLHttpRequest();
+  let promise = new Promise((resolve, reject) => {
+    req.open("GET", URL, true);
+    req.onload = () => {
+      if (req.status === 200) {
+        resolve(req.responseText);
+      } else {
+        reject(new Error(req.responseText));
+      }
+    };
+    req.onerror = () => {
+      reject(new Error(req.statusText));
+    };
+    req.onabort = () => {
+      reject(new Error("abort this request"));
+    };
+    req.send();
+  });
+  let abort = () => {
+    if (req.readyState !== XMLHttpRequest.UNSENT) {
+      req.abort();
+    }
+  };
+  return {
+    promise,
+    abort
+  };
+}
+
+
+let obj = cancelableXHR("http://httpbin.org/get");
+
+timeoutPromise(obj.promise, 100)
+  .then(value => {
+    console.log("Contents: " + value);
+  })
+  .catch(err => {
+    if (err instanceof TimeoutError) {
+      obj.abort();
+      return console.log(err);
+    }
+    console.log("XHR Error", err);
+  });
+```
