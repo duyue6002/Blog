@@ -5,7 +5,8 @@
 - [[读书笔记]你不知道的 JS](https://duyue6002.github.io/Blog/#/js/YouDontKnowJS)
 - [[读书笔记]学习 JS 数据结构与算法](https://github.com/duyue6002/Blog/issues/9)
 - [理解 instanceof](https://duyue6002.github.io/Blog/#/instanceof)
-- [循环中的闭包](https://github.com/duyue6002/Blog/issues/11)
+- [学习 promise](https://duyue6002.github.io/Blog/#/promise)
+- [比较 undefined 和 null](https://duyue6002.github.io/Blog/#/undefined)
 - [正则表达式](https://github.com/duyue6002/Blog/issues/19)
 - [排序算法](https://github.com/duyue6002/Blog/issues/16)
 
