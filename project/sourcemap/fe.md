@@ -1,6 +1,6 @@
-# sourcemap 系列[2] 前端 webpack 配置
+# sourcemap 系列[2] 前端工作
 
-## 简介
+## 使用 webpack 插件生成 map 文件
 
 前端的工作在于将代码压缩并生成 sourcemap，使用 UglifyJS 进行压缩。用 webpack 构建项目时，使用 webpack-uglify-parallel 提升压缩速度，它采用多核并行压缩，速度很快。webpack 官方也维护了支持多核压缩的插件，uglifyjs-webpack-plugin。
 
@@ -23,6 +23,25 @@ const os = require("os"),
   ],
 
   devtool: source-map // 直接在打包文件目录下生成对应的.map文件
+```
+
+## 原生脚本配置
+
+在前端需要使用 Web API 收集 error 事件，并将错误报告传给服务器。
+
+```js
+window.onerror = function(msg, url, row, col, error, callback) {
+  if (error) {
+    console.log(error.stack || msg);
+  }
+  let reportMsg = {
+    msg,
+    url,
+    row,
+    col
+  };
+  callback(reportMsg);
+};
 ```
 
 > 参考
