@@ -6,6 +6,8 @@
   - [比较 undefined 和 null](js/undefined.md)
 
 - Node.js
+  - 深入浅出 Node.js 读书笔记
+    - [构建 Web 应用](node/book/web.md)
   - [koa 踩坑记录](node/koa/tips.md)
 
 - HTML
