@@ -1,6 +1,7 @@
 - JavaScript
 
-  - [你不知道的 JS](js/YouDontKnowJS.md)
+  - [函数：闭包/作用域/this/call/apply](js/function.md)
+  - [面向对象：封装/继承/多态](js/OOP.md)
   - [理解 instanceof](js/instanceof.md)
   - [学习 Promise](js/promise.md)
   - [比较 undefined 和 null](js/undefined.md)
