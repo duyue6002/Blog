@@ -7,15 +7,19 @@
   - [学习 Promise](js/promise.md)
   - [比较 undefined 和 null](js/undefined.md)
 
+- HTML
+
+  - [head 里装了些什么](html/head.md)
+
+- 设计模式
+
+  - [发布-订阅模式](pattern/publish.md)
+
 - Node.js
 
   - 深入浅出 Node.js 读书笔记
     - [构建 Web 应用](node/book/web.md)
   - [koa 踩坑记录](node/koa/tips.md)
-
-- HTML
-
-  - [head 里装了些什么](html/head.md)
 
 - 网络协议
 
