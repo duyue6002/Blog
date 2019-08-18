@@ -1,6 +1,6 @@
 # JS 面向对象
 
-> 本文试图说明原型、继承、mixin/extends、模块化、TS 做个串烧
+> 本文试图将封装、继承、多态、模块化、TS 做个串烧
 
 ## 对象的基本概念
 
@@ -272,11 +272,10 @@ function prototype(child, parent) {
 }
 
 prototype(Child, Parent);
-Child.__proto__ = Parent;
 ```
 
 这种方式最理想，能保持原型链不变，且不会影响`Parent.prototype`的属性。
 
 ### 类继承
 
-extends 是**寄生组合继承**的语法糖。
+extends 是**寄生组合继承**的语法糖。不同的是，由 class 构造的函数既有`__proto__`也有`prototype`。其中`__proto__`是语法糖中设置的，对构造函数的继承，指向父类。`prototype`属性的`__proto__`属性，是方法的继承，指向父类的`prototype`属性。
