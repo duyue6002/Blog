@@ -6,6 +6,7 @@
   - [理解 instanceof](js/instanceof.md)
   - [学习 Promise](js/promise.md)
   - [比较 undefined 和 null](js/undefined.md)
+  - [数组常用 API](js/array)
 
 - HTML
 
