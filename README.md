@@ -3,6 +3,7 @@
 ## JavaScript
 
 - [函数：闭包/作用域/this/call/apply](https://duyue6002.github.io/Blog/#/js/function)
+- [面向对象：封装/继承/多态](https://duyue6002.github.io/Blog/#/js/OOP)
 - [异步编程概述](https://duyue6002.github.io/Blog/#/js/async)
 - [理解 instanceof](https://duyue6002.github.io/Blog/#/js/instanceof)
 - [学习 promise](https://duyue6002.github.io/Blog/#/js/promise)
