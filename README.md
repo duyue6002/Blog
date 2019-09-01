@@ -4,8 +4,8 @@
 
 - [函数：闭包/作用域/this/call/apply](https://duyue6002.github.io/Blog/#/js/function)
 - [面向对象：封装/继承/多态](https://duyue6002.github.io/Blog/#/js/OOP)
-- [异步编程概述](https://duyue6002.github.io/Blog/#/js/async)
 - [理解 instanceof](https://duyue6002.github.io/Blog/#/js/instanceof)
+- [异步编程概述](https://duyue6002.github.io/Blog/#/js/async)
 - [学习 promise](https://duyue6002.github.io/Blog/#/js/promise)
 - [比较 undefined 和 null](https://duyue6002.github.io/Blog/#/js/undefined)
 - [数组常用 API](https://duyue6002.github.io/Blog/#/js/array)
@@ -34,7 +34,8 @@
 
 - [网络协议综述](https://duyue6002.github.io/Blog/#/network/basic)
 - [理解 ifconfig](https://duyue6002.github.io/Blog/#/network/ifconfig)
-- [HTTP 状态吗](https://duyue6002.github.io/Blog/#/network/http/code)
+- [HTTP 状态码](https://duyue6002.github.io/Blog/#/network/http/code)
+- [HTTPS](https://duyue6002.github.io/Blog/#/network/http/https)
 
 ## Node.js
 

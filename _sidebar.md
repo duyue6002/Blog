@@ -2,8 +2,8 @@
 
   - [函数：闭包/作用域/this/call/apply](js/function.md)
   - [面向对象：封装/继承/多态](js/OOP.md)
-  - [异步编程概述](js/async.md)
   - [理解 instanceof](js/instanceof.md)
+  - [异步编程概述](js/async.md)
   - [学习 Promise](js/promise.md)
   - [比较 undefined 和 null](js/undefined.md)
   - [数组常用 API](js/array)
@@ -27,6 +27,7 @@
   - [网络协议综述](network/basic.md)
   - [ifconfig 结果中隐藏的秘密](network/ifconfig.md)
   - [HTTP 状态码](network/http/code.md)
+  - [HTTPS](network/http/https.md)
 
 - 工程
 
