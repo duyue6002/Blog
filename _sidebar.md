@@ -31,8 +31,12 @@
 
 - 工程
 
-  - sourcemap 系列
-    - [前端 webpack 配置](project/sourcemap/fe.md)
+  - [项目支持 sourcemap](project/sourcemap.md)
+
+- 框架
+
+  - 深入 React 技术栈
+    - [Virtual DOM](react/virtualDOM.md)
 
 - 读书记录
   - [降临](read/arrival.md)

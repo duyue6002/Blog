@@ -29,6 +29,7 @@
 ## React
 
 - [[译]什么时候用 Component 或 PureComponent](https://github.com/duyue6002/Blog/issues/24)
+- [Virtual DOM](https://duyue6002.github.io/Blog/#/react/virtualDOM.md)
 
 ## 网络
 

@@ -1,4 +1,4 @@
-# sourcemap 系列[2] 前端工作
+# 项目支持 sourcemap
 
 ## 使用 webpack 插件生成 map 文件
 
