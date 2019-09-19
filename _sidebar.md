@@ -29,6 +29,10 @@
   - [HTTP 状态码](network/http/code.md)
   - [HTTPS](network/http/https.md)
 
+- 数学
+
+  - [二进制](math/binary.md)
+
 - 工程
 
   - [项目支持 sourcemap](project/sourcemap.md)

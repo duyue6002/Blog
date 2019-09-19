@@ -47,3 +47,7 @@
 ## 前端工程
 
 - [Source Map 前端 webpack 配置](https://duyue6002.github.io/Blog/#/project/sourcemap/fe)
+
+## 数学
+
+- [二进制](https://duyue6002.github.io/Blog/#/math/binary)
