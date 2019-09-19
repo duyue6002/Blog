@@ -32,6 +32,7 @@
 - 数学
 
   - [二进制](math/binary.md)
+  - [余数与哈希](math/mod.md)
 
 - 工程
 
