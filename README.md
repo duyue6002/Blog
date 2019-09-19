@@ -52,3 +52,4 @@
 
 - [二进制](https://duyue6002.github.io/Blog/#/math/binary)
 - [余数与哈希](https://duyue6002.github.io/Blog/#/math/mod)
+- [迭代](https://duyue6002.github.io/Blog/#/math/iterator)
