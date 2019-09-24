@@ -15,3 +15,20 @@
 - 洗牌
 - 加密
 - 循环冗余校验
+
+```js
+/**
+ * 求两个数的最大公因子
+ * @param {Number} a
+ * @param {Number} b
+ */
+function gcd(a, b) {
+  if (a < b) [a, b] = [b, a];
+  // 欧几里得算法，即辗转相除
+  if (b === 0) {
+    return a;
+  } else {
+    return gcd(b, a % b);
+  }
+}
+```
