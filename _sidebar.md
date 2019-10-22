@@ -6,7 +6,7 @@
   - [异步编程概述](js/async.md)
   - [学习 Promise](js/promise.md)
   - [比较 undefined 和 null](js/undefined.md)
-  - [数组常用 API](js/array)
+  - [代码收藏](js/tips.md)
 
 - HTML
 

@@ -8,7 +8,7 @@
 - [异步编程概述](https://duyue6002.github.io/Blog/#/js/async)
 - [学习 promise](https://duyue6002.github.io/Blog/#/js/promise)
 - [比较 undefined 和 null](https://duyue6002.github.io/Blog/#/js/undefined)
-- [数组常用 API](https://duyue6002.github.io/Blog/#/js/array)
+- [代码收藏](https://duyue6002.github.io/Blog/#/js/tips)
 - [正则表达式](https://github.com/duyue6002/Blog/issues/19)
 - [排序算法](https://github.com/duyue6002/Blog/issues/16)
 
