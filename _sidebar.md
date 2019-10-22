@@ -34,6 +34,7 @@
   - [二进制](math/binary.md)
   - [余数与哈希](math/mod.md)
   - [迭代](math/iterator.md)
+  - [递归](math/recursive.md)
 
 - 工程
 
