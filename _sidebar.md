@@ -12,6 +12,7 @@
   - [数组](algo/array.md)
   - [链表](algo/linkedlist.md)
   - [栈与队列](algo/stack-queue.md)
+  - [哈希表](algo/hash.md)
 
 - HTML
 
