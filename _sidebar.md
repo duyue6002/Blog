@@ -10,6 +10,7 @@
 
 - 数据结构与算法
   - [数组](algo/array.md)
+  - [链表](algo/linkedlist.md)
 
 - HTML
 
