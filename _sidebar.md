@@ -8,6 +8,9 @@
   - [比较 undefined 和 null](js/undefined.md)
   - [代码收藏](js/tips.md)
 
+- 数据结构与算法
+  - [数组](algo/array.md)
+
 - HTML
 
   - [head 里装了些什么](html/head.md)
