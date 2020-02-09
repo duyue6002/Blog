@@ -534,3 +534,89 @@ var minDistance = function(word1, word2) {
   return dp[len1][len2];
 };
 ```
+
+## [解码方法](https://leetcode.com/problems/decode-ways)
+
+```js
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var numDecodings = function(s) {
+  let dp = Array(s.length + 1).fill(0);
+  dp[0] = 1;
+  dp[1] = s[0] === "0" ? 0 : 1;
+  for (let i = 2; i < dp.length; i++) {
+    let one = parseInt(s[i - 1]);
+    let two = parseInt(s.slice(i - 2, i));
+    if (one >= 1 && one <= 9) {
+      dp[i] += dp[i - 1];
+    }
+    if (two >= 10 && two <= 26) {
+      dp[i] += dp[i - 2];
+    }
+  }
+  return dp[s.length];
+};
+```
+
+## [最大正方形](https://leetcode.com/problems/maximal-square/)
+
+```js
+/**
+ * @param {character[][]} matrix
+ * @return {number}
+ */
+var maximalSquare = function(matrix) {
+  if (matrix.length === 0) return 0;
+  let row = matrix.length,
+    col = matrix[0].length;
+  let dp = Array.from(Array(row), () => Array(col).fill(0));
+  let sz = 0;
+  for (let i = 0; i < row; i++) {
+    for (let j = 0; j < col; j++) {
+      if (matrix[i][j] !== "0") {
+        if (i && j) {
+          dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1;
+        } else {
+          dp[i][j] = matrix[i][j] - "0";
+        }
+      }
+      sz = Math.max(dp[i][j], sz);
+    }
+  }
+  return sz * sz;
+};
+```
+
+## [矩形区域不超过 K 的最大数值和](https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/)
+
+TODO
+
+## [青蛙过河](https://leetcode.com/problems/frog-jump/)
+
+TODO
+
+## [分割数组的最大值](https://leetcode.com/problems/split-array-largest-sum/)
+
+TODO
+
+## [学生出勤记录 II](https://leetcode.com/problems/student-attendance-record-ii/)
+
+TODO
+
+## [任务调度器](https://leetcode.com/problems/task-scheduler/)
+
+TODO
+
+## [回文子串](https://leetcode.com/problems/palindromic-substrings/)
+
+TODO
+
+## [最小覆盖子串](https://leetcode.com/problems/minimum-window-substring/)
+
+TODO
+
+## [戳气球](https://leetcode.com/problems/burst-balloons/)
+
+TODO
