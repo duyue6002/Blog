@@ -14,6 +14,8 @@
 
 MIT 动态规划：[Video](https://www.bilibili.com/video/av53233912?from=search&seid=2847395688604491997)
 
+> DP 练习
+
 ## Fibonacci
 
 ```js
@@ -117,59 +119,6 @@ var maxProduct = function(nums) {
     dp[i] = imax;
   }
   return Math.max(...dp);
-};
-```
-
-## [零钱兑换](https://leetcode.com/problems/coin-change/)
-
-DP 自顶向下：
-
-```js
-/**
- * @param {number[]} coins
- * @param {number} amount
- * @return {number}
- */
-var coinChange = function(coins, amount) {
-  return helper(coins, amount, new Array(amount + 1));
-};
-
-// F[S] = min(F[S-c]) + 1
-var helper = function(coins, rem, memo) {
-  if (rem < 0) return -1;
-  if (rem === 0) return 0;
-  if (memo[rem]) return memo[rem];
-  let imin = Number.MAX_SAFE_INTEGER;
-  for (let coin of coins) {
-    let res = helper(coins, rem - coin, memo);
-    if (res >= 0 && res < imin) {
-      imin = res + 1;
-    }
-  }
-  memo[rem] = imin === Number.MAX_SAFE_INTEGER ? -1 : imin;
-  return memo[rem];
-};
-```
-
-DP 自底向上：
-
-```js
-/**
- * @param {number[]} coins
- * @param {number} amount
- * @return {number}
- */
-var coinChange = function(coins, amount) {
-  let dp = Array(amount + 1).fill(amount + 1);
-  dp[0] = 0;
-  for (let i = 1; i <= amount; i++) {
-    for (let coin of coins) {
-      if (coin <= i) {
-        dp[i] = Math.min(dp[i], dp[i - coin] + 1);
-      }
-    }
-  }
-  return dp[amount] > amount ? -1 : dp[amount];
 };
 ```
 
@@ -434,7 +383,7 @@ var maxProfit = function(prices, fee) {
 
 DP 方程：
 
-```
+```bash
 If s[i] is '(', set longest[i] to 0,because any string end with '(' cannot be a valid one.
 
 Else if s[i] is ')'
@@ -491,47 +440,6 @@ var minPathSum = function(grid) {
     }
   }
   return dp[m - 1][n - 1];
-};
-```
-
-## [编辑路径](https://leetcode.com/problems/edit-distance/)
-
-```
-word1[i-1] !== word2[j-1]:
-if word1[0...i-1) === word2[0...j):
-  delete word1[i-1]: dp[i][j] = dp[i-1][j] + 1
-if word1[0...i) + word2[j-1] === word2[0...j):
-  insert word2[j-1]: dp[i][j] = dp[i][j-1] + 1
-replace word1[i-1] = word2[j-1]: dp[i][j] = dp[i-1][j-1] + 1
-```
-
-```js
-/**
- * @param {string} word1
- * @param {string} word2
- * @return {number}
- */
-var minDistance = function(word1, word2) {
-  let len1 = word1.length,
-    len2 = word2.length;
-  let dp = Array.from(Array(len1 + 1), () => Array(len2 + 1).fill(0));
-  for (let i = 1; i <= len1; i++) {
-    dp[i][0] = i;
-  }
-  for (let j = 1; j <= len2; j++) {
-    dp[0][j] = j;
-  }
-  for (let i = 1; i <= len1; i++) {
-    for (let j = 1; j <= len2; j++) {
-      if (word1[i - 1] == word2[j - 1]) {
-        dp[i][j] = dp[i - 1][j - 1];
-      } else {
-        dp[i][j] =
-          Math.min(dp[i - 1][j - 1], Math.min(dp[i][j - 1], dp[i - 1][j])) + 1;
-      }
-    }
-  }
-  return dp[len1][len2];
 };
 ```
 
@@ -618,5 +526,129 @@ TODO
 TODO
 
 ## [戳气球](https://leetcode.com/problems/burst-balloons/)
+
+TODO
+
+> 高级 DP 练习
+
+## [完全平方数](https://leetcode.com/problems/perfect-squares/)
+
+TODO
+
+## [编辑路径](https://leetcode.com/problems/edit-distance/)
+
+```bash
+word1[i-1] !== word2[j-1]:
+if word1[0...i-1) === word2[0...j):
+  delete word1[i-1]: dp[i][j] = dp[i-1][j] + 1
+if word1[0...i) + word2[j-1] === word2[0...j):
+  insert word2[j-1]: dp[i][j] = dp[i][j-1] + 1
+replace word1[i-1] = word2[j-1]: dp[i][j] = dp[i-1][j-1] + 1
+```
+
+```js
+/**
+ * @param {string} word1
+ * @param {string} word2
+ * @return {number}
+ */
+var minDistance = function(word1, word2) {
+  let len1 = word1.length,
+    len2 = word2.length;
+  let dp = Array.from(Array(len1 + 1), () => Array(len2 + 1).fill(0));
+  for (let i = 1; i <= len1; i++) {
+    dp[i][0] = i;
+  }
+  for (let j = 1; j <= len2; j++) {
+    dp[0][j] = j;
+  }
+  for (let i = 1; i <= len1; i++) {
+    for (let j = 1; j <= len2; j++) {
+      if (word1[i - 1] == word2[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1];
+      } else {
+        dp[i][j] =
+          Math.min(dp[i - 1][j - 1], Math.min(dp[i][j - 1], dp[i - 1][j])) + 1;
+      }
+    }
+  }
+  return dp[len1][len2];
+};
+```
+
+## [跳跃游戏](https://leetcode.com/problems/jump-game/)
+
+TODO
+
+## [跳跃游戏 II](https://leetcode.com/problems/jump-game-ii/)
+
+TODO
+
+## [不同路径](https://leetcode.com/problems/unique-paths/)
+
+TODO
+
+## [不同路径 II](https://leetcode.com/problems/unique-paths-ii/)
+
+TODO
+
+## [不同路径 III](https://leetcode.com/problems/unique-paths-iii/)
+
+TODO
+
+## [零钱兑换](https://leetcode.com/problems/coin-change/)
+
+DP 自顶向下：
+
+```js
+/**
+ * @param {number[]} coins
+ * @param {number} amount
+ * @return {number}
+ */
+var coinChange = function(coins, amount) {
+  return helper(coins, amount, new Array(amount + 1));
+};
+
+// F[S] = min(F[S-c]) + 1
+var helper = function(coins, rem, memo) {
+  if (rem < 0) return -1;
+  if (rem === 0) return 0;
+  if (memo[rem]) return memo[rem];
+  let imin = Number.MAX_SAFE_INTEGER;
+  for (let coin of coins) {
+    let res = helper(coins, rem - coin, memo);
+    if (res >= 0 && res < imin) {
+      imin = res + 1;
+    }
+  }
+  memo[rem] = imin === Number.MAX_SAFE_INTEGER ? -1 : imin;
+  return memo[rem];
+};
+```
+
+DP 自底向上：
+
+```js
+/**
+ * @param {number[]} coins
+ * @param {number} amount
+ * @return {number}
+ */
+var coinChange = function(coins, amount) {
+  let dp = Array(amount + 1).fill(amount + 1);
+  dp[0] = 0;
+  for (let i = 1; i <= amount; i++) {
+    for (let coin of coins) {
+      if (coin <= i) {
+        dp[i] = Math.min(dp[i], dp[i - coin] + 1);
+      }
+    }
+  }
+  return dp[amount] > amount ? -1 : dp[amount];
+};
+```
+
+## [零钱兑换 II](https://leetcode.com/problems/coin-change-2/)
 
 TODO
