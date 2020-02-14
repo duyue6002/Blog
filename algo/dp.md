@@ -416,6 +416,33 @@ var longestValidParentheses = function(s) {
 };
 ```
 
+## [括号生成](https://leetcode.com/problems/generate-parentheses/)
+
+`dp[i]` 与 `dp[i-1]` 的区别在于多了一对`()`，这对括号的位置有下面这么多种方法放入：
+`( + (i = p时的括号排列组合数) + ) + (i = q时的括号排列组合数)`，p 的范围是[0, n-1]，q 的范围是[n-1, 0]。
+
+```js
+/**
+ * @param {number} n
+ * @return {string[]}
+ */
+var generateParenthesis = function(n) {
+  let dp = Array(n + 1);
+  dp[0] = [""];
+  for (let i = 1; i <= n; i++) {
+    dp[i] = [];
+    for (let j = 0; j < i; j++) {
+      for (let k1 of dp[j]) {
+        for (let k2 of dp[i - 1 - j]) {
+          dp[i].push("(" + k1 + ")" + k2);
+        }
+      }
+    }
+  }
+  return dp[n];
+};
+```
+
 ## [最小路径和](https://leetcode.com/problems/minimum-path-sum/)
 
 ```js
