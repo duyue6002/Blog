@@ -17,3 +17,16 @@ s = s
 // () => {} 是 mapFn 所以数组内部是独立的
 arr = Array.from(Array(m), () => Array(n).fill(0));
 ```
+
+## 创建 1-n 的数组
+
+```js
+arr = [...Array(n).keys()].map(x => x + 1);
+```
+
+## 拍平数组
+
+```js
+arr = arr.reduce((a, b) => a.concat(b), []);
+arr = [].concat.apply([], arr);
+```
