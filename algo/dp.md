@@ -416,6 +416,30 @@ var longestValidParentheses = function(s) {
 };
 ```
 
+```js
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var longestValidParentheses = function(s) {
+  if (s.length === 0) return 0;
+  let dp = Array(s.length + 1).fill(0);
+  for (let i = 1; i <= s.length; i++) {
+    if (s[i - 1] === ")") {
+      if (s[i - 2] === "(") {
+        dp[i] = dp[i - 2] + 2;
+      } else {
+        let index = i - 2 - dp[i - 1];
+        if (index >= 0 && s[index] === "(") {
+          dp[i] = dp[i - 1] + 2 + dp[index];
+        }
+      }
+    }
+  }
+  return Math.max(...dp);
+};
+```
+
 ## [括号生成](https://leetcode.com/problems/generate-parentheses/)
 
 `dp[i]` 与 `dp[i-1]` 的区别在于多了一对`()`，这对括号的位置有下面这么多种方法放入：
@@ -495,6 +519,37 @@ var numDecodings = function(s) {
 };
 ```
 
+```js
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var numDecodings = function(s) {
+  if (s[0] === "0") return 0;
+  let n = s.length;
+  let dp = Array(n + 1);
+  dp[0] = 1;
+  dp[1] = 1;
+  for (let i = 2; i <= n; i++) {
+    if (s[i - 1] === "0") {
+      if (s[i - 2] === "1" || s[i - 2] === "2") {
+        dp[i] = dp[i - 2];
+      } else {
+        return 0;
+      }
+    } else if (
+      s[i - 2] === "1" ||
+      (s[i - 2] === "2" && s[i - 1] >= "1" && s[i - 1] <= "6")
+    ) {
+      dp[i] = dp[i - 1] + dp[i - 2];
+    } else {
+      dp[i] = dp[i - 1];
+    }
+  }
+  return dp[n];
+};
+```
+
 ## [最大正方形](https://leetcode.com/problems/maximal-square/)
 
 ```js
@@ -562,7 +617,7 @@ TODO
 
 TODO
 
-## [编辑路径](https://leetcode.com/problems/edit-distance/)
+## [编辑距离](https://leetcode.com/problems/edit-distance/)
 
 ```bash
 word1[i-1] !== word2[j-1]:
@@ -571,6 +626,10 @@ if word1[0...i-1) === word2[0...j):
 if word1[0...i) + word2[j-1] === word2[0...j):
   insert word2[j-1]: dp[i][j] = dp[i][j-1] + 1
 replace word1[i-1] = word2[j-1]: dp[i][j] = dp[i-1][j-1] + 1
+# 实质上是求：
+dp[i][j] = min(dp[i-1][j] + 1, dp[i][j-1] + 1, dp[i-1][j-1] + 1)
+word1[i-1] === word2[j-1]:
+  dp[i][j] = dp[i-1][j-1]
 ```
 
 ```js
@@ -677,5 +736,58 @@ var coinChange = function(coins, amount) {
 ```
 
 ## [零钱兑换 II](https://leetcode.com/problems/coin-change-2/)
+
+TODO
+
+## [使用最小花费爬楼梯](https://leetcode.com/problems/min-cost-climbing-stairs/)
+
+```js
+/**
+ * @param {number[]} cost
+ * @return {number}
+ */
+var minCostClimbingStairs = function(cost) {
+  //   dp[i] = min(dp[i - 1], dp[i - 2]) + cost[i]
+  let n = cost.length;
+  let dp = Array(n);
+  dp[0] = cost[0];
+  dp[1] = cost[1];
+  for (let i = 2; i < n; i++) {
+    dp[i] = Math.min(dp[i - 1], dp[i - 2]) + cost[i];
+  }
+  return Math.min(dp[n - 1], dp[n - 2]);
+};
+```
+
+## [最长上升子序列](https://leetcode.com/problems/longest-increasing-subsequence/)
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var lengthOfLIS = function(nums) {
+  if (nums.length === 0) return 0;
+  let dp = Array(nums.length).fill(1);
+  for (let i = 1; i < nums.length; i++) {
+    for (let j = 0; j < i; j++) {
+      if (nums[j] < nums[i]) {
+        dp[i] = Math.max(dp[j] + 1, dp[i]);
+      }
+    }
+  }
+  return Math.max(...dp);
+};
+```
+
+## [最大矩形](https://leetcode.com/problems/maximal-rectangle/)
+
+TODO
+
+## [不同的子序列](https://leetcode.com/problems/distinct-subsequences/)
+
+TODO
+
+## [赛车](https://leetcode.com/problems/race-car/)
 
 TODO
