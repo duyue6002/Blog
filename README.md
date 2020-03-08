@@ -11,17 +11,31 @@
 - [代码收藏](js/tips)
 - [正则表达式](https://github.com/duyue6002/Blog/issues/19)
 
-## 算法
+## 数据结构
 
 - [字符串](algo/string.md)
-- [高级搜索](algo/advanced-search.md)
-- [排序](algo/sort.md)
-- [动态规划](algo/dp.md)
+- [数组](algo/array.md)
+- [栈与队列](algo/stack-queue.md)
+- [哈希表](algo/hash.md)
+- [树 & 二叉树 & BST](algo/tree.md)
+- [链表](algo/linkedlist.md)
 - [布隆过滤器和 LRU 缓存](algo/bloom-filter.md)
-- [位运算](algo/bit.md)
 - [AVL 与红黑树](algo/balanced-tree.md)
 - [并查集](algo/union-find.md)
 - [字典树](algo/trie.md)
+
+## 算法
+
+- [练习之道](algo/notes.md)
+- [递归](algo/recursive.md)
+- [分治与回溯](algo/divide-conquer.md)
+- [BFS & DFS](algo/bfs-dfs.md)
+- [贪心](algo/greed.md)
+- [二分查找](algo/binary-search.md)
+- [高级搜索](algo/advanced-search.md)
+- [动态规划](algo/dp.md)
+- [位运算](algo/bit.md)
+- [排序](algo/sort.md)
 
 ## HTML
 
