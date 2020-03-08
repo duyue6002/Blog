@@ -28,10 +28,20 @@ var isValid = function(str) {
 
 ## [最小栈](https://leetcode.com/problems/min-stack/)
 
+TODO
+
 ## [柱状图中最大的矩形](https://leetcode.com/problems/largest-rectangle-in-histogram/)
+
+TODO
 
 ## [滑动窗口最大值](https://leetcode.com/problems/sliding-window-maximum/)
 
+TODO
+
 ## [设计循环双端队列](https://leetcode.com/problems/design-circular-deque/)
 
+TODO
+
 ## [接雨水](https://leetcode.com/problems/trapping-rain-water/)
+
+TODO
