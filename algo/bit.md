@@ -126,7 +126,7 @@ var totalNQueens = function(n) {
 
 ### DP + 最高有效位
 
-$P(x+b)=P(x)+1, b=2^m>x$
+> P(x+b)=P(x)+1, b=2^m >x
 
 ```js
 /**
@@ -151,7 +151,7 @@ var countBits = function(num) {
 
 ### DP + 最低有效位
 
-$P(x)=P(x/2)+(x \ mod \ 2)$
+> P(x)=P(x/2)+(x mod 2)
 
 ```js
 /**
