@@ -1,6 +1,8 @@
 # 链表
 
-## [反转链表](https://leetcode.com/problems/reverse-linked-list/)
+## 反转链表
+
+[LeetCode](https://leetcode.com/problems/reverse-linked-list/)
 
 ```js
 /**
@@ -26,7 +28,9 @@ var reverseList = function(head) {
 };
 ```
 
-## [两两交换链表中的节点](https://leetcode.com/problems/swap-nodes-in-pairs/)
+## 两两交换链表中的节点
+
+[LeetCode](https://leetcode.com/problems/swap-nodes-in-pairs/)
 
 ```js
 /**
@@ -57,7 +61,9 @@ var swapPairs = function(head) {
 };
 ```
 
-## [环形链表](https://leetcode.com/problems/linked-list-cycle/)
+## 环形链表
+
+[LeetCode](https://leetcode.com/problems/linked-list-cycle/)
 
 ```js
 /**
@@ -85,7 +91,9 @@ var hasCycle = function(head) {
 };
 ```
 
-## [环形链表 II](https://leetcode.com/problems/linked-list-cycle-ii/)
+## 环形链表 II
+
+[LeetCode](https://leetcode.com/problems/linked-list-cycle-ii/)
 
 ```js
 /**
@@ -119,6 +127,10 @@ var detectCycle = function(head) {
 };
 ```
 
-## [K 个一组翻转链表](https://leetcode.com/problems/reverse-nodes-in-k-group/)
+## K 个一组翻转链表
 
-## [合并两个有序链表](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
+[LeetCode](https://leetcode.com/problems/reverse-nodes-in-k-group/)
+
+## 合并两个有序链表
+
+[LeetCode](https://leetcode-cn.com/problems/merge-two-sorted-lists/)

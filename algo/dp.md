@@ -14,9 +14,9 @@
 
 MIT 动态规划：[Video](https://www.bilibili.com/video/av53233912?from=search&seid=2847395688604491997)
 
-> DP 练习
+## Fibonacci 数列
 
-## Fibonacci
+### Fibonacci
 
 ```js
 function fib(n, memo) {
@@ -30,7 +30,11 @@ function fib(n, memo) {
 }
 ```
 
-## [最长公共子序列](https://leetcode.com/problems/longest-common-subsequence/)
+## 最长公共子序列和不同路径
+
+### 最长公共子序列
+
+[LeetCode](https://leetcode.com/problems/longest-common-subsequence/)
 
 ```js
 /**
@@ -55,7 +59,27 @@ var longestCommonSubsequence = function(text1, text2) {
 };
 ```
 
-## [三角形最小路径和](https://leetcode.com/problems/triangle)
+### 不同路径
+
+[LeetCode](https://leetcode.com/problems/unique-paths/)
+
+TODO
+
+### 不同路径 II
+
+[LeetCode](https://leetcode.com/problems/unique-paths-ii/)
+
+TODO
+
+## 三角形最小路径和 & 最大子序和
+
+### 爬楼梯
+
+[LeetCode](https://leetcode-cn.com/problems/climbing-stairs/description/)
+
+### 三角形最小路径和
+
+[LeetCode](https://leetcode.com/problems/triangle)
 
 - 重复性：`problem(i,j) = min(sub(i+1,j), sub(i+1,j+1)) + a[i,j]`
 - 状态数组：`f[i,j]`
@@ -77,7 +101,9 @@ var minimumTotal = function(triangle) {
 };
 ```
 
-## [最大子序和](https://leetcode.com/problems/maximum-subarray/)
+### 最大子序和
+
+[LeetCode](https://leetcode.com/problems/maximum-subarray/)
 
 - 重复性：`max_sum(i) = max(max_sum(i-1),0) + a[i]`
 - 定义状态数组：`f[i]`
@@ -97,7 +123,9 @@ var maxSubArray = function(nums) {
 };
 ```
 
-## [乘积最大子序列](https://leetcode.com/problems/maximum-product-subarray/)
+### 乘积最大子序列
+
+[LeetCode](https://leetcode.com/problems/maximum-product-subarray/)
 
 比上题多了存储最小乘积的步骤，由于负负得正，可以获得更大的乘积。
 
@@ -122,7 +150,66 @@ var maxProduct = function(nums) {
 };
 ```
 
-## [House Robber](https://leetcode.com/problems/house-robber/)
+### 零钱兑换
+
+[LeetCode](https://leetcode.com/problems/coin-change/)
+
+DP 自顶向下：
+
+```js
+/**
+ * @param {number[]} coins
+ * @param {number} amount
+ * @return {number}
+ */
+var coinChange = function(coins, amount) {
+  return helper(coins, amount, new Array(amount + 1));
+};
+
+// F[S] = min(F[S-c]) + 1
+var helper = function(coins, rem, memo) {
+  if (rem < 0) return -1;
+  if (rem === 0) return 0;
+  if (memo[rem]) return memo[rem];
+  let imin = Number.MAX_SAFE_INTEGER;
+  for (let coin of coins) {
+    let res = helper(coins, rem - coin, memo);
+    if (res >= 0 && res < imin) {
+      imin = res + 1;
+    }
+  }
+  memo[rem] = imin === Number.MAX_SAFE_INTEGER ? -1 : imin;
+  return memo[rem];
+};
+```
+
+DP 自底向上：
+
+```js
+/**
+ * @param {number[]} coins
+ * @param {number} amount
+ * @return {number}
+ */
+var coinChange = function(coins, amount) {
+  let dp = Array(amount + 1).fill(amount + 1);
+  dp[0] = 0;
+  for (let i = 1; i <= amount; i++) {
+    for (let coin of coins) {
+      if (coin <= i) {
+        dp[i] = Math.min(dp[i], dp[i - coin] + 1);
+      }
+    }
+  }
+  return dp[amount] > amount ? -1 : dp[amount];
+};
+```
+
+## 打家劫舍
+
+### House Robber
+
+[LeetCode](https://leetcode.com/problems/house-robber/)
 
 ```js
 /**
@@ -180,7 +267,9 @@ var rob = function(nums) {
 };
 ```
 
-## [House Robber II](https://leetcode.com/problems/house-robber-ii/)
+### House Robber II
+
+[LeetCode](https://leetcode.com/problems/house-robber-ii/)
 
 当第一间屋被选中时，最后一间不可选，反之亦然。则对数组两次遍历，分别得出第一间不选和最后一间不选的结果，两者取大即可。
 
@@ -212,7 +301,9 @@ var helper = function(nums) {
 
 ## 卖股票问题
 
-### [只卖一次](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+### 只卖一次
+
+[LeetCode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
 
 ```js
 /**
@@ -231,7 +322,9 @@ var maxProfit = function(prices) {
 };
 ```
 
-### [卖无限次](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/)
+### 卖无限次
+
+[LeetCode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/)
 
 ```js
 /**
@@ -247,7 +340,9 @@ var maxProfit = function(prices) {
 };
 ```
 
-### [卖两次](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii)
+### 卖两次
+
+[LeetCode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii)
 
 通用 DP 方程：`dp[k,i] = max(dp[k,i-1], prices[i]-prices[j]+dp[k-1,j-1])`. [详解](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/discuss/135704/Detail-explanation-of-DP-solution)
 
@@ -305,7 +400,9 @@ var maxProfit = function(prices) {
 };
 ```
 
-### [有 cooldown 的卖股票](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown)
+### 有 cooldown 的卖股票
+
+[LeetCode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown)
 
 构造状态转移方程：[详解](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/solution/yi-ge-fang-fa-tuan-mie-6-dao-gu-piao-wen-ti-by-l-3/)
 
@@ -328,7 +425,9 @@ var maxProfit = function(prices) {
 };
 ```
 
-### [卖 k 次](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv)
+### 卖 k 次
+
+[LeetCode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv)
 
 ```js
 /**
@@ -360,7 +459,9 @@ var quickSolve = function(prices) {
 };
 ```
 
-### [有手续费的卖](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee)
+### 有手续费的卖
+
+[LeetCode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee)
 
 ```js
 /**
@@ -379,7 +480,249 @@ var maxProfit = function(prices, fee) {
 };
 ```
 
-## [最长有效括号](https://leetcode.com/problems/longest-valid-parentheses)
+## 练习
+
+### 最小路径和
+
+[LeetCode](https://leetcode.com/problems/minimum-path-sum/)
+
+```js
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var minPathSum = function(grid) {
+  let dp = JSON.parse(JSON.stringify(grid));
+  let m = grid.length,
+    n = grid[0].length;
+  if (m === 0 || n === 0) return 0;
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      if (i - 1 >= 0 && j - 1 >= 0) {
+        dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j];
+      } else if (i - 1 >= 0) {
+        dp[i][j] = dp[i - 1][j] + grid[i][j];
+      } else if (j - 1 >= 0) {
+        dp[i][j] = dp[i][j - 1] + grid[i][j];
+      }
+    }
+  }
+  return dp[m - 1][n - 1];
+};
+```
+
+### 编辑距离
+
+[LeetCode](https://leetcode.com/problems/edit-distance/)
+
+```bash
+word1[i-1] !== word2[j-1]:
+if word1[0...i-1) === word2[0...j):
+  delete word1[i-1]: dp[i][j] = dp[i-1][j] + 1
+if word1[0...i) + word2[j-1] === word2[0...j):
+  insert word2[j-1]: dp[i][j] = dp[i][j-1] + 1
+replace word1[i-1] = word2[j-1]: dp[i][j] = dp[i-1][j-1] + 1
+# 实质上是求：
+dp[i][j] = min(dp[i-1][j] + 1, dp[i][j-1] + 1, dp[i-1][j-1] + 1)
+word1[i-1] === word2[j-1]:
+  dp[i][j] = dp[i-1][j-1]
+```
+
+```js
+/**
+ * @param {string} word1
+ * @param {string} word2
+ * @return {number}
+ */
+var minDistance = function(word1, word2) {
+  let len1 = word1.length,
+    len2 = word2.length;
+  let dp = Array.from(Array(len1 + 1), () => Array(len2 + 1).fill(0));
+  for (let i = 1; i <= len1; i++) {
+    dp[i][0] = i;
+  }
+  for (let j = 1; j <= len2; j++) {
+    dp[0][j] = j;
+  }
+  for (let i = 1; i <= len1; i++) {
+    for (let j = 1; j <= len2; j++) {
+      if (word1[i - 1] == word2[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1];
+      } else {
+        dp[i][j] =
+          Math.min(dp[i - 1][j - 1], Math.min(dp[i][j - 1], dp[i - 1][j])) + 1;
+      }
+    }
+  }
+  return dp[len1][len2];
+};
+```
+
+### 最大正方形
+
+[LeetCode](https://leetcode.com/problems/maximal-square/)
+
+```js
+/**
+ * @param {character[][]} matrix
+ * @return {number}
+ */
+var maximalSquare = function(matrix) {
+  if (matrix.length === 0) return 0;
+  let row = matrix.length,
+    col = matrix[0].length;
+  let dp = Array.from(Array(row), () => Array(col).fill(0));
+  let sz = 0;
+  for (let i = 0; i < row; i++) {
+    for (let j = 0; j < col; j++) {
+      if (matrix[i][j] !== "0") {
+        if (i && j) {
+          dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1;
+        } else {
+          dp[i][j] = matrix[i][j] - "0";
+        }
+      }
+      sz = Math.max(dp[i][j], sz);
+    }
+  }
+  return sz * sz;
+};
+```
+
+### 矩形区域不超过 K 的最大数值和
+
+[LeetCode](https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/)
+
+TODO
+
+### 青蛙过河
+
+[LeetCode](https://leetcode.com/problems/frog-jump/)
+
+TODO
+
+### 分割数组的最大值
+
+[LeetCode](https://leetcode.com/problems/split-array-largest-sum/)
+
+TODO
+
+### 学生出勤记录 II
+
+[LeetCode](https://leetcode.com/problems/student-attendance-record-ii/)
+
+TODO
+
+### 任务调度器
+
+[LeetCode](https://leetcode.com/problems/task-scheduler/)
+
+TODO
+
+### 回文子串
+
+[LeetCode](https://leetcode.com/problems/palindromic-substrings/)
+
+TODO
+
+### 最小覆盖子串
+
+[LeetCode](https://leetcode.com/problems/minimum-window-substring/)
+
+TODO
+
+### 戳气球
+
+[LeetCode](https://leetcode.com/problems/burst-balloons/)
+
+TODO
+
+## 高级 DP
+
+### 最长上升子序列
+
+[LeetCode](https://leetcode.com/problems/longest-increasing-subsequence/)
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var lengthOfLIS = function(nums) {
+  if (nums.length === 0) return 0;
+  let dp = Array(nums.length).fill(1);
+  for (let i = 1; i < nums.length; i++) {
+    for (let j = 0; j < i; j++) {
+      if (nums[j] < nums[i]) {
+        dp[i] = Math.max(dp[j] + 1, dp[i]);
+      }
+    }
+  }
+  return Math.max(...dp);
+};
+```
+
+### 解码方法
+
+[LeetCode](https://leetcode.com/problems/decode-ways)
+
+```js
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var numDecodings = function(s) {
+  let dp = Array(s.length + 1).fill(0);
+  dp[0] = 1;
+  dp[1] = s[0] === "0" ? 0 : 1;
+  for (let i = 2; i < dp.length; i++) {
+    let one = parseInt(s[i - 1]);
+    let two = parseInt(s.slice(i - 2, i));
+    if (one >= 1 && one <= 9) {
+      dp[i] += dp[i - 1];
+    }
+    if (two >= 10 && two <= 26) {
+      dp[i] += dp[i - 2];
+    }
+  }
+  return dp[s.length];
+};
+```
+
+```js
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var numDecodings = function(s) {
+  if (s[0] === "0") return 0;
+  let n = s.length;
+  let dp = Array(n + 1);
+  dp[0] = 1;
+  dp[1] = 1;
+  for (let i = 2; i <= n; i++) {
+    if (s[i - 1] === "0") {
+      if (s[i - 2] === "1" || s[i - 2] === "2") {
+        dp[i] = dp[i - 2];
+      } else {
+        return 0;
+      }
+    } else if (
+      s[i - 2] === "1" ||
+      (s[i - 2] === "2" && s[i - 1] >= "1" && s[i - 1] <= "6")
+    ) {
+      dp[i] = dp[i - 1] + dp[i - 2];
+    } else {
+      dp[i] = dp[i - 1];
+    }
+  }
+  return dp[n];
+};
+```
+
+### 最长有效括号
+
+[LeetCode](https://leetcode.com/problems/longest-valid-parentheses)
 
 DP 方程：
 
@@ -440,7 +783,27 @@ var longestValidParentheses = function(s) {
 };
 ```
 
-## [括号生成](https://leetcode.com/problems/generate-parentheses/)
+### 最大矩形
+
+[LeetCode](https://leetcode.com/problems/maximal-rectangle/)
+
+TODO
+
+### 不同的子序列
+
+[LeetCode](https://leetcode.com/problems/distinct-subsequences/)
+
+TODO
+
+### 赛车
+
+[LeetCode](https://leetcode.com/problems/race-car/)
+
+TODO
+
+### 括号生成
+
+[LeetCode](https://leetcode.com/problems/generate-parentheses/)
 
 `dp[i]` 与 `dp[i-1]` 的区别在于多了一对`()`，这对括号的位置有下面这么多种方法放入：
 `( + (i = p时的括号排列组合数) + ) + (i = q时的括号排列组合数)`，p 的范围是[0, n-1]，q 的范围是[n-1, 0]。
@@ -467,279 +830,9 @@ var generateParenthesis = function(n) {
 };
 ```
 
-## [最小路径和](https://leetcode.com/problems/minimum-path-sum/)
+### 使用最小花费爬楼梯
 
-```js
-/**
- * @param {number[][]} grid
- * @return {number}
- */
-var minPathSum = function(grid) {
-  let dp = JSON.parse(JSON.stringify(grid));
-  let m = grid.length,
-    n = grid[0].length;
-  if (m === 0 || n === 0) return 0;
-  for (let i = 0; i < m; i++) {
-    for (let j = 0; j < n; j++) {
-      if (i - 1 >= 0 && j - 1 >= 0) {
-        dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j];
-      } else if (i - 1 >= 0) {
-        dp[i][j] = dp[i - 1][j] + grid[i][j];
-      } else if (j - 1 >= 0) {
-        dp[i][j] = dp[i][j - 1] + grid[i][j];
-      }
-    }
-  }
-  return dp[m - 1][n - 1];
-};
-```
-
-## [解码方法](https://leetcode.com/problems/decode-ways)
-
-```js
-/**
- * @param {string} s
- * @return {number}
- */
-var numDecodings = function(s) {
-  let dp = Array(s.length + 1).fill(0);
-  dp[0] = 1;
-  dp[1] = s[0] === "0" ? 0 : 1;
-  for (let i = 2; i < dp.length; i++) {
-    let one = parseInt(s[i - 1]);
-    let two = parseInt(s.slice(i - 2, i));
-    if (one >= 1 && one <= 9) {
-      dp[i] += dp[i - 1];
-    }
-    if (two >= 10 && two <= 26) {
-      dp[i] += dp[i - 2];
-    }
-  }
-  return dp[s.length];
-};
-```
-
-```js
-/**
- * @param {string} s
- * @return {number}
- */
-var numDecodings = function(s) {
-  if (s[0] === "0") return 0;
-  let n = s.length;
-  let dp = Array(n + 1);
-  dp[0] = 1;
-  dp[1] = 1;
-  for (let i = 2; i <= n; i++) {
-    if (s[i - 1] === "0") {
-      if (s[i - 2] === "1" || s[i - 2] === "2") {
-        dp[i] = dp[i - 2];
-      } else {
-        return 0;
-      }
-    } else if (
-      s[i - 2] === "1" ||
-      (s[i - 2] === "2" && s[i - 1] >= "1" && s[i - 1] <= "6")
-    ) {
-      dp[i] = dp[i - 1] + dp[i - 2];
-    } else {
-      dp[i] = dp[i - 1];
-    }
-  }
-  return dp[n];
-};
-```
-
-## [最大正方形](https://leetcode.com/problems/maximal-square/)
-
-```js
-/**
- * @param {character[][]} matrix
- * @return {number}
- */
-var maximalSquare = function(matrix) {
-  if (matrix.length === 0) return 0;
-  let row = matrix.length,
-    col = matrix[0].length;
-  let dp = Array.from(Array(row), () => Array(col).fill(0));
-  let sz = 0;
-  for (let i = 0; i < row; i++) {
-    for (let j = 0; j < col; j++) {
-      if (matrix[i][j] !== "0") {
-        if (i && j) {
-          dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1;
-        } else {
-          dp[i][j] = matrix[i][j] - "0";
-        }
-      }
-      sz = Math.max(dp[i][j], sz);
-    }
-  }
-  return sz * sz;
-};
-```
-
-## [矩形区域不超过 K 的最大数值和](https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/)
-
-TODO
-
-## [青蛙过河](https://leetcode.com/problems/frog-jump/)
-
-TODO
-
-## [分割数组的最大值](https://leetcode.com/problems/split-array-largest-sum/)
-
-TODO
-
-## [学生出勤记录 II](https://leetcode.com/problems/student-attendance-record-ii/)
-
-TODO
-
-## [任务调度器](https://leetcode.com/problems/task-scheduler/)
-
-TODO
-
-## [回文子串](https://leetcode.com/problems/palindromic-substrings/)
-
-TODO
-
-## [最小覆盖子串](https://leetcode.com/problems/minimum-window-substring/)
-
-TODO
-
-## [戳气球](https://leetcode.com/problems/burst-balloons/)
-
-TODO
-
-> 高级 DP 练习
-
-## [完全平方数](https://leetcode.com/problems/perfect-squares/)
-
-TODO
-
-## [编辑距离](https://leetcode.com/problems/edit-distance/)
-
-```bash
-word1[i-1] !== word2[j-1]:
-if word1[0...i-1) === word2[0...j):
-  delete word1[i-1]: dp[i][j] = dp[i-1][j] + 1
-if word1[0...i) + word2[j-1] === word2[0...j):
-  insert word2[j-1]: dp[i][j] = dp[i][j-1] + 1
-replace word1[i-1] = word2[j-1]: dp[i][j] = dp[i-1][j-1] + 1
-# 实质上是求：
-dp[i][j] = min(dp[i-1][j] + 1, dp[i][j-1] + 1, dp[i-1][j-1] + 1)
-word1[i-1] === word2[j-1]:
-  dp[i][j] = dp[i-1][j-1]
-```
-
-```js
-/**
- * @param {string} word1
- * @param {string} word2
- * @return {number}
- */
-var minDistance = function(word1, word2) {
-  let len1 = word1.length,
-    len2 = word2.length;
-  let dp = Array.from(Array(len1 + 1), () => Array(len2 + 1).fill(0));
-  for (let i = 1; i <= len1; i++) {
-    dp[i][0] = i;
-  }
-  for (let j = 1; j <= len2; j++) {
-    dp[0][j] = j;
-  }
-  for (let i = 1; i <= len1; i++) {
-    for (let j = 1; j <= len2; j++) {
-      if (word1[i - 1] == word2[j - 1]) {
-        dp[i][j] = dp[i - 1][j - 1];
-      } else {
-        dp[i][j] =
-          Math.min(dp[i - 1][j - 1], Math.min(dp[i][j - 1], dp[i - 1][j])) + 1;
-      }
-    }
-  }
-  return dp[len1][len2];
-};
-```
-
-## [跳跃游戏](https://leetcode.com/problems/jump-game/)
-
-TODO
-
-## [跳跃游戏 II](https://leetcode.com/problems/jump-game-ii/)
-
-TODO
-
-## [不同路径](https://leetcode.com/problems/unique-paths/)
-
-TODO
-
-## [不同路径 II](https://leetcode.com/problems/unique-paths-ii/)
-
-TODO
-
-## [不同路径 III](https://leetcode.com/problems/unique-paths-iii/)
-
-TODO
-
-## [零钱兑换](https://leetcode.com/problems/coin-change/)
-
-DP 自顶向下：
-
-```js
-/**
- * @param {number[]} coins
- * @param {number} amount
- * @return {number}
- */
-var coinChange = function(coins, amount) {
-  return helper(coins, amount, new Array(amount + 1));
-};
-
-// F[S] = min(F[S-c]) + 1
-var helper = function(coins, rem, memo) {
-  if (rem < 0) return -1;
-  if (rem === 0) return 0;
-  if (memo[rem]) return memo[rem];
-  let imin = Number.MAX_SAFE_INTEGER;
-  for (let coin of coins) {
-    let res = helper(coins, rem - coin, memo);
-    if (res >= 0 && res < imin) {
-      imin = res + 1;
-    }
-  }
-  memo[rem] = imin === Number.MAX_SAFE_INTEGER ? -1 : imin;
-  return memo[rem];
-};
-```
-
-DP 自底向上：
-
-```js
-/**
- * @param {number[]} coins
- * @param {number} amount
- * @return {number}
- */
-var coinChange = function(coins, amount) {
-  let dp = Array(amount + 1).fill(amount + 1);
-  dp[0] = 0;
-  for (let i = 1; i <= amount; i++) {
-    for (let coin of coins) {
-      if (coin <= i) {
-        dp[i] = Math.min(dp[i], dp[i - coin] + 1);
-      }
-    }
-  }
-  return dp[amount] > amount ? -1 : dp[amount];
-};
-```
-
-## [零钱兑换 II](https://leetcode.com/problems/coin-change-2/)
-
-TODO
-
-## [使用最小花费爬楼梯](https://leetcode.com/problems/min-cost-climbing-stairs/)
+[LeetCode](https://leetcode.com/problems/min-cost-climbing-stairs/)
 
 ```js
 /**
@@ -759,35 +852,32 @@ var minCostClimbingStairs = function(cost) {
 };
 ```
 
-## [最长上升子序列](https://leetcode.com/problems/longest-increasing-subsequence/)
+### 完全平方数
 
-```js
-/**
- * @param {number[]} nums
- * @return {number}
- */
-var lengthOfLIS = function(nums) {
-  if (nums.length === 0) return 0;
-  let dp = Array(nums.length).fill(1);
-  for (let i = 1; i < nums.length; i++) {
-    for (let j = 0; j < i; j++) {
-      if (nums[j] < nums[i]) {
-        dp[i] = Math.max(dp[j] + 1, dp[i]);
-      }
-    }
-  }
-  return Math.max(...dp);
-};
-```
-
-## [最大矩形](https://leetcode.com/problems/maximal-rectangle/)
+[LeetCode](https://leetcode.com/problems/perfect-squares/)
 
 TODO
 
-## [不同的子序列](https://leetcode.com/problems/distinct-subsequences/)
+### 跳跃游戏
+
+[LeetCode](https://leetcode.com/problems/jump-game/)
 
 TODO
 
-## [赛车](https://leetcode.com/problems/race-car/)
+### 跳跃游戏 II
+
+[LeetCode](https://leetcode.com/problems/jump-game-ii/)
+
+TODO
+
+### 不同路径 III
+
+[LeetCode](https://leetcode.com/problems/unique-paths-iii/)
+
+TODO
+
+### 零钱兑换 II
+
+[LeetCode](https://leetcode.com/problems/coin-change-2/)
 
 TODO

@@ -2,7 +2,9 @@
 
 前缀树，利用空间换时间的思路，提高搜索效率。
 
-## [实现 Trie](https://leetcode.com/problems/implement-trie-prefix-tree/)
+## 实现 Trie
+
+[LeetCode](https://leetcode.com/problems/implement-trie-prefix-tree/)
 
 利用好 JS 对象的便利性，不需要构建明确的父子树关系，直接构造出嵌套关系即可。
 
@@ -57,7 +59,9 @@ Trie.prototype.startsWith = function(prefix) {
 };
 ```
 
-## [单词搜索 II](https://leetcode.com/problems/word-search-ii/)
+## 单词搜索 II
+
+[LeetCode](https://leetcode.com/problems/word-search-ii/)
 
 好难啊...
 

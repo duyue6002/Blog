@@ -6,7 +6,7 @@
 2. 插入排序：从前到后构建有序数组，未排序数组从后向前拿元素，插入到已排序数组中
 3. 冒泡排序：嵌套循环，相邻元素根据大小交换
 
-## 高级排序 - O(N*logN)
+## 高级排序 - O(N\*logN)
 
 1. 快速排序：选择 pivot，小放左大放右，递归将两边再排序
 
@@ -63,9 +63,44 @@ function merge(array, begin, mid, end) {
 }
 ```
 
-3. 堆排序：
+3. 堆排序：TODO
 
-## [有效的字母异位词](https://leetcode.com/problems/valid-anagram/)
+## 数组的相对排序
+
+[LeetCode](https://leetcode.com/problems/relative-sort-array/)
+
+```js
+/**
+ * 计数排序
+ * @param {number[]} arr1
+ * @param {number[]} arr2
+ * @return {number[]}
+ */
+var relativeSortArray = function(arr1, arr2) {
+  let cache = Array(1001).fill(0);
+  let res = [];
+  for (let num of arr1) {
+    cache[num]++;
+  }
+  for (let num of arr2) {
+    while (cache[num] > 0) {
+      res.push(num);
+      cache[num]--;
+    }
+  }
+  for (let num = 0; num < 1001; num++) {
+    while (cache[num] > 0) {
+      res.push(num);
+      cache[num]--;
+    }
+  }
+  return res;
+};
+```
+
+## 有效的字母异位词
+
+[LeetCode](https://leetcode.com/problems/valid-anagram/)
 
 ```js
 /**
@@ -102,7 +137,9 @@ var isAnagram = function(s, t) {
 };
 ```
 
-## [合并区间](https://leetcode.com/problems/merge-intervals/)
+## 合并区间
+
+[LeetCode](https://leetcode.com/problems/merge-intervals/)
 
 ```js
 /**
@@ -129,7 +166,9 @@ var merge = function(intervals) {
 };
 ```
 
-## [翻转对](https://leetcode.com/problems/reverse-pairs/)
+## 翻转对
+
+[LeetCode](https://leetcode.com/problems/reverse-pairs/)
 
 ```js
 /**
@@ -163,36 +202,5 @@ var mergeSort = function(nums, begin, end) {
     nums[begin + p] = cache[p];
   }
   return count;
-};
-```
-
-## [数组的相对排序](https://leetcode.com/problems/relative-sort-array/)
-
-```js
-/**
- * 计数排序
- * @param {number[]} arr1
- * @param {number[]} arr2
- * @return {number[]}
- */
-var relativeSortArray = function(arr1, arr2) {
-  let cache = Array(1001).fill(0);
-  let res = [];
-  for (let num of arr1) {
-    cache[num]++;
-  }
-  for (let num of arr2) {
-    while (cache[num] > 0) {
-      res.push(num);
-      cache[num]--;
-    }
-  }
-  for (let num = 0; num < 1001; num++) {
-    while (cache[num] > 0) {
-      res.push(num);
-      cache[num]--;
-    }
-  }
-  return res;
 };
 ```

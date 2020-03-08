@@ -2,19 +2,30 @@
 
 ## JavaScript
 
-- [函数：闭包/作用域/this/call/apply](https://duyue6002.github.io/Blog/#/js/function)
-- [面向对象：封装/继承/多态](https://duyue6002.github.io/Blog/#/js/OOP)
-- [理解 instanceof](https://duyue6002.github.io/Blog/#/js/instanceof)
-- [异步编程概述](https://duyue6002.github.io/Blog/#/js/async)
-- [学习 promise](https://duyue6002.github.io/Blog/#/js/promise)
-- [比较 undefined 和 null](https://duyue6002.github.io/Blog/#/js/undefined)
-- [代码收藏](https://duyue6002.github.io/Blog/#/js/tips)
+- [函数：闭包/作用域/this/call/apply](js/function)
+- [面向对象：封装/继承/多态](js/OOP)
+- [理解 instanceof](js/instanceof)
+- [异步编程概述](js/async)
+- [学习 promise](js/promise)
+- [比较 undefined 和 null](js/undefined)
+- [代码收藏](js/tips)
 - [正则表达式](https://github.com/duyue6002/Blog/issues/19)
-- [排序算法](https://github.com/duyue6002/Blog/issues/16)
+
+## 算法
+
+- [字符串](algo/string.md)
+- [高级搜索](algo/advanced-search.md)
+- [排序](algo/sort.md)
+- [动态规划](algo/dp.md)
+- [布隆过滤器和 LRU 缓存](algo/bloom-filter.md)
+- [位运算](algo/bit.md)
+- [AVL 与红黑树](algo/balanced-tree.md)
+- [并查集](algo/union-find.md)
+- [字典树](algo/trie.md)
 
 ## HTML
 
-- [head 里装了什么](https://duyue6002.github.io/Blog/#/html/head)
+- [head 里装了什么](html/head)
 
 ## CSS
 
@@ -29,28 +40,28 @@
 ## React
 
 - [[译]什么时候用 Component 或 PureComponent](https://github.com/duyue6002/Blog/issues/24)
-- [Virtual DOM](https://duyue6002.github.io/Blog/#/react/virtualDOM.md)
+- [Virtual DOM](react/virtualDOM.md)
 
 ## 网络
 
-- [网络协议综述](https://duyue6002.github.io/Blog/#/network/basic)
-- [理解 ifconfig](https://duyue6002.github.io/Blog/#/network/ifconfig)
-- [HTTP 状态码](https://duyue6002.github.io/Blog/#/network/http/code)
-- [HTTPS](https://duyue6002.github.io/Blog/#/network/http/https)
+- [网络协议综述](network/basic)
+- [理解 ifconfig](network/ifconfig)
+- [HTTP 状态码](network/http/code)
+- [HTTPS](network/http/https)
 
 ## Node.js
 
 - 深入浅出 Node.js 读书笔记
-  - [构建 Web 应用](https://duyue6002.github.io/Blog/#/node/book/web)
-- [koa 踩坑记录](https://duyue6002.github.io/Blog/#/node/koa/tips)
+  - [构建 Web 应用](node/book/web)
+- [koa 踩坑记录](node/koa/tips)
 
 ## 前端工程
 
-- [Source Map 前端 webpack 配置](https://duyue6002.github.io/Blog/#/project/sourcemap/fe)
+- [Source Map 前端 webpack 配置](project/sourcemap/fe)
 
 ## 数学
 
-- [二进制](https://duyue6002.github.io/Blog/#/math/binary)
-- [余数与哈希](https://duyue6002.github.io/Blog/#/math/mod)
-- [迭代](https://duyue6002.github.io/Blog/#/math/iterator)
-- [递归](https://duyue6002.github.io/Blog/#/math/recursive)
+- [二进制](math/binary)
+- [余数与哈希](math/mod)
+- [迭代](math/iterator)
+- [递归](math/recursive)

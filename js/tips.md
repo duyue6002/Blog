@@ -46,3 +46,12 @@ function num2bin(num) {
   return (num >>> 0).toString(2); // >>> 0 右移强制转换为无符号整数
 }
 ```
+
+## 字符串操作
+
+```js
+// string -> ascii
+string.charCodeAt(index)
+// ascii -> string
+String.fromCharCode(number)
+```

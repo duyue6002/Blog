@@ -13,7 +13,9 @@
 
 最少最近被使用的元素被淘汰。
 
-### [LRU 缓存机制](https://leetcode.com/problems/lru-cache/#/)
+### LRU 缓存机制
+
+[LeetCode](https://leetcode.com/problems/lru-cache/#/)
 
 ```js
 var DLinkNode = function() {

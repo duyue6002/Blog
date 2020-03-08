@@ -4,7 +4,9 @@
 
 剪枝其实就是递归时多做一些条件判断，不必要的情况无需再递归下去。
 
-### [爬楼梯](https://leetcode.com/problems/climbing-stairs/)
+### 爬楼梯
+
+[LeetCode](https://leetcode.com/problems/climbing-stairs/)
 
 ```js
 /**
@@ -32,7 +34,9 @@ var helper = function(memo, n) {
 };
 ```
 
-### [括号生成](https://leetcode.com/problems/generate-parentheses/)
+### 括号生成
+
+[LeetCode](https://leetcode.com/problems/generate-parentheses/)
 
 ```js
 /**
@@ -61,7 +65,9 @@ var helper = function(result, str, n, left, right) {
 };
 ```
 
-### [N 皇后](https://leetcode.com/problems/n-queens/)
+### N 皇后
+
+[LeetCode](https://leetcode.com/problems/n-queens/)
 
 ```js
 /**
@@ -112,9 +118,13 @@ var DFS = function(result, row, n, cols, left, right, cur) {
 };
 ```
 
-### [解数独](https://leetcode.com/problems/sudoku-solver/)
+### 有效的数独
 
-为其铺垫的题是判断是否是[有效的数独](https://leetcode.com/problems/valid-sudoku/)。
+[LeetCode](https://leetcode.com/problems/valid-sudoku/)
+
+### 解数独
+
+[LeetCode](https://leetcode.com/problems/sudoku-solver/)
 
 本题解法与 N 皇后问题很像，都是利用剪枝降低运算成本。用数组存储可以放的数字，从数组中取数。
 
@@ -234,7 +244,9 @@ var isValidSudoku = function(board, row, col, c) {
 
 ## 双向 BFS
 
-### [单词接龙](https://leetcode.com/problems/word-ladder/)
+### 单词接龙
+
+[LeetCode](https://leetcode.com/problems/word-ladder/)
 
 ```js
 /**
@@ -319,11 +331,17 @@ var ladderLength = function(beginWord, endWord, wordList) {
 };
 ```
 
+### 最小基因变化
+
+[LeetCode](https://leetcode-cn.com/problems/minimum-genetic-mutation/)
+
 ## 启发式搜索（A star）
 
 主要就是要找到估值函数，根据这个函数排列出优先队列，实质还是 BFS。
 
-### [二进制矩阵中的最短路径](https://leetcode.com/problems/shortest-path-in-binary-matrix/)
+### 二进制矩阵中的最短路径
+
+[LeetCode](https://leetcode.com/problems/shortest-path-in-binary-matrix/)
 
 ```js
 /**

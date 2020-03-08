@@ -33,7 +33,9 @@ let unionFind = function(n) {
 };
 ```
 
-## [朋友圈](https://leetcode.com/problems/friend-circles)
+## 朋友圈
+
+[LeetCode](https://leetcode.com/problems/friend-circles)
 
 与岛屿问题相同，将是朋友的并在一起，成为一个集合，最后看集合的个数就是朋友圈的个数。
 
@@ -80,7 +82,9 @@ var findCircleNum = function(M) {
 };
 ```
 
-## [岛屿数量](https://leetcode.com/problems/number-of-islands/)
+## 岛屿数量
+
+[LeetCode](https://leetcode.com/problems/number-of-islands/)
 
 ```js
 /**
@@ -147,7 +151,9 @@ var unionFind = function(grid) {
 };
 ```
 
-## [被围绕的区域](https://leetcode.com/problems/surrounded-regions/)
+## 被围绕的区域
+
+[LeetCode](https://leetcode.com/problems/surrounded-regions/)
 
 ```js
 /**

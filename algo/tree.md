@@ -1,6 +1,8 @@
 # 树
 
-## [二叉树的中序遍历](https://leetcode.com/problems/binary-tree-inorder-traversal/)
+## 二叉树的中序遍历
+
+[LeetCode](https://leetcode.com/problems/binary-tree-inorder-traversal/)
 
 ```js
 /**
@@ -45,7 +47,9 @@ var helper = function(node, memo) {
 };
 ```
 
-## [二叉树的前序遍历](https://leetcode.com/problems/binary-tree-preorder-traversal/)
+## 二叉树的前序遍历
+
+[LeetCode](https://leetcode.com/problems/binary-tree-preorder-traversal/)
 
 ```js
 /**
@@ -74,7 +78,9 @@ var preorderTraversal = function(root) {
 };
 ```
 
-## [N叉树的后序遍历](https://leetcode.com/problems/n-ary-tree-postorder-traversal/)
+## N叉树的后序遍历
+
+[LeetCode](https://leetcode.com/problems/n-ary-tree-postorder-traversal/)
 
 ```js
 /**
@@ -105,7 +111,9 @@ var postorder = function(root) {
 };
 ```
 
-## [N叉树的前序遍历](https://leetcode.com/problems/n-ary-tree-preorder-traversal/description/)
+## N叉树的前序遍历
+
+[LeetCode](https://leetcode.com/problems/n-ary-tree-preorder-traversal/description/)
 
 ```js
 /**
@@ -161,7 +169,9 @@ var preorder = function(root) {
 };
 ```
 
-## [N叉树的层序遍历](https://leetcode.com/problems/n-ary-tree-level-order-traversal/)
+## N叉树的层序遍历
+
+[LeetCode](https://leetcode.com/problems/n-ary-tree-level-order-traversal/)
 
 ```js
 /**

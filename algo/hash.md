@@ -1,6 +1,8 @@
 # 哈希表
 
-## [有效的字母异位词](https://leetcode.com/problems/valid-anagram/description/)
+## 有效的字母异位词
+
+[LeetCode](https://leetcode.com/problems/valid-anagram/description/)
 
 ```js
 /**
@@ -31,7 +33,9 @@ var isAnagram = function(s, t) {
 };
 ```
 
-## [字母异位词分组](https://leetcode.com/problems/group-anagrams/)
+## 字母异位词分组
+
+[LeetCode](https://leetcode.com/problems/group-anagrams/)
 
 ```js
 /**
@@ -54,7 +58,9 @@ var groupAnagrams = function(strs) {
 };
 ```
 
-## [两数之和](https://leetcode.com/problems/two-sum/)
+## 两数之和
+
+[LeetCode](https://leetcode.com/problems/two-sum/)
 
 ```js
 /**

@@ -1,6 +1,8 @@
 # 数组
 
-## [盛最多水的容器](https://leetcode.com/problems/container-with-most-water/)
+## 盛最多水的容器
+
+[LeetCode](https://leetcode.com/problems/container-with-most-water/)
 
 ```js
 /**
@@ -29,7 +31,9 @@ var maxArea = function(height) {
 };
 ```
 
-## [移动零](https://leetcode-cn.com/problems/move-zeroes/)
+## 移动零
+
+[LeetCode](https://leetcode-cn.com/problems/move-zeroes/)
 
 ```js
 /**
@@ -75,7 +79,9 @@ var moveZeroes = function(nums) {
 };
 ```
 
-## [爬楼梯](https://leetcode.com/problems/climbing-stairs/)
+## 爬楼梯
+
+[LeetCode](https://leetcode.com/problems/climbing-stairs/)
 
 ```js
 /**
@@ -96,7 +102,9 @@ var climbStairs = function(n) {
 };
 ```
 
-## [三数之和](https://leetcode.com/problems/3sum/)
+## 三数之和
+
+[LeetCode](https://leetcode.com/problems/3sum/)
 
 ```js
 /**
@@ -132,13 +140,21 @@ var threeSum = function(nums) {
 };
 ```
 
-## [删除排序数组中的重复项](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
+## 删除排序数组中的重复项
 
-## [旋转数组](https://leetcode.com/problems/rotate-array/)
+[LeetCode](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
 
-## [合并两个有序数组](https://leetcode.com/problems/merge-sorted-array/)
+## 旋转数组
 
-## [两数之和](https://leetcode.com/problems/two-sum/)
+[LeetCode](https://leetcode.com/problems/rotate-array/)
+
+## 合并两个有序数组
+
+[LeetCode](https://leetcode.com/problems/merge-sorted-array/)
+
+## 两数之和
+
+[LeetCode](https://leetcode.com/problems/two-sum/)
 
 ```js
 /**
@@ -158,7 +174,9 @@ var twoSum = function(nums, target) {
 };
 ```
 
-## [加一](https://leetcode-cn.com/problems/plus-one/)
+## 加一
+
+[LeetCode](https://leetcode-cn.com/problems/plus-one/)
 
 ```js
 /**

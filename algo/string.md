@@ -2,9 +2,11 @@
 
 在 JS 中，字符串是 immutable 的。
 
-> 字符串基础问题
+## 字符串基础问题
 
-## [转换成小写字母](https://leetcode.com/problems/to-lower-case/)
+### 转换成小写字母
+
+[LeetCode](https://leetcode.com/problems/to-lower-case/)
 
 ```js
 /**
@@ -22,7 +24,9 @@ var toLowerCase = function(str) {
 };
 ```
 
-## [最后一个单词的长度](https://leetcode.com/problems/length-of-last-word/)
+### 最后一个单词的长度
+
+[LeetCode](https://leetcode.com/problems/length-of-last-word/)
 
 ```js
 /**
@@ -44,7 +48,9 @@ var lengthOfLastWord = function(s) {
 };
 ```
 
-## [宝石与石头](https://leetcode.com/problems/jewels-and-stones/)
+### 宝石与石头
+
+[LeetCode](https://leetcode.com/problems/jewels-and-stones/)
 
 ```js
 /**
@@ -67,7 +73,9 @@ var numJewelsInStones = function(J, S) {
 };
 ```
 
-## [字符串中的第一个唯一字符](https://leetcode.com/problems/first-unique-character-in-a-string/)
+### 字符串中的第一个唯一字符
+
+[LeetCode](https://leetcode.com/problems/first-unique-character-in-a-string/)
 
 ```js
 /**
@@ -94,7 +102,9 @@ var firstUniqChar = function(s) {
 };
 ```
 
-## [字符串转换整数 (atoi)](https://leetcode.com/problems/string-to-integer-atoi/)
+### 字符串转换整数 (atoi)
+
+[LeetCode](https://leetcode.com/problems/string-to-integer-atoi/)
 
 ```js
 /**
@@ -131,9 +141,11 @@ var myAtoi = function(str) {
 };
 ```
 
-> 字符串操作问题
+## 字符串操作问题
 
-## [最长公共前缀](https://leetcode.com/problems/longest-common-prefix/description/)
+### 最长公共前缀
+
+[LeetCode](https://leetcode.com/problems/longest-common-prefix/description/)
 
 ```js
 /**
@@ -153,7 +165,9 @@ var longestCommonPrefix = function(strs) {
 };
 ```
 
-## [反转字符串](https://leetcode.com/problems/reverse-string/)
+### 反转字符串
+
+[LeetCode](https://leetcode.com/problems/reverse-string/)
 
 ```js
 /**
@@ -169,7 +183,9 @@ var reverseString = function(s) {
 };
 ```
 
-## [反转字符串 II](https://leetcode.com/problems/reverse-string-ii/)
+### 反转字符串 II
+
+[LeetCode](https://leetcode.com/problems/reverse-string-ii/)
 
 ```js
 /**
@@ -199,7 +215,9 @@ var reverse = function(arr, start, end) {
 };
 ```
 
-## [翻转字符串里的单词](https://leetcode.com/problems/reverse-words-in-a-string/)
+### 翻转字符串里的单词
+
+[LeetCode](https://leetcode.com/problems/reverse-words-in-a-string/)
 
 ```js
 /**
@@ -233,7 +251,9 @@ var reverseWords = function(s) {
 };
 ```
 
-## [反转字符串中的单词 III](https://leetcode.com/problems/reverse-words-in-a-string-iii/)
+### 反转字符串中的单词 III
+
+[LeetCode](https://leetcode.com/problems/reverse-words-in-a-string-iii/)
 
 ```js
 /**
@@ -264,7 +284,9 @@ var reverseWords = function(s) {
 };
 ```
 
-## [仅仅反转字母](https://leetcode.com/problems/reverse-only-letters/)
+### 仅仅反转字母
+
+[LeetCode](https://leetcode.com/problems/reverse-only-letters/)
 
 ```js
 /**
@@ -293,9 +315,11 @@ var isLetter = function(ch) {
 };
 ```
 
-> 异位词与滑动窗口
+## 异位词与滑动窗口
 
-## [有效的字母异位词](https://leetcode.com/problems/valid-anagram/)
+### 有效的字母异位词
+
+[LeetCode](https://leetcode.com/problems/valid-anagram/)
 
 ```js
 /**
@@ -315,7 +339,9 @@ var isAnagram = function(s, t) {
 };
 ```
 
-## [字母异位词分组](https://leetcode.com/problems/group-anagrams/)
+### 字母异位词分组
+
+[LeetCode](https://leetcode.com/problems/group-anagrams/)
 
 ```js
 /**
@@ -359,7 +385,9 @@ var groupAnagrams = function(strs) {
 > }
 > ```
 
-## [最小覆盖子串](https://leetcode.com/problems/minimum-window-substring/)
+### 最小覆盖子串
+
+[LeetCode](https://leetcode.com/problems/minimum-window-substring/)
 
 ```js
 /**
@@ -414,7 +442,9 @@ var minWindow = function(s, t) {
 };
 ```
 
-## [找到字符串中所有字母异位词](https://leetcode.com/problems/find-all-anagrams-in-a-string/)
+### 找到字符串中所有字母异位词
+
+[LeetCode](https://leetcode.com/problems/find-all-anagrams-in-a-string/)
 
 ```js
 /**
@@ -465,7 +495,9 @@ var findAnagrams = function(s, p) {
 };
 ```
 
-## [无重复字符的最长子串](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+### 无重复字符的最长子串
+
+[LeetCode](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
 
 ```js
 /**
@@ -496,9 +528,11 @@ var lengthOfLongestSubstring = function(s) {
 };
 ```
 
-> 回文问题
+## 回文问题
 
-## [验证回文串](https://leetcode.com/problems/valid-palindrome/)
+### 验证回文串
+
+[LeetCode](https://leetcode.com/problems/valid-palindrome/)
 
 ```js
 /**
@@ -532,7 +566,9 @@ var isLegal = function(c) {
 };
 ```
 
-## [验证回文字符串 II](https://leetcode.com/problems/valid-palindrome-ii/)
+### 验证回文字符串 II
+
+[LeetCode](https://leetcode.com/problems/valid-palindrome-ii/)
 
 ```js
 /**
@@ -558,9 +594,11 @@ var isPalindrome = function(s, i, j) {
 };
 ```
 
-> 最长串、子序列
+## 最长串、子序列
 
-## [编辑距离](https://leetcode.com/problems/edit-distance/)
+### 编辑距离
+
+[LeetCode](https://leetcode.com/problems/edit-distance/)
 
 ```js
 /**
@@ -591,7 +629,9 @@ var minDistance = function(word1, word2) {
 };
 ```
 
-## [最长公共子序列](https://leetcode.com/problems/longest-common-subsequence/)
+### 最长公共子序列
+
+[LeetCode](https://leetcode.com/problems/longest-common-subsequence/)
 
 ```js
 /**
@@ -616,7 +656,7 @@ var longestCommonSubsequence = function(text1, text2) {
 };
 ```
 
-## 最长公共子串
+### 最长公共子串
 
 ```js
 /**
@@ -644,7 +684,9 @@ var longestCommonSubstring = function(text1, text2) {
 };
 ```
 
-## [最长回文子串](https://leetcode.com/problems/longest-palindromic-substring/)
+### 最长回文子串
+
+[LeetCode](https://leetcode.com/problems/longest-palindromic-substring/)
 
 ```js
 /**
@@ -701,9 +743,45 @@ var longestPalindrome = function(s) {
 };
 ```
 
-> DP
+### 不同的子序列
 
-## [正则表达式匹配](https://leetcode.com/problems/regular-expression-matching/)
+[LeetCode](https://leetcode.com/problems/distinct-subsequences/)
+
+```js
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {number}
+ */
+var numDistinct = function(s, t) {
+  let dp = Array.from(Array(t.length + 1), () => Array(s.length + 1).fill(0));
+  for (let i = 0; i <= s.length; i++) {
+    dp[0][i] = 1;
+  }
+  for (let i = 1; i <= t.length; i++) {
+    for (let j = i; j <= s.length; j++) {
+      if (t[i - 1] === s[j - 1]) {
+        // s和t都可以删掉一位，或者s删掉一位
+        dp[i][j] = dp[i - 1][j - 1] + dp[i][j - 1];
+      } else {
+        // 不相等时s可以删掉一位
+        dp[i][j] = dp[i][j - 1];
+      }
+    }
+  }
+  return dp[t.length][s.length];
+};
+```
+
+## regex 和通配符匹配
+
+> [视频-KMP 字符串匹配算法](https://www.bilibili.com/video/av11866460?from=search&seid=17425875345653862171)
+>
+> [阮一峰-字符串匹配的 KMP 算法](http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html)
+
+### 正则表达式匹配
+
+[LeetCode](https://leetcode.com/problems/regular-expression-matching/)
 
 ```js
 /**
@@ -784,41 +862,9 @@ var isMatch = function(s, p) {
 };
 ```
 
-## [不同的子序列](https://leetcode.com/problems/distinct-subsequences/)
+### 通配符匹配
 
-```js
-/**
- * @param {string} s
- * @param {string} t
- * @return {number}
- */
-var numDistinct = function(s, t) {
-  let dp = Array.from(Array(t.length + 1), () => Array(s.length + 1).fill(0));
-  for (let i = 0; i <= s.length; i++) {
-    dp[0][i] = 1;
-  }
-  for (let i = 1; i <= t.length; i++) {
-    for (let j = i; j <= s.length; j++) {
-      if (t[i - 1] === s[j - 1]) {
-        // s和t都可以删掉一位，或者s删掉一位
-        dp[i][j] = dp[i - 1][j - 1] + dp[i][j - 1];
-      } else {
-        // 不相等时s可以删掉一位
-        dp[i][j] = dp[i][j - 1];
-      }
-    }
-  }
-  return dp[t.length][s.length];
-};
-```
-
-> 匹配问题
->
-> [视频-KMP 字符串匹配算法](https://www.bilibili.com/video/av11866460?from=search&seid=17425875345653862171)
->
-> [阮一峰-字符串匹配的 KMP 算法](http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html)
-
-## [通配符匹配](https://leetcode.com/problems/wildcard-matching/)
+[LeetCode](https://leetcode.com/problems/wildcard-matching/)
 
 ```js
 /**
@@ -894,7 +940,9 @@ var isMatch = function(s, p) {
 };
 ```
 
-## [最长有效括号](https://leetcode.com/problems/longest-valid-parentheses/)
+### 最长有效括号
+
+[LeetCode](https://leetcode.com/problems/longest-valid-parentheses/)
 
 ```js
 /**
@@ -920,7 +968,9 @@ var longestValidParentheses = function(s) {
 };
 ```
 
-## [同构字符串](https://leetcode.com/problems/isomorphic-strings/)
+### 同构字符串
+
+[LeetCode](https://leetcode.com/problems/isomorphic-strings/)
 
 ```js
 /**

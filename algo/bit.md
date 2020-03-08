@@ -34,7 +34,9 @@ x & -x
 x & ~x === 0
 ```
 
-## [位 1 的个数](https://leetcode.com/problems/number-of-1-bits/)
+## 位 1 的个数
+
+[LeetCode](https://leetcode.com/problems/number-of-1-bits/)
 
 ```js
 /**
@@ -64,7 +66,9 @@ var hammingWeight = function(n) {
 };
 ```
 
-## [2 的幂](https://leetcode.com/problems/power-of-two/)
+## 2 的幂
+
+[LeetCode](https://leetcode.com/problems/power-of-two/)
 
 n 的二进制表示只有一个 1，那么这个数就是 2 的幂。
 
@@ -78,7 +82,9 @@ var isPowerOfTwo = function(n) {
 };
 ```
 
-## [颠倒二进制位](https://leetcode.com/problems/reverse-bits/)
+## 颠倒二进制位
+
+[LeetCode](https://leetcode.com/problems/reverse-bits/)
 
 ```js
 /**
@@ -96,7 +102,9 @@ var reverseBits = function(n) {
 };
 ```
 
-## [N 皇后 II](https://leetcode.com/problems/n-queens-ii/description/)
+## N 皇后 II
+
+[LeetCode](https://leetcode.com/problems/n-queens-ii/description/)
 
 ```js
 /**
@@ -122,7 +130,9 @@ var totalNQueens = function(n) {
 };
 ```
 
-## [比特位计数](https://leetcode.com/problems/counting-bits/description/)
+## 比特位计数
+
+[LeetCode](https://leetcode.com/problems/counting-bits/description/)
 
 ### DP + 最高有效位
 
