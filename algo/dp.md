@@ -63,13 +63,86 @@ var longestCommonSubsequence = function(text1, text2) {
 
 [LeetCode](https://leetcode.com/problems/unique-paths/)
 
-TODO
+```js
+/**
+ * @param {number} m
+ * @param {number} n
+ * @return {number}
+ */
+var uniquePaths = function(m, n) {
+  let arr = Array.from(Array(m), () => Array(n).fill(1));
+
+  for (let i = m - 2; i >= 0; i--) {
+    for (let j = n - 2; j >= 0; j--) {
+      arr[i][j] = arr[i + 1][j] + arr[i][j + 1];
+    }
+  }
+
+  return arr[0][0];
+};
+```
 
 ### 不同路径 II
 
 [LeetCode](https://leetcode.com/problems/unique-paths-ii/)
 
-TODO
+```js
+/**
+ * @param {number[][]} obstacleGrid
+ * @return {number}
+ */
+var uniquePathsWithObstacles = function(obstacleGrid) {
+  let m = obstacleGrid.length;
+  let n = obstacleGrid[0].length;
+  let arr = Array.from(Array(m), () => Array(n).fill(1));
+  if (m > 1 || n > 1) {
+    for (let i = m - 1; i >= 0; i--) {
+      for (let j = n - 1; j >= 0; j--) {
+        if (obstacleGrid[i][j] === 1) {
+          arr[i][j] = 0;
+        } else {
+          if (i < m - 1 && j < n - 1) {
+            arr[i][j] = arr[i + 1][j] + arr[i][j + 1];
+          } else if (i === m - 1 && j === n - 1) {
+            arr[i][j] = 1;
+          } else if (i === m - 1) {
+            arr[i][j] = arr[i][j + 1];
+          } else if (j === n - 1) {
+            arr[i][j] = arr[i + 1][j];
+          }
+        }
+      }
+    }
+  } else {
+    return obstacleGrid[m - 1][n - 1] ? 0 : 1;
+  }
+  return arr[0][0];
+};
+
+/**
+ * @param {number[][]} obstacleGrid
+ * @return {number}
+ */
+var uniquePathsWithObstacles = function(obstacleGrid) {
+  let m = obstacleGrid.length;
+  let n = obstacleGrid[0].length;
+  let arr = Array(n).fill(1);
+  for (let i = 1; i < m; i++) {
+    for (let j = 1; j < n; j++) {
+      if (obstacleGrid[i][j] && obstacleGrid[i][j] === 1) {
+        arr[j] = 0;
+      } else {
+        arr[j] += arr[j - 1];
+      }
+    }
+  }
+  if (m > 1 || n > 1) {
+  } else {
+    return obstacleGrid[m - 1][n - 1] ? 0 : 1;
+  }
+  return arr[n - 1];
+};
+```
 
 ## 三角形最小路径和 & 最大子序和
 
@@ -793,7 +866,31 @@ TODO
 
 [LeetCode](https://leetcode.com/problems/distinct-subsequences/)
 
-TODO
+```js
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {number}
+ */
+var numDistinct = function(s, t) {
+  let dp = Array.from(Array(t.length + 1), () => Array(s.length + 1).fill(0));
+  for (let i = 0; i <= s.length; i++) {
+    dp[0][i] = 1;
+  }
+  for (let i = 1; i <= t.length; i++) {
+    for (let j = i; j <= s.length; j++) {
+      if (t[i - 1] === s[j - 1]) {
+        // s和t都可以删掉一位，或者s删掉一位
+        dp[i][j] = dp[i - 1][j - 1] + dp[i][j - 1];
+      } else {
+        // 不相等时s可以删掉一位
+        dp[i][j] = dp[i][j - 1];
+      }
+    }
+  }
+  return dp[t.length][s.length];
+};
+```
 
 ### 赛车
 
