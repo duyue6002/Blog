@@ -30,7 +30,7 @@
 - [递归](algo/recursive.md)
 - [分治与回溯](algo/divide-conquer.md)
 - [BFS & DFS](algo/bfs-dfs.md)
-- [贪心](algo/greed.md)
+- [贪心](algo/greedy.md)
 - [二分查找](algo/binary-search.md)
 - [高级搜索](algo/advanced-search.md)
 - [动态规划](algo/dp.md)
