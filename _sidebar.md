@@ -66,6 +66,9 @@
   - 深入浅出 Node.js 读书笔记
     - [构建 Web 应用](node/book/web)
 
+- Mini Project
+  - [TicTac](mini-project/tictac.md)
+
 - 前端工程
 
   - [Source Map 前端 webpack 配置](project/sourcemap/fe)

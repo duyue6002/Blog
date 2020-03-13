@@ -69,6 +69,10 @@
   - [构建 Web 应用](node/book/web)
 - [koa 踩坑记录](node/koa/tips)
 
+## Mini Project
+
+- [TicTac](mini-project/tictac.md)
+
 ## 前端工程
 
 - [Source Map 前端 webpack 配置](project/sourcemap/fe)
