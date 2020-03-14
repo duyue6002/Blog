@@ -68,6 +68,7 @@
 
 - Mini Project
   - [TicTac](mini-project/tictac.md)
+  - [Flex Playground](mini-project/flex-playground.md)
 
 - 前端工程
 
