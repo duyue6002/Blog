@@ -9,6 +9,12 @@
   - [代码收藏](js/tips)
   - [正则表达式](https://github.com/duyue6002/Blog/issues/19)
 
+- Mini Project
+
+  - [TicTac](mini-project/tictac.md)
+  - [Flex Playground](mini-project/flex-playground.md)
+  - [Slider](mini-project/slider.md)
+
 - 数据结构
 
   - [字符串](algo/string.md)
@@ -66,15 +72,11 @@
   - 深入浅出 Node.js 读书笔记
     - [构建 Web 应用](node/book/web)
 
-- Mini Project
-  - [TicTac](mini-project/tictac.md)
-  - [Flex Playground](mini-project/flex-playground.md)
-
-- 前端工程
+* 前端工程
 
   - [Source Map 前端 webpack 配置](project/sourcemap/fe)
 
-- 数学
+* 数学
 
   - [二进制](math/binary)
   - [余数与哈希](math/mod)

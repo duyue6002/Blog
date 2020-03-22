@@ -11,6 +11,12 @@
 - [代码收藏](js/tips)
 - [正则表达式](https://github.com/duyue6002/Blog/issues/19)
 
+## Mini Project
+
+- [TicTac](mini-project/tictac.md)
+- [Flex Playground](mini-project/flex-playground.md)
+- [Slider](mini-project/slider.md)
+
 ## 数据结构
 
 - [字符串](algo/string.md)
@@ -69,10 +75,6 @@
   - [构建 Web 应用](node/book/web)
 - [koa 踩坑记录](node/koa/tips)
 
-## Mini Project
-
-- [TicTac](mini-project/tictac.md)
-- [Flex Playground](mini-project/flex-playground.md)
 
 ## 前端工程
 
