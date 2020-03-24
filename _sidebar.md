@@ -3,6 +3,7 @@
   - [函数：闭包/作用域/this/call/apply](js/function)
   - [面向对象：封装/继承/多态](js/OOP)
   - [理解 instanceof](js/instanceof)
+  - [v8 垃圾回收机制](js/v8-gc.md)
   - [异步编程概述](js/async)
   - [学习 promise](js/promise)
   - [比较 undefined 和 null](js/undefined)

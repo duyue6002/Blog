@@ -6,15 +6,14 @@
 
 ## 不同点
 
+> null 是个关键字
+>
+> undefined 是变量，不是关键字，所以常会用 `void 0` 来代替，避免被无意修改。
+
 ### 转数字
 
 - Number(undefined) === NaN
 - Number(null) === 0
-
-### 含义
-
-- undefined：缺少值，应有值但没有定义。可以变相看成“无”的原始值。
-- null：没有对象，不该有值。变相看成“无”的对象，联想：typeof null === "object"
 
 ### 用法
 
