@@ -16,6 +16,9 @@
   - [Flex Playground](mini-project/flex-playground.md)
   - [Slider](mini-project/slider.md)
 
+- 设计模式
+  - [发布-订阅模式（观察者模式）](pattern/observer.md)
+
 - 数据结构
 
   - [字符串](algo/string.md)
