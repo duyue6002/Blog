@@ -21,6 +21,8 @@
 ## 设计模式
 
 - [发布-订阅模式（观察者模式）](pattern/observer.md)
+- [适配器模式](pattern/adapter.md)
+- [装饰者模式](pattern/decorator.md)
 
 ## 数据结构
 

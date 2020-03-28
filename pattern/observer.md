@@ -6,12 +6,14 @@
 
 ## 基本实现
 
+为什么用立即自执行函数？如果用对象实现，就需要一个`initEvent()`来实现，这样每一个发布者都会生成自己的`subscribers`，造成资源浪费。
+
 ```js
 /**
  * 发布-订阅模式
  */
 let Events = (function() {
-  let subscribers = [],
+  let subscribers = {},
     listen,
     trigger,
     remove;
@@ -42,9 +44,7 @@ let Events = (function() {
     } else {
       for (let i = fns.length - 1; i >= 0; i--) {
         let _fn = fns[i];
-        if (_fn === fn) {
-          fns.splice(i, 1);
-        }
+        _fn === fn && fns.splice(i, 1);
       }
     }
   };
@@ -70,6 +70,31 @@ document.body.click();
 ```
 
 ### 低耦合应对需求变更
+
+#### 抽奖游戏
+
+当前需求：
+
+- 10 个方块，滚动 4 轮后，随机选出一个中奖方块
+
+如果需要增加以下需求：
+
+- 每轮滚动速度变慢
+- 后台获取获奖者号码，在请求期间，保持滚动
+
+如果按下面的代码来扩展，就会变得非常复杂，且再有需求变更，又要修改大量代码，扩展性差。
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="lottery-bad" src="https://codepen.io/duyue6002/embed/OJVrLgR?height=300&theme-id=light&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/duyue6002/pen/OJVrLgR'>lottery</a> by 6002
+  (<a href='https://codepen.io/duyue6002'>@duyue6002</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+使用观察者模式，重构代码如下：
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="lottery-good" src="https://codepen.io/duyue6002/embed/ExjGVPY?height=300&theme-id=light&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/duyue6002/pen/ExjGVPY'>lottery-good</a> by 6002
+  (<a href='https://codepen.io/duyue6002'>@duyue6002</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 #### 网站登录
 
@@ -122,28 +147,3 @@ var address = (function() {
   };
 })();
 ```
-
-#### 抽奖游戏
-
-当前需求：
-
-- 10 个方块，滚动 4 轮后，随机选出一个中奖方块
-
-如果需要增加以下需求：
-
-- 每轮滚动速度变慢
-- 后台获取获奖者号码，在请求期间，保持滚动
-
-如果按下面的代码来扩展，就会变得非常复杂，且再有需求变更，又要修改大量代码，扩展性差。
-
-<iframe height="300" style="width: 100%;" scrolling="no" title="lottery-bad" src="https://codepen.io/duyue6002/embed/OJVrLgR?height=300&theme-id=light&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href='https://codepen.io/duyue6002/pen/OJVrLgR'>lottery</a> by 6002
-  (<a href='https://codepen.io/duyue6002'>@duyue6002</a>) on <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-使用观察者模式，重构代码如下：
-
-<iframe height="300" style="width: 100%;" scrolling="no" title="lottery-good" src="https://codepen.io/duyue6002/embed/ExjGVPY?height=300&theme-id=light&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href='https://codepen.io/duyue6002/pen/ExjGVPY'>lottery-good</a> by 6002
-  (<a href='https://codepen.io/duyue6002'>@duyue6002</a>) on <a href='https://codepen.io'>CodePen</a>.
-</iframe>
