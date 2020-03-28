@@ -24,6 +24,7 @@
 - [发布-订阅模式（观察者模式）](pattern/observer.md)
 - [职责链模式](pattern/chain.md)
 - [适配器模式](pattern/adapter.md)
+- [策略模式](pattern/strategy.md)
 - [装饰者模式](pattern/decorator.md)
 
 ## 数据结构

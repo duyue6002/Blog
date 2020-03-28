@@ -64,7 +64,7 @@ let notAPerson = Person.call(person, "Jim"); // 第二个不会抛出错误，�
 
 保证一个类只有一个实例，提供全局访问。比如全局缓存、浏览器中的 window 对象只能有一个实例。
 
-详见：[设计模式之单例模式](../pattern/singleton.md)
+详见：[设计模式之单例模式](/pattern/singleton.md)
 
 ## 复用性
 
@@ -142,18 +142,18 @@ arr.forEach(data => {
 
 ### 装饰者模式
 
-框架里经常会用到这个方法，示例看：[设计模式之装饰者模式](../pattern/decorator.md)
+框架里经常会用到这个方法，示例看：[设计模式之装饰者模式](/pattern/decorator.md)
 
 ### 职责链模式
 
-封装 axios 时做拦截器、过滤器常用，示例：[设计模式之职责链模式](../pattern/chain.md)
+封装 axios 时做拦截器、过滤器常用，示例：[设计模式之职责链模式](/pattern/chain.md)
 
 ### 观察者模式
 
-有一对多的事件方法要处理，示例：[设计模式之观察者模式](../pattern/observer.md)
+有一对多的事件方法要处理，示例：[设计模式之观察者模式](/pattern/observer.md)
 
 ## 避免过多的 if-else
 
 ### 策略模式
 
-示例：[设计模式之策略模式](../pattern/strategy.md)
+示例：[设计模式之策略模式](/pattern/strategy.md)
