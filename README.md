@@ -5,11 +5,12 @@
 - [函数：闭包/作用域/this/call/apply](js/function)
 - [面向对象：封装/继承/多态](js/OOP)
 - [理解 instanceof](js/instanceof)
-- [v8 垃圾回收机制](js/v8-gc.md)
+- [v8 垃圾回收机制](js/v8-gc)
+- [如何提高代码质量](js/tips.md)
 - [异步编程概述](js/async)
 - [学习 promise](js/promise)
 - [比较 undefined 和 null](js/undefined)
-- [代码收藏](js/tips)
+- [代码收藏](js/example.md)
 - [正则表达式](https://github.com/duyue6002/Blog/issues/19)
 
 ## Mini Project
@@ -21,6 +22,7 @@
 ## 设计模式
 
 - [发布-订阅模式（观察者模式）](pattern/observer.md)
+- [职责链模式](pattern/chain.md)
 - [适配器模式](pattern/adapter.md)
 - [装饰者模式](pattern/decorator.md)
 

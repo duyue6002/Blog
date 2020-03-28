@@ -213,7 +213,7 @@ function Child() {
 
 - 方法在构造函数中定义，每次创建实例会创建一遍方法。
 
-### 原型链 + 构造函数 组合继承
+### 原型链 + 构造函数（组合继承）
 
 ```js
 function Child(name, age) {
@@ -225,7 +225,14 @@ Child.prototype = new Parent();
 
 融合两者优点，是最常用的继承模式。
 
+问题：
+
+- 调用两次超类型构造函数：一次是在创建子类型原型的时候，另一次是在子类型构造函数内部。
+- 子类型最终会包含超类型对象的全部实例属性，但不得不在调用子类型构造函数时重写这些属性。
+
 ### 原型式继承
+
+先创建了一个临时性的构造函数，然后将传入的对象作为这个构造函数的原型，最后返回了这个临时类型的一个新实例。从本质上讲，object()对传入其中的对象执行了一次浅复制。
 
 ```js
 // Object.create 的实现
@@ -258,6 +265,8 @@ function createObj(o) {
 
 ### 寄生组合式继承
 
+组合继承的缺点在于，调用了两次父类型的构造函数，寄生组合继承的思路在于：“不必为了指定子类型的原型而调用超类型的构造函数，我们所需要的无非就是超类型原型的一个副本而已。本质上，就是使用寄生式继承来继承超类型的原型，然后再将结果指定给子类型的原型。”
+
 ```js
 function object(o) {
   function F() {}
@@ -266,9 +275,9 @@ function object(o) {
 }
 
 function prototype(child, parent) {
-  var prototype = object(parent.prototype);
-  prototype.constructor = child;
-  child.prototype = prototype;
+  var prototype = object(parent.prototype); // 创建对象
+  prototype.constructor = child; // 增强对象
+  child.prototype = prototype; // 指定对象
 }
 
 prototype(Child, Parent);

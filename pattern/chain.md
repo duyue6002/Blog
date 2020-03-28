@@ -38,7 +38,7 @@ myAxios({
 
 这样耦合程度太高，使用职责链模式重构以上代码：
 
-构建 axios -> 请求前做处理 -> 请求 -> 请求后做处理
+构建 axios ⇒ 请求前做处理 ⇒ 请求 ⇒ 请求后做处理
 
 ```js
 function buildAxios(config) {

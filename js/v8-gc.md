@@ -95,6 +95,18 @@ setInterval(() => {
 
 尽量使用局部变量，可以使用闭包函数，可以转为立即自执行函数。
 
+```js
+let user = (function() {
+  let _name = "Tim",
+    _age = 22;
+  return {
+    getUserInfo: function() {
+      return _name + ": " + _age;
+    }
+  };
+})();
+```
+
 在不得不使用全局变量的情况下，需要及时手动释放，赋值为`undefined`或`null`.
 
 ### 限制缓存
