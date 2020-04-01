@@ -53,6 +53,14 @@
 - [位运算](algo/bit.md)
 - [排序](algo/sort.md)
 
+## React
+
+- 构造简单的 React
+  - [项目概述](react/build/basic.md)
+  - [JSX 和 ReactDOM](react/build/jsx-reactdom.md)
+- [[译]什么时候用 Component 或 PureComponent](https://github.com/duyue6002/Blog/issues/24)
+- [Virtual DOM](react/virtualDOM.md)
+
 ## HTML
 
 - [head 里装了什么](html/head)
@@ -66,11 +74,6 @@
 
 - [跨域](https://github.com/duyue6002/Blog/issues/20)
 - [原生 Ajax 及 HTTP 响应码](https://github.com/duyue6002/Blog/issues/4)
-
-## React
-
-- [[译]什么时候用 Component 或 PureComponent](https://github.com/duyue6002/Blog/issues/24)
-- [Virtual DOM](react/virtualDOM.md)
 
 ## 网络
 
