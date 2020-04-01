@@ -79,3 +79,29 @@ var twoSum = function(nums, target) {
   }
 };
 ```
+
+## 只出现一次的数字
+
+[LeetCode](https://leetcode.com/problems/single-number/)
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var singleNumber = function(nums) {
+  let map = {};
+  for (let num of nums) {
+    if (!map[num]) {
+      map[num] = 1;
+    } else {
+      map[num]++;
+    }
+  }
+  Object.keys(map).forEach(num => {
+    if (map[num] === 1) {
+      return num;
+    }
+  });
+};
+```
