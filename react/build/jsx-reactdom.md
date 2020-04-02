@@ -7,7 +7,7 @@ JSX 是 React 的语法糖，结合了 JavaScript 和 XML，在 babel 中，一�
 ```js
 // JSX
 const container = <div className="container">hello, world</div>;
-// Babel 转换
+// Babel 编译
 var container = /*#__PURE__*/ React.createElement(
   "div",
   {
@@ -34,7 +34,7 @@ const React = {
 
 ## render
 
-`ReactDOM.render`在 Babel 中会做以下转换：
+`ReactDOM.render`在 Babel 中的编译：
 
 ```js
 // JSX
@@ -60,14 +60,28 @@ ReactDOM.render(
 ```js
 /**
  *
- * @param {String|Object} vnode
+ * @param {*} vnode
  * @param {HTMLElement} container
  */
-function render(vnode, container) {
+export function render(vnode, container) {
+  return container.appendChild(_render(vnode));
+}
+/**
+ *
+ * @param {*} vnode
+ */
+function _render(vnode) {
+  if (
+    typeof vnode === "undefined" ||
+    typeof vnode === "boolean" ||
+    vnode === null
+  )
+    vnode = "";
+  if (typeof vnode === "number") vnode = String(vnode);
   // 当vnode不再是虚拟DOM对象，而是String类型时，说明已经递归到了最里层，构造TextNode当作前节点的内容
   if (typeof vnode === "string") {
     const textNode = document.createTextNode(vnode);
-    return container.appendChild(textNode);
+    return textNode;
   }
   const dom = document.createElement(vnode.tag);
   if (vnode.attrs) {
@@ -75,13 +89,13 @@ function render(vnode, container) {
     // 因为前者会有继承链上的属性，后者只有对象本身的属性
     Object.keys(vnode.attrs).forEach(key => {
       const value = vnode.attrs[key];
-      // 自定义函数，需要特殊处理，像className->class，事件，style
+      // 需要特殊处理，像className->class，事件，style
       setAttribute(dom, key, value);
     });
   }
   // 对虚拟DOM对象的children递归render
   vnode.children.forEach(child => render(child, dom));
-  return container.appendChild(dom);
+  return dom;
 }
 ```
 
