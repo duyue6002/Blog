@@ -15,6 +15,7 @@
 
 ## Mini Project
 
+- [Simple React](mini-project/simple-react.md)
 - [TicTac](mini-project/tictac.md)
 - [Flex Playground](mini-project/flex-playground.md)
 - [Slider](mini-project/slider.md)

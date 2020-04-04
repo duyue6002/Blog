@@ -4,5 +4,13 @@
 
 1. [JSX 与虚拟 DOM](jsx-reactdom.md)：实现`React.createElement`和`ReactDOM.render`
 2. [组件和生命周期方法](component.md)：实现`Component`类, 和`renderComponent`
-3. [diff 算法](diff.md)
-4. [setState 异步处理](setState.md)
+3. [diff 算法](diff.md)：tree diff, component diff, children diff
+4. [setState 异步处理](setState.md)：队列机制
+
+<iframe
+     src="https://codesandbox.io/embed/blue-monad-jt13f?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="my-simple-react"
+     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+   ></iframe>
