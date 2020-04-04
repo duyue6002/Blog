@@ -59,6 +59,8 @@
     - [项目概述](react/build/basic.md)
     - [JSX 和 ReactDOM](react/build/jsx-reactdom.md)
     - [组件和生命周期](react/build/component.md)
+    - [diff 算法](react/build/diff.md)
+    - [setState 异步处理](react/build/setState.md)
 
   - [[译]什么时候用 Component 或 PureComponent](https://github.com/duyue6002/Blog/issues/24)
   - [Virtual DOM](react/virtualDOM.md)
