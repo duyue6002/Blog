@@ -1,5 +1,15 @@
 # diff 算法
 
+> v16 已经改变了原 diff 策略，采用 Fiber 使得 diff 任务可以间断执行，不至于长时间计算占用主线程。Fiber 的一些文章：
+>
+> [React Fiber 性能优化](https://zhuanlan.zhihu.com/p/37095662)
+>
+> [完全理解 React Fiber](http://www.ayqy.net/blog/dive-into-react-fiber/)
+>
+> [React16 源码之 React Fiber 架构](https://juejin.im/post/5b7016606fb9a0099406f8de#heading-9)
+
+本文实现的与 v15 有差别，是简化的实现。v15 中 diff 后返回 patch，有 React Patch 统一更新 DOM。这里 diff 返回的就是更新的 DOM。
+
 - 对比真实 DOM 与 Virtual DOM 的区别，在对比过程中直接更新真实 DOM
 - 因为很少跨层级移动 DOM，diff 只对比同一层级的变化
 
