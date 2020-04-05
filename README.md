@@ -3,8 +3,8 @@
 ## JavaScript
 
 - V8 系列
-  - [V8 如何执行函数](js/v8-process.md)
-  - [V8 垃圾回收机制](js/v8-gc.md)
+  - [V8 如何执行 JS 代码](js/v8-process.md)
+  - [V8 的内存机制](js/v8-gc.md)
 - [面向对象：封装/继承/多态](js/OOP)
 - [理解 instanceof](js/instanceof)
 - [如何提高代码质量](js/tips.md)

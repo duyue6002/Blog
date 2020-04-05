@@ -1,4 +1,4 @@
-# V8 如何执行函数
+# V8 如何执行 JS 代码
 
 ## 概述
 
@@ -11,11 +11,41 @@ V8 在启动执行前会初始化运行环境：
 - 全局作用域：全局变量，执行过程中的数据需要放到内存中
 - 事件循环机制：消息驱动器和消息队列
 
-V8 接收到源代码时，将代码视为字符串，需要将其结构化为 AST，生成 AST 的同时会生成作用域。之后生成字节码，字节码介于 AST 和机器代码之间，可以被解释器直接执行得到结果，或者通过编译器转化成机器代码得出结果。
+### AST
 
-在解释执行代码的过程中，当有代码段被重复多次执行，则会被标记成热点代码，由编译器编译成二进制机器代码，以后再执行这段代码时，就会直接执行二进制代码。
+V8 接收到源代码时，将代码视为字符串，需要将其结构化为 AST，生成 AST 的同时会生成作用域。
 
-## JS 中的函数是什么
+```js
+var myName = "abc";
+function foo() {
+  return 23;
+}
+myName = "def";
+foo();
+```
+
+生成 AST 分为两个过程：
+
+- 第一阶段是词法分析，将一行行的源码拆解成一个个 token。
+- 第二阶段是语法分析，将上一步生成的 token 数据，根据语法规则转为 AST。
+
+在[这个网站](http://resources.jointjs.com/demos/javascript-ast)中可以生成 AST，这段代码生成的 AST 如下：
+
+![cbimage](assets/cbimage.jpg)
+
+> Babel 的原理是把 ES6 代码转为 AST，再将 ES6 的 AST 转成 ES5 的 AST，最后利用 ES5 的 AST 得到 JavaScript 代码。
+
+### 字节码
+
+字节码介于 AST 和机器代码之间，可以通过解释器解释执行，或者通过编译器转化成机器代码得出结果。机器码所占用的空间远远超过了字节码，使用字节码可以减少系统的内存使用。
+
+### 标记热点代码
+
+在解释执行代码的过程中，当有代码段被重复多次执行，则会被标记成热点代码，由编译器编译成二进制机器代码，保存在内存中。以后再执行这段代码时，就会直接执行二进制代码。
+
+![img](assets/662413313149f66fe0880113cb6ab98a.png)
+
+## JS 中的函数
 
 函数在 JS 中是一等公民，即可以赋值给变量，可以作为参数，可以作为函数返回值。函数是一个特殊的对象，在创建函数后，V8 给函数两个隐藏属性，`name`和`code`，`code`把代码存储为字符串，V8 调用时，就是执行`code`中的内容。
 
@@ -96,8 +126,8 @@ JavaScript 中一个函数会调用另外一个函数，调用栈就是用来管
 为了方便使用，JS 引入变量提升机制。也就是，在编译阶段，将定义的变量和函数存入作用域中，执行阶段再一行一行执行代码。带来的问题有：1. 变量容易被覆盖 2. 变量用后没有及时被销毁。为了解决这两个问题，ES6 引入了块级作用域。引入`let`和`const`关键字，块作用域内声明的变量不会影响外部变量，函数块运行结束后，块作用域内的变量会自动被销毁。
 
 > V8 是如何支持块级作用域的呢？
-
-从创建执行上下文的角度来看，在**编译阶段**，用`var`声明的变量，会被放入变量环境中，并且函数内部的变量可以超越函数块，放入变量环境里。而`let`和`const`声明的变量放入词法环境中，且函数内部的变量暂时不会放入词法环境。例如：
+>
+> 从创建执行上下文的角度来看，在**编译阶段**，用`var`声明的变量，会被放入变量环境中，并且函数内部的变量可以超越函数块，放入变量环境里。而`let`和`const`声明的变量放入词法环境中，且函数内部的变量暂时不会放入词法环境。例如：
 
 ```js
 function foo() {
@@ -167,14 +197,14 @@ let a = "a";
 在每个执行上下文的变量环境中，都包含了一个外部引用 outer，用来指向外部的执行上下文。当一段代码使用了一个变量时，JavaScript 引擎首先会根据这个顺序查找变量：当前的执行上下文 -> outer 指向的执行上下文。这个查找链表被称为作用域链。
 
 > 如何确定 outer 的指向呢？
-
-答案是通过**词法作用域**。词法作用域是**代码阶段决定**好的，**和函数是怎么调用的没有关系**。由代码中函数声明的位置来决定的，通过它就能够预测代码在执行过程中如何查找标识符。
+>
+> 答案是通过**词法作用域**。词法作用域是**代码阶段决定**好的，**和函数是怎么调用的没有关系**。由代码中函数声明的位置来决定的，通过它就能够预测代码在执行过程中如何查找标识符。
 
 ![img](assets/216433d2d0c64149a731d84ba1a07739.png)
 
 > 块级作用域是如何查找变量的呢？
-
-与全局作用域和函数作用域相似，只是需要区分词法环境和变量环境。查找顺序：当前执行上下文的词法环境 -> 当前执行上下文的变量环境 -> outer 指向的执行上下文的词法环境 -> outer 指向的执行上下文的变量环境
+>
+> 与全局作用域和函数作用域相似，只是需要区分词法环境和变量环境。查找顺序：当前执行上下文的词法环境 -> 当前执行上下文的变量环境 -> outer 指向的执行上下文的词法环境 -> outer 指向的执行上下文的变量环境
 
 ### 闭包
 
@@ -186,13 +216,13 @@ function foo() {
   let test1 = 1;
   const test2 = 2;
   var innerBar = {
-    getName: function() {
+    getName: function () {
       console.log(test1);
       return myName;
     },
-    setName: function(newName) {
+    setName: function (newName) {
       myName = newName;
-    }
+    },
   };
   return innerBar;
 }
@@ -211,8 +241,8 @@ console.log(bar.getName());
 ![50e4ba60fc7e420e83b35b95e379b246_meitu_3](assets/50e4ba60fc7e420e83b35b95e379b246_meitu_3.jpg)
 
 > 闭包如何回收？
-
-如果引用闭包的函数是个局部变量，等局部变量销毁后，在下次 JavaScript 引擎执行垃圾回收时，判断闭包这块内容如果已经不再被使用了，那么 JavaScript 引擎的垃圾回收器就会回收这块内存。所以，**如果闭包会一直使用，那么它可以作为全局变量而存在；但如果使用频率不高，而且占用内存又比较大的话，那就尽量让它成为一个局部变量。**
+>
+> 如果引用闭包的函数是个局部变量，等局部变量销毁后，在下次 JavaScript 引擎执行垃圾回收时，判断闭包这块内容如果已经不再被使用了，那么 JavaScript 引擎的垃圾回收器就会回收这块内存。所以，**如果闭包会一直使用，那么它可以作为全局变量而存在；但如果使用频率不高，而且占用内存又比较大的话，那就尽量让它成为一个局部变量。**
 
 ## this
 
@@ -234,7 +264,7 @@ console.log(bar.getName());
 
 ```js
 let bar = {
-  myName: "a"
+  myName: "a",
 };
 function foo() {
   this.myName = "b";
@@ -251,18 +281,18 @@ console.log(myName);
 
 ```js
 var myObj = {
-  showThis: function() {
+  showThis: function () {
     console.log(this);
-  }
+  },
 };
 myObj.showThis(); // this 指向对象本身
 ```
 
 ```js
 var myObj = {
-  showThis: function() {
+  showThis: function () {
     console.log(this);
-  }
+  },
 };
 var foo = myObj.showThis;
 foo(); // this 指向 window
@@ -288,13 +318,13 @@ let userInfo = {
   name: "abc",
   age: 13,
   sex: male,
-  updateInfo: function() {
-    setTimeout(function() {
+  updateInfo: function () {
+    setTimeout(function () {
       this.name = "def";
       this.age = 39;
       this.sex = female;
     }, 100);
-  }
+  },
 };
 userInfo.updateInfo();
 ```
@@ -306,13 +336,13 @@ let userInfo = {
   name: "abc",
   age: 13,
   sex: male,
-  updateInfo: function() {
+  updateInfo: function () {
     setTimeout(() => {
       this.name = "def";
       this.age = 39;
       this.sex = female;
     }, 100);
-  }
+  },
 };
 userInfo.updateInfo();
 ```
@@ -324,17 +354,23 @@ let userInfo = {
   name: "abc",
   age: 13,
   sex: male,
-  updateInfo: function() {
+  updateInfo: function () {
     var self = this;
-    setTimeout(function() {
+    setTimeout(function () {
       this.name = "pony.ma";
       this.age = 39;
       this.sex = female;
     }, 100);
-  }
+  },
 };
 userInfo.updateInfo();
 ```
+
+## 从 V8 执行角度思考 JS 性能优化
+
+- 提升单次脚本的执行速度，避免 JavaScript 的长任务霸占主线程，使页面快速响应交互。
+- 避免大的内联脚本，因为在解析 HTML 的过程中，解析和编译也会占用主线程。
+- 减少 JavaScript 文件的容量，因为更小的文件会提升下载速度，并且占用更低的内存。
 
 <!--
 ## V8 访问对象属性
