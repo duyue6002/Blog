@@ -1,9 +1,10 @@
 - JavaScript
 
-  - [函数：闭包/作用域/this/call/apply](js/function)
+  - V8 系列
+    - [V8 如何执行函数](js/v8-process.md)
+    - [V8 垃圾回收机制](js/v8-gc.md)
   - [面向对象：封装/继承/多态](js/OOP)
   - [理解 instanceof](js/instanceof)
-  - [v8 垃圾回收机制](js/v8-gc.md)
   - [如何提高代码质量](js/tips.md)
   - [异步编程概述](js/async)
   - [学习 promise](js/promise)
@@ -61,9 +62,6 @@
     - [组件和生命周期](react/build/component.md)
     - [diff 算法](react/build/diff.md)
     - [setState 异步处理](react/build/setState.md)
-
-  - [[译]什么时候用 Component 或 PureComponent](https://github.com/duyue6002/Blog/issues/24)
-  - [Virtual DOM](react/virtualDOM.md)
 
 - HTML
 
