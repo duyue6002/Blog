@@ -4,6 +4,7 @@
     - [V8 如何执行 JS 代码](js/v8-process.md)
     - [V8 的内存机制](js/v8-gc.md)
     - [V8 如何实现对象继承](js/v8-inheritance.md)
+    - [V8 类型系统](v8)
   - [JS 中的对象](js/OOP)
   - [理解 instanceof](js/instanceof)
   - [如何提高代码质量](js/tips.md)
