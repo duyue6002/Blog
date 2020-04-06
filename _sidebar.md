@@ -81,6 +81,8 @@
 
 - 网络
 
+  - [HTTP 发展历程](network/http/basic.md)
+  - [HTTP 请求过程](network/http/process.md)
   - [网络协议综述](network/basic)
   - [理解 ifconfig](network/ifconfig)
   - [HTTP 状态码](network/http/code)

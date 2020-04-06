@@ -1,12 +1,10 @@
-# HTTP
+# HTTP 发展历程
 
-## 进化历程
-
-### HTTP/0.9
+## HTTP/0.9
 
 只有 GET 方法，响应完立即关闭。
 
-### HTTP/1.0
+## HTTP/1.0
 
 - 增加 POST、HEAD（请求头部信息，判断是否需要下载资源）方法
 - 增加响应码
@@ -15,7 +13,7 @@
   - `keep-alive`，默认情况不开启，设置`Connection: Keep-Alive Keep-Alive:max=X,timeout=XXX`时开启，希望 TCP 不要立刻断开连接。
 - 传输数据不局限于文字
 
-### HTTP/1.1
+## HTTP/1.1
 
 - 增加 PUT、DELETE 方法
 - 增加缓存管理和控制

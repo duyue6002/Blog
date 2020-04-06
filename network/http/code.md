@@ -2,7 +2,7 @@
 
 首先看个博客访问的请求状况。
 
-![example](../img/example.png)
+![example](assets/example.png)
 
 ## 304 Not Modified
 
