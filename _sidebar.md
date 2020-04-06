@@ -76,6 +76,7 @@
 
 - 浏览器
 
+  - [URL 输入到页面展示](browser/navigation.md)
   - [跨域](https://github.com/duyue6002/Blog/issues/20)
   - [原生 Ajax 及 HTTP 响应码](https://github.com/duyue6002/Blog/issues/4)
 
