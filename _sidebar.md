@@ -3,7 +3,8 @@
   - V8 系列
     - [V8 如何执行 JS 代码](js/v8-process.md)
     - [V8 的内存机制](js/v8-gc.md)
-  - [面向对象：封装/继承/多态](js/OOP)
+    - [V8 如何实现对象继承](js/v8-inheritance.md)
+  - [JS 中的对象](js/OOP)
   - [理解 instanceof](js/instanceof)
   - [如何提高代码质量](js/tips.md)
   - [异步编程概述](js/async)

@@ -1,6 +1,4 @@
-# JS 面向对象
-
-> 本文试图将封装、继承、多态、模块化做个串烧
+# JS 中的对象
 
 ## 对象的基本概念
 
@@ -31,7 +29,7 @@ function createPerson(name, age) {
   let obj = new Object();
   obj.name = name;
   obj.age = age;
-  obj.sayName = function() {
+  obj.sayName = function () {
     alert(this.name);
   };
   return obj;
@@ -40,29 +38,25 @@ let Timmy = createPerson("Timmy", 23);
 let Saoirse = createPerson("Saoirse", 25);
 ```
 
-#### 解决的问题
-
-用封装函数创建对象，函数接受的参数包含对象的必要信息。多次调用函数，以创建对象。
-
-#### 存在的问题
-
-无法知道对象的类型。所有实例指向一个原型。
+> **解决的问题**
+>
+> 用封装函数创建对象，函数接受的参数包含对象的必要信息。多次调用函数，以创建对象。
+>
+> **存在的问题**
+>
+> 无法知道对象的类型。所有实例指向一个原型。
 
 ### 构造函数模式
 
 ```js
 function Person(name) {
   this.name = name;
-  this.func = function() {
+  this.func = function () {
     // do something
   };
 }
 var person = new Person("kk");
 ```
-
-#### 解决的问题
-
-创建的实例有`constructor`属性用来标识对象类型，用`instanceof`更好。
 
 `new`操作符创建特定类型的对象。
 
@@ -71,57 +65,22 @@ var person = new Person("kk");
 - 执行构造函数的代码（给新对象添加属性）
 - 返回新对象
 
-##### 手撕 new
-
-```js
-function Otaku(name, age) {
-  this.name = name;
-  this.age = age;
-
-  this.habit = "Games";
-}
-
-Otaku.prototype.strength = 60;
-
-Otaku.prototype.sayYourName = function() {
-  console.log("I am " + this.name);
-};
-
-function objectFactory() {
-  var obj = new Object();
-  var Constructor = [].shift.call(arguments);
-  obj.__proto__ = Constructor.prototype;
-  var ret = Constructor.apply(obj, arguments);
-  return typeof ret === "object" ? ret : obj;
-}
-
-var person = objectFactory(Otaku, "Kevin", "18");
-
-console.log(person.name); // Kevin
-console.log(person.habit); // Games
-console.log(person.strength); // 60
-
-person.sayYourName(); // I am Kevin
-```
-
-#### 存在的问题
-
-对象的属性方法，在每个实例上都重新创建了一遍。因为函数也是对象，每定义一个函数，就实例化了一个对象。
-
-这会导致相同的方式创建函数，却是不同的作用域链和标识符解析，不同实例的同名函数是不对等的。
-
-解决方法，就是将函数定义在构造函数外部，在构造函数内部将属性指向对应的全局函数。同时，**函数也缺少了封装性**。
+> **解决的问题**
+>
+> 创建的实例有`constructor`属性用来标识对象类型，用`instanceof`更好。
+>
+> **存在的问题**
+>
+> 对象的属性方法，在每个实例上都重新创建了一遍。因为函数也是对象，每定义一个函数，就实例化了一个对象。这会导致相同的方式创建函数，却是不同的作用域链和标识符解析，不同实例的同名函数是不对等的。解决方法，将函数定义在构造函数外部，在构造函数内部将属性指向对应的全局函数。同时，**函数也缺少了封装性**。
 
 ### 原型模式
 
 ```js
 function Person(name) {}
-// Person.prototype.name = 'ts';
-// Person.prototype.func = function() {};
 Person.prototype = {
   constructor: Person,
   name: "ts",
-  func: function() {}
+  func: function () {},
 };
 var person = new Person();
 ```
@@ -140,10 +99,10 @@ for-in 循环，返回的是所有对象可访问的、可枚举的属性，`con
 
 在创建实例后，重写原型对象，指向另一个对象，此时，就切断了构造函数与最初原型之间的联系。但此时，实例对象的`__proto__`是指向最初原型的。
 
-#### 存在的问题
-
-- 共享属性是引用类型值时，一个实例修改，会导致该共享属性被修改。
-- 不能初始化参数
+> **存在的问题**
+>
+> - 共享属性是引用类型值时，一个实例修改，会导致该共享属性被修改。
+> - 不能初始化参数
 
 ### 构造函数 + 原型模式
 
@@ -153,7 +112,7 @@ function Person(name) {
 }
 Person.prototype = {
   constructor: Person,
-  func: function() {}
+  func: function () {},
 };
 var person = new Person();
 ```
@@ -168,17 +127,11 @@ var person = new Person();
 function Person(name) {
   var o = new Object();
   o.name = name;
-  o.func = function() {};
+  o.func = function () {};
   return o;
 }
 var person = new Person("ts");
 ```
-
-> 什么场景使用？
-
-### 稳妥构造函数模式
-
-与工厂模式相似，但创建对象的实例方法中不引用 this，切不用 new 调用。
 
 ### ES6 类构造
 
@@ -252,7 +205,7 @@ function createObj(o) {
 ```js
 function createObj(o) {
   var clone = Object.create(o);
-  clone.func = function() {
+  clone.func = function () {
     // do something
   };
   return clone;
@@ -290,8 +243,6 @@ prototype(Child, Parent);
 extends 是**寄生组合继承**的语法糖。不同的是，由 class 构造的函数既有`__proto__`也有`prototype`。其中`__proto__`是语法糖中设置的，对构造函数的继承，指向父类。`prototype`属性的`__proto__`属性，是方法的继承，指向父类的`prototype`属性。
 
 ## 模块化
-
-面向对象设计理念分为三块：封装、继承、多态。JS 中的封装离不开模块化。
 
 把程序按规范封装成块，可以组合在一起使用。封装的好处在于，内部数据和实现方式是私有的，只向外部暴露接口。
 
