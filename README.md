@@ -77,9 +77,8 @@
 
 ## 浏览器
 
-- 渲染流程
-  - [代码如何变成页面](browser/render.md)
 - [URL 输入到页面展示](browser/navigation.md)
+- [页面渲染流程](browser/render.md)
 - [跨域](https://github.com/duyue6002/Blog/issues/20)
 - [原生 Ajax 及 HTTP 响应码](https://github.com/duyue6002/Blog/issues/4)
 

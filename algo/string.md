@@ -13,7 +13,7 @@
  * @param {string} str
  * @return {string}
  */
-var toLowerCase = function(str) {
+var toLowerCase = function (str) {
   for (let i = 0; i < str.length; i++) {
     let code = str.charCodeAt(i);
     if (code >= 65 && code <= 90) {
@@ -33,7 +33,7 @@ var toLowerCase = function(str) {
  * @param {string} s
  * @return {number}
  */
-var lengthOfLastWord = function(s) {
+var lengthOfLastWord = function (s) {
   let count = 0;
   let index = s.length - 1;
   let flag = s[index] === " " ? true : false; // 最后一个char是空格
@@ -58,7 +58,7 @@ var lengthOfLastWord = function(s) {
  * @param {string} S
  * @return {number}
  */
-var numJewelsInStones = function(J, S) {
+var numJewelsInStones = function (J, S) {
   let count = 0;
   let map = {};
   for (let ch of J) {
@@ -82,7 +82,7 @@ var numJewelsInStones = function(J, S) {
  * @param {string} s
  * @return {number}
  */
-var firstUniqChar = function(s) {
+var firstUniqChar = function (s) {
   let map = {};
   let first = s.length;
   for (let i = 0; i < s.length; i++) {
@@ -111,7 +111,7 @@ var firstUniqChar = function(s) {
  * @param {string} str
  * @return {number}
  */
-var myAtoi = function(str) {
+var myAtoi = function (str) {
   if (str.length === 0) return 0;
   let index = 0,
     sign = 1,
@@ -153,7 +153,7 @@ var myAtoi = function(str) {
  * @param {string[]} strs
  * @return {string}
  */
-var longestCommonPrefix = function(strs) {
+var longestCommonPrefix = function (strs) {
   if (!strs || strs.length === 0) return "";
   let prefix = strs[0];
   for (let i = 1; i < strs.length; i++) {
@@ -174,7 +174,7 @@ var longestCommonPrefix = function(strs) {
  * @param {character[]} s
  * @return {void} Do not return anything, modify s in-place instead.
  */
-var reverseString = function(s) {
+var reverseString = function (s) {
   let end = s.length - 1;
   let mid = s.length >> 1;
   for (let i = 0; i < mid; i++) {
@@ -193,7 +193,7 @@ var reverseString = function(s) {
  * @param {number} k
  * @return {string}
  */
-var reverseStr = function(s, k) {
+var reverseStr = function (s, k) {
   let i = 0,
     n = s.length,
     arr = Array.from(s);
@@ -206,7 +206,7 @@ var reverseStr = function(s, k) {
   return arr.join("");
 };
 
-var reverse = function(arr, start, end) {
+var reverse = function (arr, start, end) {
   while (start < end) {
     [arr[start], arr[end]] = [arr[end], arr[start]];
     start++;
@@ -224,7 +224,7 @@ var reverse = function(arr, start, end) {
  * @param {string} s
  * @return {string}
  */
-var reverseWords = function(s) {
+var reverseWords = function (s) {
   let start = 0,
     end = s.length - 1;
   //   trim start
@@ -260,7 +260,7 @@ var reverseWords = function(s) {
  * @param {string} s
  * @return {string}
  */
-var reverseWords = function(s) {
+var reverseWords = function (s) {
   let start = 0,
     end = s.length - 1;
   while (s[start] === " ") {
@@ -293,7 +293,7 @@ var reverseWords = function(s) {
  * @param {string} S
  * @return {string}
  */
-var reverseOnlyLetters = function(S) {
+var reverseOnlyLetters = function (S) {
   let left = 0,
     right = S.length - 1;
   let arr = Array.from(S);
@@ -310,7 +310,7 @@ var reverseOnlyLetters = function(S) {
   return arr.join("");
 };
 
-var isLetter = function(ch) {
+var isLetter = function (ch) {
   return (ch >= "A" && ch <= "Z") || (ch >= "a" && ch <= "z");
 };
 ```
@@ -327,7 +327,7 @@ var isLetter = function(ch) {
  * @param {string} t
  * @return {boolean}
  */
-var isAnagram = function(s, t) {
+var isAnagram = function (s, t) {
   let map = Array(123).fill(0);
   for (let i = 0; i < s.length; i++) {
     map[s.charCodeAt(i)]++;
@@ -335,7 +335,7 @@ var isAnagram = function(s, t) {
   for (let i = 0; i < t.length; i++) {
     map[t.charCodeAt(i)]--;
   }
-  return map.every(x => x === 0);
+  return map.every((x) => x === 0);
 };
 ```
 
@@ -348,14 +348,11 @@ var isAnagram = function(s, t) {
  * @param {string[]} strs
  * @return {string[][]}
  */
-var groupAnagrams = function(strs) {
+var groupAnagrams = function (strs) {
   let map = {},
     res = [];
   for (let str of strs) {
-    let sorted = str
-      .split("")
-      .sort()
-      .join("");
+    let sorted = str.split("").sort().join("");
     if (map.hasOwnProperty(sorted)) {
       map[sorted].push(str);
     } else {
@@ -366,6 +363,26 @@ var groupAnagrams = function(strs) {
     res.push(map[key]);
   }
   return res;
+};
+```
+
+```js
+/**
+ * 用MAP数据结构加速
+ * @param {string[]} strs
+ * @return {string[][]}
+ */
+var groupAnagrams = function (strs) {
+  let map = new Map();
+  for (let str of strs) {
+    let sorted = str.split("").sort().join("");
+    if (map.has(sorted)) {
+      map.get(sorted).push(str);
+    } else {
+      map.set(sorted, [str]);
+    }
+  }
+  return [...map.values()];
 };
 ```
 
@@ -396,7 +413,7 @@ var groupAnagrams = function(strs) {
  * @param {string} t
  * @return {string}
  */
-var minWindow = function(s, t) {
+var minWindow = function (s, t) {
   let start = 0,
     end = s.length - 1,
     minLen = Number.MAX_VALUE;
@@ -453,7 +470,7 @@ var minWindow = function(s, t) {
  * @param {string} p
  * @return {number[]}
  */
-var findAnagrams = function(s, p) {
+var findAnagrams = function (s, p) {
   let left = 0,
     right = 0;
   let window = {},
@@ -505,7 +522,7 @@ var findAnagrams = function(s, p) {
  * @param {string} s
  * @return {number}
  */
-var lengthOfLongestSubstring = function(s) {
+var lengthOfLongestSubstring = function (s) {
   let left = 0,
     right = 0;
   let window = {};
@@ -539,7 +556,7 @@ var lengthOfLongestSubstring = function(s) {
  * @param {string} s
  * @return {boolean}
  */
-var isPalindrome = function(s) {
+var isPalindrome = function (s) {
   let left = 0,
     right = s.length - 1;
   while (left < right) {
@@ -559,7 +576,7 @@ var isPalindrome = function(s) {
   return true;
 };
 
-var isLegal = function(c) {
+var isLegal = function (c) {
   return (
     (c >= "A" && c <= "Z") || (c >= "a" && c <= "z") || (c >= "0" && c <= "9")
   );
@@ -575,7 +592,7 @@ var isLegal = function(c) {
  * @param {string} s
  * @return {boolean}
  */
-var validPalindrome = function(s) {
+var validPalindrome = function (s) {
   for (let i = 0, j = s.length - 1; i < j; i++, j--) {
     if (s[i] !== s[j]) {
       return isPalindrome(s, i + 1, j) || isPalindrome(s, i, j - 1);
@@ -584,7 +601,7 @@ var validPalindrome = function(s) {
   return true;
 };
 
-var isPalindrome = function(s, i, j) {
+var isPalindrome = function (s, i, j) {
   while (i < j) {
     if (s[i++] !== s[j--]) {
       return false;
@@ -606,7 +623,7 @@ var isPalindrome = function(s, i, j) {
  * @param {string} word2
  * @return {number}
  */
-var minDistance = function(word1, word2) {
+var minDistance = function (word1, word2) {
   let m = word1.length,
     n = word2.length;
   let dp = Array.from(Array(m + 1), () => Array(n + 1));
@@ -639,7 +656,7 @@ var minDistance = function(word1, word2) {
  * @param {string} text2
  * @return {number}
  */
-var longestCommonSubsequence = function(text1, text2) {
+var longestCommonSubsequence = function (text1, text2) {
   let m = text1.length,
     n = text2.length;
   let dp = Array.from(Array(m + 1), () => Array(n + 1).fill(0));
@@ -664,7 +681,7 @@ var longestCommonSubsequence = function(text1, text2) {
  * @param {string} text2
  * @return {number}
  */
-var longestCommonSubstring = function(text1, text2) {
+var longestCommonSubstring = function (text1, text2) {
   let m = text1.length,
     n = text2.length;
   let dp = Array.from(Array(m + 1), () => Array(n + 1).fill(0));
@@ -679,7 +696,7 @@ var longestCommonSubstring = function(text1, text2) {
   }
   return Math.max.apply(
     null,
-    dp.map(arr => Math.max(...arr))
+    dp.map((arr) => Math.max(...arr))
   );
 };
 ```
@@ -694,7 +711,7 @@ var longestCommonSubstring = function(text1, text2) {
  * @param {string} s
  * @return {string}
  */
-var longestPalindrome = function(s) {
+var longestPalindrome = function (s) {
   let len = s.length;
   if (len < 2) return s;
   let res = "";
@@ -711,7 +728,7 @@ var longestPalindrome = function(s) {
   return res;
 };
 
-var extendPalindrome = function(s, i, j) {
+var extendPalindrome = function (s, i, j) {
   while (i >= 0 && j < s.length && s[i] === s[j]) {
     i--;
     j++;
@@ -726,7 +743,7 @@ var extendPalindrome = function(s, i, j) {
  * @param {string} s
  * @return {string}
  */
-var longestPalindrome = function(s) {
+var longestPalindrome = function (s) {
   if (s.length === 0) return s;
   let n = s.length;
   let dp = Array.from(Array(n), () => Array(n).fill(false));
@@ -753,7 +770,7 @@ var longestPalindrome = function(s) {
  * @param {string} t
  * @return {number}
  */
-var numDistinct = function(s, t) {
+var numDistinct = function (s, t) {
   let dp = Array.from(Array(t.length + 1), () => Array(s.length + 1).fill(0));
   for (let i = 0; i <= s.length; i++) {
     dp[0][i] = 1;
@@ -790,7 +807,7 @@ var numDistinct = function(s, t) {
  * @param {string} p
  * @return {boolean}
  */
-var isMatch = function(s, p) {
+var isMatch = function (s, p) {
   if (!p) return !s;
   let firstMatch = !!s && (p[0] === "." || p[0] === s[0]);
   if (p.length >= 2 && p[1] === "*") {
@@ -807,14 +824,14 @@ var isMatch = function(s, p) {
  * @param {string} p
  * @return {boolean}
  */
-var isMatch = function(s, p) {
+var isMatch = function (s, p) {
   let memo = Array.from(Array(s.length + 1), () =>
     Array(p.length + 1).fill(null)
   );
   return helper(s, p, 0, 0, memo);
 };
 
-var helper = function(s, p, i, j, memo) {
+var helper = function (s, p, i, j, memo) {
   if (memo[i][j] !== null) {
     return memo[i][j] == true;
   }
@@ -843,7 +860,7 @@ var helper = function(s, p, i, j, memo) {
  * @param {string} p
  * @return {boolean}
  */
-var isMatch = function(s, p) {
+var isMatch = function (s, p) {
   let dp = Array.from(Array(s.length + 1), () =>
     Array(p.length + 1).fill(false)
   );
@@ -872,7 +889,7 @@ var isMatch = function(s, p) {
  * @param {string} p
  * @return {boolean}
  */
-var isMatch = function(s, p) {
+var isMatch = function (s, p) {
   if (!p) return !s;
   let p1 = "";
   for (let i = 0; i < p.length; i++) {
@@ -886,7 +903,7 @@ var isMatch = function(s, p) {
   return helper(s, p1, 0, 0, memo);
 };
 
-var helper = function(s, p, i, j, memo) {
+var helper = function (s, p, i, j, memo) {
   if (memo[i][j] !== null) {
     return memo[i][j] === true;
   }
@@ -914,7 +931,7 @@ var helper = function(s, p, i, j, memo) {
  * @param {string} p
  * @return {boolean}
  */
-var isMatch = function(s, p) {
+var isMatch = function (s, p) {
   if (!p) return !s;
   let p1 = "";
   for (let i = 0; i < p.length; i++) {
@@ -949,7 +966,7 @@ var isMatch = function(s, p) {
  * @param {string} s
  * @return {number}
  */
-var longestValidParentheses = function(s) {
+var longestValidParentheses = function (s) {
   if (s.length === 0) return 0;
   let dp = Array(s.length + 1).fill(0);
   for (let i = 1; i <= s.length; i++) {
@@ -978,7 +995,7 @@ var longestValidParentheses = function(s) {
  * @param {string} t
  * @return {boolean}
  */
-var isIsomorphic = function(s, t) {
+var isIsomorphic = function (s, t) {
   for (let i = 0; i < s.length; i++) {
     if (s.indexOf(s[i]) !== t.indexOf(t[i])) return false;
   }
