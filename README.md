@@ -49,7 +49,8 @@
   - [URL 输入到页面展示](browser/navigation.md)
   - [页面渲染流程](browser/render.md)
 - 安全
-  - [同源策略](browser/same-site.md)
+  - [同源策略](browser/same-origin.md)
+  - [XSS 攻击](browser/xss.md)
 
 ## 网络
 
