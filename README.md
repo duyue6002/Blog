@@ -65,6 +65,8 @@
   - [组件和生命周期](react/build/component.md)
   - [diff 算法](react/build/diff.md)
   - [setState 异步处理](react/build/setState.md)
+- [虚拟 DOM 与实际 DOM 的比较](react/virtual-dom.md)
+
 
 ## HTML
 

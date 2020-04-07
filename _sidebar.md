@@ -65,23 +65,25 @@
     - [diff 算法](react/build/diff.md)
     - [setState 异步处理](react/build/setState.md)
 
-- HTML
+  - [虚拟 DOM 与实际 DOM 的比较](react/virtual-dom.md)
+
+* HTML
 
   - [head 里装了什么](html/head)
 
-- CSS
+* CSS
 
   - [CSS 布局](https://github.com/duyue6002/Blog/issues/14)
   - [CSS Tricks 自实现](https://github.com/duyue6002/Blog/issues/15)
 
-- 浏览器
+* 浏览器
 
   - [URL 输入到页面展示](browser/navigation.md)
   - [页面渲染流程](browser/render.md)
   - [跨域](https://github.com/duyue6002/Blog/issues/20)
   - [原生 Ajax 及 HTTP 响应码](https://github.com/duyue6002/Blog/issues/4)
 
-- 网络
+* 网络
 
   - [HTTP 发展历程](network/http/basic.md)
   - [HTTP 请求过程](network/http/process.md)
@@ -90,16 +92,16 @@
   - [HTTP 状态码](network/http/code)
   - [HTTPS](network/http/https)
 
-- Node.js
+* Node.js
 
   - 深入浅出 Node.js 读书笔记
     - [构建 Web 应用](node/book/web)
 
-- 前端工程
+* 前端工程
 
   - [Source Map 前端 webpack 配置](project/sourcemap/fe)
 
-- 数学
+* 数学
 
   - [二进制](math/binary)
   - [余数与哈希](math/mod)
