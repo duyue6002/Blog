@@ -6,15 +6,15 @@
   - [V8 如何执行 JS 代码](js/v8-process.md)
   - [V8 的内存机制](js/v8-gc.md)
   - [V8 如何实现对象继承](js/v8-inheritance.md)
-  - [V8 类型系统](js/v8-type.md)
+  - [V8 类型系统](v8)
 - [JS 中的对象](js/OOP)
 - [理解 instanceof](js/instanceof)
 - [如何提高代码质量](js/tips.md)
 - [异步编程概述](js/async)
 - [学习 promise](js/promise)
 - [比较 undefined 和 null](js/undefined)
-- [代码收藏](js/example.md)
 - [正则表达式](https://github.com/duyue6002/Blog/issues/19)
+- [代码收藏](js/example.md)
 
 ## Mini Project
 
@@ -30,6 +30,30 @@
 - [适配器模式](pattern/adapter.md)
 - [策略模式](pattern/strategy.md)
 - [装饰者模式](pattern/decorator.md)
+
+## React
+
+- 构造简单的 React
+
+  - [项目概述](react/build/basic.md)
+  - [JSX 和 ReactDOM](react/build/jsx-reactdom.md)
+  - [组件和生命周期](react/build/component.md)
+  - [diff 算法](react/build/diff.md)
+  - [setState 异步处理](react/build/setState.md)
+
+- [虚拟 DOM 与实际 DOM 的比较](react/virtual-dom.md)
+
+## 浏览器
+
+- [URL 输入到页面展示](browser/navigation.md)
+- [页面渲染流程](browser/render.md)
+
+## 网络
+
+- [HTTP 发展历程](network/history.md)
+- [HTTP 请求过程](network/request-process.md)
+- [HTTP 状态码](network/http-code)
+- [HTTPS](network/https)
 
 ## 数据结构
 
@@ -57,17 +81,6 @@
 - [位运算](algo/bit.md)
 - [排序](algo/sort.md)
 
-## React
-
-- 构造简单的 React
-  - [项目概述](react/build/basic.md)
-  - [JSX 和 ReactDOM](react/build/jsx-reactdom.md)
-  - [组件和生命周期](react/build/component.md)
-  - [diff 算法](react/build/diff.md)
-  - [setState 异步处理](react/build/setState.md)
-- [虚拟 DOM 与实际 DOM 的比较](react/virtual-dom.md)
-
-
 ## HTML
 
 - [head 里装了什么](html/head)
@@ -76,32 +89,6 @@
 
 - [CSS 布局](https://github.com/duyue6002/Blog/issues/14)
 - [CSS Tricks 自实现](https://github.com/duyue6002/Blog/issues/15)
-
-## 浏览器
-
-- [URL 输入到页面展示](browser/navigation.md)
-- [页面渲染流程](browser/render.md)
-- [跨域](https://github.com/duyue6002/Blog/issues/20)
-- [原生 Ajax 及 HTTP 响应码](https://github.com/duyue6002/Blog/issues/4)
-
-## 网络
-
-- [HTTP 发展历程](network/http/basic.md)
-- [HTTP 请求过程](network/http/process.md)
-- [网络协议综述](network/basic)
-- [理解 ifconfig](network/ifconfig)
-- [HTTP 状态码](network/http/code)
-- [HTTPS](network/http/https)
-
-## Node.js
-
-- 深入浅出 Node.js 读书笔记
-  - [构建 Web 应用](node/book/web)
-- [koa 踩坑记录](node/koa/tips)
-
-## 前端工程
-
-- [Source Map 前端 webpack 配置](project/sourcemap/fe)
 
 ## 数学
 
