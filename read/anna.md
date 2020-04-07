@@ -1,1 +1,0 @@
-![anna](img/anna.jpg)

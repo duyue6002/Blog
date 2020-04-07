@@ -1,1 +1,0 @@
-![voices](img/Voices-from-Chernobyl.jpg)

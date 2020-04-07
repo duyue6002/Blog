@@ -1,1 +1,0 @@
-![arrival](img/arrival.jpg)
