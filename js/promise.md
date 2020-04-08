@@ -1,294 +1,127 @@
-# 学习 Promise
+# 为什么使用 Promise
 
-## Promise.all 的前生
+## 异步回调
 
-Promise.all 的出现是为了处理多个异步调用，在这之前有两种方式实现同样的效果。
+JS 的异步编程模型如下，把耗时任务放在主线程之外的进程或线程中执行，避免长期霸占页面主线程。
 
-### 普通回调
+![img](assets/01e40e30db7e8a91eb70ce02fd8a6985.png)
 
-这部分代码嵌套较多，比较晦涩难懂。
+### 第一版
+
+由于 JS 的单线程架构，决定了需要使用异步回调处理任务，对于一个下载需求，使用 XMLHttpRequest 实现如下：
 
 ```js
-function getURL(URL, callback) {
-  let req = new XMLHttpRequest();
-  req.open("GET", URL, true);
-  req.onload = function() {
-    // 因为 callback 需要同时处理正常与异常情况，所以应当是个 error-first 函数
-    if (req.status === 200) {
-      callback(null, req.responseText); // error 传值为 null
-    } else {
-      callback(new Error(req.status), req.response);
-    }
-  };
-  req.onerror = function() {
-    callback(new Error(req.statusText));
-  };
+function onResolve(response) {
+  console.log(response);
 }
-
-// getURL 里需要的 callback
-function jsonParse(callback, error, value) {
-  if (error) {
-    callback(error, value);
-  } else {
-    // 使用 try-catch 捕获 parse 时的错误
-    try {
-      let result = JSON.parse(value);
-      callback(null, result);
-    } catch (e) {
-      callback(e, value);
-    }
-  }
+function onReject(error) {
+  console.log(error);
 }
-
-let request = {
-  common: function getCommon(callback) {
-    return getURL(
-      "http://azu.github.io/promises-book/json/comment.json",
-      jsonParse.bind(null, callback)
-    );
-  },
-  people: function getPeople(callback) {
-    return getURL(
-      "http://azu.github.io/promises-book/json/people.json",
-      jsonParse.bind(null, callback)
-    );
-  }
+let xhr = new XMLHttpRequest();
+xhr.ontimeout = function (e) {
+  onReject(e);
 };
-
-// 显然 jsonParse 还需要往下传递，则它内部也需要一个回调
-// 此函数就是 main 函数入口，有个 callback 连接 main 函数和这个函数
-function allRequests(requests, callback, results) {
-  if (requests.length === 0) {
-    callback(null, results);
-  }
-  let req = requests.shift();
-  req(function(error, value) {
-    if (error) {
-      callback(error, value);
-    } else {
-      results.push(value);
-      allRequests(requests, callback, results);
-    }
-  });
-}
-
-function main(callback) {
-  allRequests([request.common, request.people], callback, []);
-}
-
-main(function(error, results) {
-  if (error) {
-    return console.log(error);
-  }
-  console.log(results);
-});
-```
-
-> 吐了，回调好恶心，motherfucker
-
-### 使用 Promise#then
-
-```js
-function getURL(URL) {
-  return new Promise((resolve, reject) => {
-    let req = new XMLHttpRequest();
-    req.open("GET", URL, true);
-    req.onload = function() {
-      if (req.status == 200) {
-        resolve(req.responseText);
-      } else {
-        reject(new Error(req.statusText));
-      }
-    };
-    req.onerror = function() {
-      reject(new Error(req.statusText));
-    };
-    req.send();
-  });
-}
-
-let request = {
-  comment: function getComment() {
-    return getURL("http://azu.github.io/promises-book/json/comment.json").then(
-      JSON.parse
-    );
-  },
-  people: function getPeople() {
-    return getURL("http://azu.github.io/promises-book/json/people.json").then(
-      JSON.parse
-    );
-  }
+xhr.onerror = function (e) {
+  onReject(e);
 };
-
-function main() {
-  function restoreResult(results, value) {
-    results.push(value);
-    return results;
-  }
-  let pushValue = restoreResult.bind(null, []);
-  return request
-    .comment()
-    .then(pushValue)
-    .then(request.people)
-    .then(pushValue);
-}
-
-main()
-  .then(function(value) {
-    console.log(value);
-  })
-  .catch(function(error) {
-    console.error(error);
-  });
+xhr.onreadystatechange = function () {
+  onResolve(xhr.response);
+};
+let URL = "https://www.google.com";
+xhr.open("Get", URL, true);
+xhr.timeout = 3000;
+xhr.responseType = "text";
+xhr.send();
 ```
 
-因为统一在最后做了 catch 捕错，所以`JSON.parse`可以直接使用，不用自己再写一套 try-catch。注意 main 函数仍然返回 promise 对象。
+> 问题：五次回调，逻辑不连贯
 
-## Promise.all
+### 第二版：封装异步代码
 
-上述功能使用 Promise.all 实现就很简洁。只需要对 main 函数做改写：
-
-```js
-function main() {
-  return Promise.all([request.comment(), request.people()]);
-}
-```
-
-## Promise.race 的隐藏点
-
-以前一直以为 Promise.race 处理的一组 promise 对象中有一个变为 Fulfilled 状态，其他 promise 对象就会停止。**这其实是错的！**
-
-在 Promises 规范中，并没有取消（中断）promise 对象执行的概念，所有的 promise 对象最终都会进入 resolve 或 reject。
-
-所以在 Promise.race 中，即使第一个 promise 对象状态已经改变，无论是 Fulfilled 还是 Rejected，剩下的 promise 对象依然会执行，只是不会返回它们的返回值，Promise.race 其实就是只返回最快改变状态的 promise 对象结果。
-
-## 高级用法
-
-### 在 then 中使用 reject
-
-注意，使用 reject 而非 throw。
-
-在 then 中注册回调函数时，返回一个 promise 对象，在这个 promise 对象中使用 reject 即可。这样这个 then 中的异常就会被下一个 then/catch 捕获。也可以使用 Promise.reject 简化代码。
+只关注输入和输出：
 
 ```js
-let promise = Promise.resolve();
-promise
-  .then(() => {
-    return Promise.reject(new Error("this promise is rejected"));
-  })
-  .catch(err => console.error(err));
-```
-
-### Promise.race 处理超时
-
-经常有种情况，在超时情况下，抛出异常，不进行请求操作。
-
-```js
-function delayPromise(ms) {
-  return new Promise(resolve => {
-    setTimeout(resolve, ms);
-  });
+function onResolve(response) {
+  console.log(response);
 }
-
-function timeoutPromise(promise, ms) {
-  let timeout = delayPromise(ms).then(() => {
-    return Promise.reject(new Error(`Time out for ${ms} ms`));
-  });
-  return Promise.race([promise, timeout]);
+function onReject(error) {
+  console.log(error);
 }
-
-let taskPromise = new Promise(resolve => {
-  let delay = Math.random() * 2000;
-  setTimeout(() => {
-    resolve(delay + " ms");
-  }, delay);
-});
-
-timeoutPromise(taskPromise, 1000)
-  .then(value => {
-    console.log("good: " + value);
-  })
-  .catch(err => {
-    console.log("time out", err);
-  });
-```
-
-根据上面的基础再做改动，得到一个超时则取消 XHR 请求的功能。
-
-```js
-function copyOwnFrom(target, source) {
-  Object.getOwnPropertyNames(source).forEach(function(propName) {
-    Object.defineProperty(
-      target,
-      propName,
-      Object.getOwnPropertyDescriptor(source, propName)
-    );
-  });
+function makeRequest(url) {
+  let request = {
+    method: "Get",
+    url: url,
+    headers: "",
+    body: "",
+    credentials: false,
+    async: true,
+    responseType: "text",
+    referrer: "",
+  };
+  return request;
 }
-
-function TimeoutError() {
-  let superInstance = Error.apply(null, arguments);
-  copyOwnFrom(this, superInstance);
-}
-
-TimeoutError.prototype = Object.create(Error.prototype);
-TimeoutError.prototype.constructor = TimeoutError;
-
-function delayPromise(ms) {
-  return new Promise(resolve => {
-    setTimeout(resolve, ms);
-  });
-}
-
-function timeoutPromise(promise, ms) {
-  let timeout = delayPromise(ms).then(() => {
-    return Promise.reject(new TimeoutError(`Time out for ${ms} ms`));
-  });
-  return Promise.race([promise, timeout]);
-}
-
-function cancelableXHR(URL) {
-  let req = new XMLHttpRequest();
-  let promise = new Promise((resolve, reject) => {
-    req.open("GET", URL, true);
-    req.onload = () => {
-      if (req.status === 200) {
-        resolve(req.responseText);
-      } else {
-        reject(new Error(req.responseText));
-      }
-    };
-    req.onerror = () => {
-      reject(new Error(req.statusText));
-    };
-    req.onabort = () => {
-      reject(new Error("abort this request"));
-    };
-    req.send();
-  });
-  let abort = () => {
-    if (req.readyState !== XMLHttpRequest.UNSENT) {
-      req.abort();
+function XFetch(request, resolve, reject) {
+  let xhr = new XMLHttpRequest();
+  xhr.ontimeout = function (e) {
+    reject(e);
+  };
+  xhr.onerror = function (e) {
+    reject(e);
+  };
+  xhr.onreadystatechange = function () {
+    if (xhr.status === 200) {
+      resolve(xhr.response);
     }
   };
-  return {
-    promise,
-    abort
-  };
+  xhr.open(request.method, URL, request.async);
+  xhr.timeout = request.timeout;
+  xhr.responseType = request.responseType;
+  xhr.send();
 }
-
-
-let obj = cancelableXHR("http://httpbin.org/get");
-
-timeoutPromise(obj.promise, 100)
-  .then(value => {
-    console.log("Contents: " + value);
-  })
-  .catch(err => {
-    if (err instanceof TimeoutError) {
-      obj.abort();
-      return console.log(err);
-    }
-    console.log("XHR Error", err);
-  });
+// 调用
+XFetch(makeRequest("https://www.google.com"), onResolve, onReject);
 ```
+
+> 问题：
+>
+> 1. 任务依赖时，嵌套调用，代码可读性差
+> 2. 任务的不确定性，每个任务都有两种结果，嵌套任务中的每个任务都需要判断两次，造成代码混乱
+
+## Promise
+
+Promise 要解决的问题就是：
+
+1. 放弃嵌套调用模式
+2. 合并多个任务的错误处理
+
+### 解决嵌套问题
+
+首先，延迟绑定回调函数。
+
+```js
+//创建Promise对象x1，并在executor函数中执行业务逻辑
+function executor(resolve, reject) {
+  resolve(100);
+}
+let x1 = new Promise(executor);
+
+//x1延迟绑定回调函数onResolve
+function onResolve(value) {
+  console.log(value);
+}
+x1.then(onResolve);
+```
+
+其次，将回调函数的返回值穿透到最外层。回调函数通过`then`调用，其返回值直接穿透到外层，赋值给变量。
+
+![img](assets/efcc4fcbebe75b4f6e92c89b968b4a7f.png)
+
+由此，Promise 解决了嵌套问题。回调函数的延迟绑定，使得表面上不需要用层层嵌套的方式编写请求依赖，可以在外层绑定嵌套的回调函数。回调函数的返回值穿透到最外层，使依赖请求在外层就拿到上一个请求的返回值，再进行本身的请求，不需要写在所依赖的回调请求内部，也就不构成嵌套了。
+
+### 合并异常处理
+
+Promise 对象的错误具有冒泡的特质，会一直向后传递，前面的错误都可以通过最后一个对象的`catch`来捕获。
+
+> Promise 是如何实现冒泡的？
+
+Promise 内部有`_resolve`和`_reject`变量保存成功和失败的回调，进入`then(resolve, reject)`方法时，判断`reject`参数是否是函数，如果是函数，就用这个回调函数处理错误，如果不是函数，有错误时抛出错误，向下传递被捕获。
