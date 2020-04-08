@@ -7,13 +7,14 @@
   - [V8 的内存机制](js/v8-gc.md)
   - [V8 如何实现对象继承](js/v8-inheritance.md)
   - [V8 类型系统](v8)
-- [JS 中的对象](js/OOP)
-- [理解 instanceof](js/instanceof)
+- 基础语法
+  - [JS 中的对象](js/OOP)
+  - [理解 instanceof](js/instanceof)
+  - [比较 undefined 和 null](js/undefined)
+- 异步
+  - [为什么使用 Promise](js/promise)
+  - [async/await 的原理](js/async)
 - [如何提高代码质量](js/tips.md)
-- [异步编程概述](js/async)
-- [学习 promise](js/promise)
-- [比较 undefined 和 null](js/undefined)
-- [正则表达式](https://github.com/duyue6002/Blog/issues/19)
 - [代码收藏](js/example.md)
 
 ## Mini Project

@@ -125,3 +125,25 @@ Promise 对象的错误具有冒泡的特质，会一直向后传递，前面的
 > Promise 是如何实现冒泡的？
 
 Promise 内部有`_resolve`和`_reject`变量保存成功和失败的回调，进入`then(resolve, reject)`方法时，判断`reject`参数是否是函数，如果是函数，就用这个回调函数处理错误，如果不是函数，有错误时抛出错误，向下传递被捕获。
+
+## Promise 与微任务
+
+```js
+function executor(resolve, reject) {
+  resolve(100);
+}
+let p = new Promise(executor);
+
+function onResolve(value) {
+  console.log(value);
+}
+p.then(onResolve);
+```
+
+执行顺序如下：
+
+- 执行`new Promise()`，执行 Promise 构造函数，V8 提供的构造函数。
+- Promise 构造函数中调用 executor 函数，在 executor 中调用 resolve，这个函数也有 V8 内部实现，用来调用通过`then`设置的回调函数。
+- 因为 Promise 采用了回调函数延迟绑定的技术，在执行 resolve 函数时，因为没有调用`then`，所以回调函数并没有绑定。**理论上需要用定时器推迟回调函数的执行，Promise 把定时器改造成微任务，`resolve`任务进入微任务队列**。
+- 执行`p.then()`时，绑定回调函数。
+- 当前宏任务快执行结束时，清理微任务队列，就会调用`resolve`会触发执行`then`里的回调函数。
