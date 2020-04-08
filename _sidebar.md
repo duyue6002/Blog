@@ -29,6 +29,7 @@
   - [适配器模式](pattern/adapter.md)
   - [策略模式](pattern/strategy.md)
   - [装饰者模式](pattern/decorator.md)
+  - [单例模式](pattern/singleton.md)
 
 - React
 
