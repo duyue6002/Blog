@@ -8,16 +8,162 @@
 
 ## 经典代码收藏
 
-- [递归](https://shimo.im/docs/DjqqGCT3xqDYwPyY/read)
-- [分治](https://shimo.im/docs/3xvghYh3JJPKwdvt/read)
-- [DFS](https://shimo.im/docs/ddgwCccJQKxkrcTq/read)
-- [BFS](https://shimo.im/docs/P8TqKHGKt3ytkYYd/read)
-- [二分查找](https://shimo.im/docs/hjQqRQkGgwd9g36J/read)
-- [Trie](https://shimo.im/docs/Pk6vPY3HJ9hKkh33/read)
-- [并查集](https://shimo.im/docs/ydPCH33xDhK9YwWR/read)
-- [归并排序](https://shimo.im/docs/YqgG6vtdKwkXJkWx/read)
-- [快排](https://shimo.im/docs/98KjvGwwGpTpYGKy/read)
-- [堆排序](https://shimo.im/docs/6kRVHRphpgjHgCtx/read)
+- 递归：加上备忘录为递归剪枝
+
+  ```js
+  function recursive(level, param) {
+    // 终止条件
+    if () {}
+    // 当前层
+    process(param);
+    // 向下
+    drill_down(level + 1, param);
+    // 清空当前层的变量
+  }
+  ```
+
+- 分治
+
+  ```js
+  function divide_conquer(problem, ...param) {
+    // 终止条件
+    if () {}
+    // 分解问题
+    data = prepare_data(problem);
+    sub_problems = split_problem(problem, data);
+    // 分治
+    result[0] = divide_conquer(sub_problems[0], ...param);
+    result[1] = divide_conquer(sub_problems[1], ...param);
+    result[2] = divide_conquer(sub_problems[2], ...param);
+    // 合并结果
+    result = process_result(result[0], result[1], result[2])
+    // 清空当前层变量
+   }
+  ```
+
+- DFS
+
+  ```js
+  // 递归
+  visited = [];
+  function dfs(node, visited) {
+    if (node in visited) return;
+    visited.push(node);
+    for (child in node.children) {
+      if (!child in visited) {
+        dfs(child, visited);
+      }
+    }
+  }
+  // stack
+  function dfs(tree) {
+    let stack = [tree.root],
+      visited = [];
+    while (stack.length > 0) {
+      let node = stack.pop();
+      visited.push(node);
+      for (child in node.children) {
+        if (!child in visited) {
+          stack.push(child);
+        }
+      }
+    }
+  }
+  ```
+
+- BFS
+
+  ```js
+  // queue
+  function bfs(tree) {
+    let queue = [tree.root],
+      visited = [];
+    while (queue.length > 0) {
+      let node = queue.shift();
+      visited.push(node);
+      for (child in node.children) {
+        if (!child in visited) {
+          queue.push(child);
+        }
+      }
+    }
+  }
+  ```
+
+- 二分查找：必须是有序数组
+
+  ```js
+  function binary_search(arr, target) {
+    let left = 0,
+      right = arr[arr.length - 1];
+    while (left <= right) {
+      let mid = Math.floor((right + left) / 2);
+      if (arr[mid] === target) {
+        return mid;
+      } else if (arr[mid] > target) {
+        right = mid;
+      } else {
+        left = mid;
+      }
+    }
+  }
+  ```
+
+- [Trie](https://duyue6002.github.io/Blog/#/algo/trie?id=%e5%ae%9e%e7%8e%b0-trie)
+- [并查集](https://duyue6002.github.io/Blog/#/algo/union-find)
+- 归并排序
+
+  ```js
+  function mergeSort(arr, left, right) {
+    let mid = (left + right) >> 1;
+    mergeSort(arr, left, mid);
+    mergeSort(arr, mid + 1, right);
+    merge(arr, left, mid, right);
+  }
+  function merge(arr, left, mid, right) {
+    let memo = Array(right - left + 1);
+    let i = left,
+      j = mid + 1,
+      k = 0;
+    while (i <= mid && j <= right) {
+      memo[k++] = arr[i] <= arr[j] ? arr[i++] : arr[j++];
+    }
+    while (i <= mid) {
+      memo[k++] = arr[i++];
+    }
+    while (j <= right) {
+      memo[k++] = arr[j++];
+    }
+    for (let p = 0; p < memo.length; p++) {
+      arr[left + p] = memo[p];
+    }
+  }
+  ```
+
+- 快排
+
+  ```js
+  function quickSort(arr, left, right) {
+    if (left <= right) return;
+    let pivot = partition(arr, left, right);
+    quickSort(arr, left, pivot - 1);
+    quickSort(arr, pivot + 1, right);
+  }
+  function partition(arr, left, right) {
+    let pivot = right,
+      counter = left;
+    for (let i = left; i < right; i++) {
+      if (arr[i] < arr[pivot]) {
+        [arr[i], arr[counter]] = [arr[counter], arr[i]];
+        counter++;
+      }
+    }
+    [arr[pivot], arr[counter]] = [arr[counter], arr[pivot]];
+    return counter;
+  }
+  ```
+
+<!-- - [堆排序](https://shimo.im/docs/6kRVHRphpgjHgCtx/read) -->
 - [N 皇后](https://shimo.im/docs/rHTyt8hcpT6D9Tj8/read)
 
 ## 经典习题

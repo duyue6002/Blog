@@ -4,6 +4,41 @@
 
 [LeetCode](https://leetcode.com/problems/binary-tree-level-order-traversal/#/description)
 
+```js
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[][]}
+ */
+var levelOrder = function (root) {
+  if (!root) return [];
+  let queue = [root],
+    res = [];
+  while (queue.length > 0) {
+    let size = queue.length;
+    let level = [];
+    for (let i = 0; i < size; i++) {
+      let node = queue.shift();
+      level.push(node.val);
+      if (node.left) {
+        queue.push(node.left);
+      }
+      if (node.right) {
+        queue.push(node.right);
+      }
+    }
+    res.push(level);
+  }
+  return res;
+};
+```
+
 ## 最小基因变化
 
 [LeetCode](https://leetcode.com/problems/minimum-genetic-mutation/#/description)
@@ -16,7 +51,7 @@
  * @param {string[]} bank
  * @return {number}
  */
-var minMutation = function(start, end, bank) {
+var minMutation = function (start, end, bank) {
   if (!bank.includes(end)) return -1;
   let queue = [];
   queue.push(start);
@@ -64,7 +99,7 @@ var minMutation = function(start, end, bank) {
  * @param {string[]} wordList
  * @return {number}
  */
-var ladderLength = function(beginWord, endWord, wordList) {
+var ladderLength = function (beginWord, endWord, wordList) {
   let queue = [];
   let dict = new Set(wordList);
   queue.push(beginWord);
@@ -99,7 +134,7 @@ var ladderLength = function(beginWord, endWord, wordList) {
  * @param {string[]} wordList
  * @return {number}
  */
-var ladderLength = function(beginWord, endWord, wordList) {
+var ladderLength = function (beginWord, endWord, wordList) {
   if (!wordList.includes(endWord)) return 0;
   let beginQueue = [],
     endQueue = [];
