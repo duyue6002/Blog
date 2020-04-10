@@ -9,12 +9,12 @@
  * @param {string} s
  * @return {boolean}
  */
-var isValid = function(str) {
+var isValid = function (str) {
   let stack = [];
   let map = {
     "(": ")",
     "{": "}",
-    "[": "]"
+    "[": "]",
   };
   for (let s of str) {
     let top = stack[stack.length - 1];
@@ -36,7 +36,7 @@ var isValid = function(str) {
 /**
  * initialize your data structure here.
  */
-var MinStack = function() {
+var MinStack = function () {
   this.data = [];
   this.help = [];
 };
@@ -45,7 +45,7 @@ var MinStack = function() {
  * @param {number} x
  * @return {void}
  */
-MinStack.prototype.push = function(x) {
+MinStack.prototype.push = function (x) {
   this.data.push(x);
   if (this.help.length === 0 || x < this.help[this.help.length - 1]) {
     this.help.push(x);
@@ -57,7 +57,7 @@ MinStack.prototype.push = function(x) {
 /**
  * @return {void}
  */
-MinStack.prototype.pop = function() {
+MinStack.prototype.pop = function () {
   this.data.pop();
   this.help.pop();
 };
@@ -65,14 +65,14 @@ MinStack.prototype.pop = function() {
 /**
  * @return {number}
  */
-MinStack.prototype.top = function() {
+MinStack.prototype.top = function () {
   return this.data[this.data.length - 1];
 };
 
 /**
  * @return {number}
  */
-MinStack.prototype.getMin = function() {
+MinStack.prototype.getMin = function () {
   return this.help[this.help.length - 1];
 };
 
@@ -95,7 +95,7 @@ MinStack.prototype.getMin = function() {
  * @param {number[]} heights
  * @return {number}
  */
-var largestRectangleArea = function(heights) {
+var largestRectangleArea = function (heights) {
   let stack = [];
   stack.push(-1);
   let maxarea = 0;
@@ -149,3 +149,29 @@ TODO
 [LeetCode](https://leetcode.com/problems/trapping-rain-water/)
 
 TODO
+
+## 比较含退格的字符串
+
+[LeetCode](https://leetcode.com/problems/backspace-string-compare/)
+
+```js
+/**
+ * @param {string} S
+ * @param {string} T
+ * @return {boolean}
+ */
+var backspaceCompare = function (S, T) {
+  return helper(S) === helper(T);
+};
+var helper = function (s) {
+  let stack = [];
+  for (let c of s) {
+    if (c !== "#") {
+      stack.push(c);
+    } else {
+      stack.pop();
+    }
+  }
+  return stack.join("");
+};
+```
