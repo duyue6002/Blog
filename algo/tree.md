@@ -16,7 +16,7 @@
  * @param {TreeNode} root
  * @return {number[]}
  */
-var inorderTraversal = function(root) {
+var inorderTraversal = function (root) {
   let result = [];
   let stack = [];
   let cur = root;
@@ -33,13 +33,13 @@ var inorderTraversal = function(root) {
   return result;
 };
 
-var inorderTraversal = function(root) {
+var inorderTraversal = function (root) {
   let result = [];
   helper(root, result);
   return result;
 };
 
-var helper = function(node, memo) {
+var helper = function (node, memo) {
   if (!node) return;
   if (node.left) helper(node.left, memo);
   memo.push(node.val);
@@ -63,7 +63,7 @@ var helper = function(node, memo) {
  * @param {TreeNode} root
  * @return {number[]}
  */
-var preorderTraversal = function(root) {
+var preorderTraversal = function (root) {
   let result = [];
   if (!root) return result;
   let stack = [];
@@ -78,7 +78,7 @@ var preorderTraversal = function(root) {
 };
 ```
 
-## N叉树的后序遍历
+## N 叉树的后序遍历
 
 [LeetCode](https://leetcode.com/problems/n-ary-tree-postorder-traversal/)
 
@@ -94,7 +94,7 @@ var preorderTraversal = function(root) {
  * @param {Node} root
  * @return {number[]}
  */
-var postorder = function(root) {
+var postorder = function (root) {
   let result = [];
   if (!root) return result;
   let stack = [];
@@ -111,7 +111,7 @@ var postorder = function(root) {
 };
 ```
 
-## N叉树的前序遍历
+## N 叉树的前序遍历
 
 [LeetCode](https://leetcode.com/problems/n-ary-tree-preorder-traversal/description/)
 
@@ -127,13 +127,13 @@ var postorder = function(root) {
  * @param {Node} root
  * @return {number[]}
  */
-var preorder = function(root) {
+var preorder = function (root) {
   let result = [];
   helper(root, result);
   return result;
 };
 
-var helper = function(node, memo) {
+var helper = function (node, memo) {
   if (!node) return;
   memo.push(node.val);
   for (let child of node.children) {
@@ -152,7 +152,7 @@ var helper = function(node, memo) {
  * @param {Node} root
  * @return {number[]}
  */
-var preorder = function(root) {
+var preorder = function (root) {
   let result = [];
   if (!root) return result;
   let stack = [];
@@ -169,7 +169,7 @@ var preorder = function(root) {
 };
 ```
 
-## N叉树的层序遍历
+## N 叉树的层序遍历
 
 [LeetCode](https://leetcode.com/problems/n-ary-tree-level-order-traversal/)
 
@@ -185,7 +185,7 @@ var preorder = function(root) {
  * @param {Node} root
  * @return {number[][]}
  */
-var levelOrder = function(root) {
+var levelOrder = function (root) {
   let result = [];
   if (!root) return result;
   let queue = [];
@@ -203,5 +203,35 @@ var levelOrder = function(root) {
     result.push(data);
   }
   return result;
+};
+```
+
+## 二叉树的直径
+
+[LeetCode](https://leetcode.com/problems/diameter-of-binary-tree/)
+
+```js
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var diameterOfBinaryTree = function (root) {
+  let max = 0;
+  function depth(node) {
+    if (!node) return 0;
+    let left = depth(node.left);
+    let right = depth(node.right);
+    max = Math.max(left + right, max);
+    return Math.max(left, right);
+  }
+  depth(root);
+  return max;
 };
 ```
