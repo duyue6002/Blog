@@ -3,3 +3,7 @@
 ## HTML
 
 ![HTML](assets/HTML.png)
+
+## CSS
+
+![CSS](assets/CSS.png)

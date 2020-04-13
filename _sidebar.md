@@ -12,6 +12,8 @@
   - 异步
     - [为什么使用 Promise](js/promise)
     - [async/await 的原理](js/async)
+  - 函数式编程
+    - [学习 underscore 源码系列目录](js/functional/readme)
   - [如何提高代码质量](js/tips.md)
   - [代码收藏](js/example.md)
 
@@ -87,13 +89,8 @@
   - [位运算](algo/bit.md)
   - [排序](algo/sort.md)
 
-- HTML
-
-  - [head 里装了什么](html/head)
-
 - CSS
 
-  - [CSS 布局](https://github.com/duyue6002/Blog/issues/14)
   - [CSS Tricks 自实现](https://github.com/duyue6002/Blog/issues/15)
 
 - 数学
