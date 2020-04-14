@@ -20,9 +20,9 @@
 - Mini Project
 
   - [Simple React](mini-project/simple-react.md)
+  - [轮播组件](mini-project/slider.md)
   - [TicTac](mini-project/tictac.md)
   - [Flex Playground](mini-project/flex-playground.md)
-  - [Slider](mini-project/slider.md)
 
 - 设计模式
 
