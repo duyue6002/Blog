@@ -4,7 +4,7 @@
     - [V8 如何执行 JS 代码](js/v8-process.md)
     - [V8 的内存机制](js/v8-gc.md)
     - [V8 如何实现对象继承](js/v8-inheritance.md)
-    - [V8 类型系统](v8)
+    - [V8 类型系统](js/v8-type.md)
   - 基础语法
     - [JS 中的对象](js/OOP)
     - [理解 instanceof](js/instanceof)
@@ -15,7 +15,7 @@
   - 函数式编程
     - [学习 underscore 源码系列目录](js/functional/readme)
   - [如何提高代码质量](js/tips.md)
-  - [代码收藏](js/example.md)
+  - [代码收藏](js/tricks.md)
 
 - Mini Project
 
