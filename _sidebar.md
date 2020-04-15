@@ -12,11 +12,9 @@
   - 异步
     - [为什么使用 Promise](js/promise)
     - [async/await 的原理](js/async)
-  - 函数式编程
-    - [学习 underscore 源码系列目录](js/functional/readme)
   - [如何提高代码质量](js/tips.md)
   - [代码收藏](js/tricks.md)
-
+  
 - Mini Project
 
   - [Simple React](mini-project/simple-react.md)
