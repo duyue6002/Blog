@@ -14,6 +14,8 @@
 
 MIT 动态规划：[Video](https://www.bilibili.com/video/av53233912?from=search&seid=2847395688604491997)
 
+![274795d9bf732b914431e86e0d2a3eeb75d812858011aecf9b32c3ce9a1f7faa-image](assets/274795d9bf732b914431e86e0d2a3eeb75d812858011aecf9b32c3ce9a1f7faa-image.png)
+
 ## Fibonacci 数列
 
 ### Fibonacci
