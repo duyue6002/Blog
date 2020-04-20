@@ -41,7 +41,7 @@
     - [diff 算法](react/build/diff.md)
     - [setState 异步处理](react/build/setState.md)
 
-  - [实现简易版的 React-Redux](react/react-redux.md)
+  - [Simple Redux & React-Redux](react/react-redux.md)
   - [虚拟 DOM 与实际 DOM 的比较](react/virtual-dom.md)
 
 - 浏览器
