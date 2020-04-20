@@ -9,7 +9,7 @@
  * @param {number} x
  * @return {number}
  */
-var mySqrt = function(x) {
+var mySqrt = function (x) {
   if (x === 0 || x === 1) return x;
   let left = 1,
     right = x;
@@ -34,7 +34,7 @@ var mySqrt = function(x) {
  * @param {number} num
  * @return {boolean}
  */
-var isPerfectSquare = function(num) {
+var isPerfectSquare = function (num) {
   if (num === 0 || num === 1) return true;
   let left = 1,
     right = num;
@@ -62,7 +62,7 @@ var isPerfectSquare = function(num) {
  * @param {number} target
  * @return {number}
  */
-var search = function(nums, target) {
+var search = function (nums, target) {
   let left = 0,
     right = nums.length - 1;
   while (left < right) {
@@ -80,6 +80,38 @@ var search = function(nums, target) {
 };
 ```
 
+```js
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var search = function (nums, target) {
+  let left = 0,
+    right = nums.length - 1;
+  while (left < right) {
+    if (nums[left] < nums[right]) break;
+    let mid = (left + right) >> 1;
+    if (nums[mid] >= nums[left]) {
+      left = mid + 1;
+    } else {
+      right = mid;
+    }
+  }
+  const minIndex = left;
+  left = 0;
+  right = nums.length - 1;
+  while (left <= right) {
+    let mid = (left + right) >> 1;
+    let realmid = (minIndex + mid) % nums.length;
+    if (target === nums[realmid]) return realmid;
+    else if (target > nums[realmid]) left = mid + 1;
+    else right = mid - 1;
+  }
+  return -1;
+};
+```
+
 ## 搜索二维矩阵
 
 [LeetCode](https://leetcode.com/problems/search-a-2d-matrix/)
@@ -87,3 +119,24 @@ var search = function(nums, target) {
 ## 寻找旋转排序数组中的最小值
 
 [LeetCode](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findMin = function (nums) {
+  let left = 0,
+    right = nums.length - 1;
+  while (left < right) {
+    if (nums[left] < nums[right]) break;
+    let mid = (left + right) >> 1;
+    if (nums[mid] >= nums[left]) {
+      left = mid + 1;
+    } else {
+      right = mid;
+    }
+  }
+  return nums[left];
+};
+```
