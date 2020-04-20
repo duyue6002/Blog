@@ -14,7 +14,7 @@
     - [async/await 的原理](js/async)
   - [如何提高代码质量](js/tips.md)
   - [代码收藏](js/tricks.md)
-  
+
 - Mini Project
 
   - [Simple React](mini-project/simple-react.md)
@@ -41,6 +41,7 @@
     - [diff 算法](react/build/diff.md)
     - [setState 异步处理](react/build/setState.md)
 
+  - [实现简易版的 React-Redux](react/react-redux.md)
   - [虚拟 DOM 与实际 DOM 的比较](react/virtual-dom.md)
 
 - 浏览器
