@@ -12,6 +12,9 @@
   - 异步
     - [为什么使用 Promise](js/promise)
     - [async/await 的原理](js/async)
+  - 学习 underscore
+    - [概述](js/functional/readme.md)
+    - [函数篇](js/functional/function.md)
   - [如何提高代码质量](js/tips.md)
   - [代码收藏](js/tricks.md)
 

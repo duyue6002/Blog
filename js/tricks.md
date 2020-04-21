@@ -16,27 +16,6 @@ function once(fn) {
 }
 ```
 
-### debounce
-
-#### 基础版
-
-第二次调用时，清掉上一次的定时器，添加新的定时器，保证最后只保留一个定时器，且这个定时器执行完也销毁。
-
-```js
-function debounce(fn, context) {
-  let timer = null;
-  return function (...args) {
-    if (timer !== null) {
-      clearTimeout(timer);
-    }
-    timer = setTimeout(() => {
-      fn.apply(context, args);
-      timer = null;
-    }, 1000);
-  };
-}
-```
-
 ## 字符串/数组操作
 
 ### 字符串排序
