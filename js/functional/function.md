@@ -139,3 +139,9 @@ function throttle(func, wait, options) {
   return throttled;
 }
 ```
+
+> Tips
+>
+> clearTimeout(timerId) 代表不执行对应的回调
+>
+> timerId = null 是为了防止内存泄漏，因为 clearTimeout 并没有对 timerId 值做操作
