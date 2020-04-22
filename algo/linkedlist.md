@@ -16,7 +16,7 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-var reverseList = function(head) {
+var reverseList = function (head) {
   let prev = null;
   while (head) {
     let cur = head;
@@ -44,7 +44,7 @@ var reverseList = function(head) {
  * @param {ListNode} head
  * @return {ListNode}
  */
-var swapPairs = function(head) {
+var swapPairs = function (head) {
   if (!head || !head.next) return head;
   let node = new ListNode();
   node.next = head;
@@ -78,7 +78,7 @@ var swapPairs = function(head) {
  * @param {ListNode} head
  * @return {boolean}
  */
-var hasCycle = function(head) {
+var hasCycle = function (head) {
   if (!head || !head.next) return false;
   let slow = head.next;
   let fast = head.next.next;
@@ -107,7 +107,7 @@ var hasCycle = function(head) {
  * @param {ListNode} head
  * @return {ListNode}
  */
-var detectCycle = function(head) {
+var detectCycle = function (head) {
   if (!head || !head.next) return null;
   let slow = head;
   let fast = head;
@@ -143,9 +143,9 @@ var detectCycle = function(head) {
  * @param {ListNode} head
  * @return {ListNode}
  */
-var middleNode = function(head) {
+var middleNode = function (head) {
   let slow = head,
-      fast = head;
+    fast = head;
   while (fast) {
     if (!fast.next) return slow;
     if (!fast.next.next) return slow.next;
@@ -153,6 +153,45 @@ var middleNode = function(head) {
     fast = fast.next.next;
   }
   return null;
+};
+```
+
+## 分隔链表
+
+[LeetCode](https://leetcode.com/problems/partition-list/)
+
+```js
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} x
+ * @return {ListNode}
+ */
+var partition = function (head, x) {
+  // 链表的题都可以采用这样的方法
+  // 创建新链表头，创建该链表的指针，用指针移动为链表添加节点，最后返回链表头即可
+  let lessList = new ListNode(),
+    moreList = new ListNode();
+  let less = lessList,
+    more = moreList,
+    node = head;
+  while (node) {
+    if (node.val < x) {
+      less = less.next = node;
+    } else {
+      more = more.next = node;
+    }
+    node = node.next;
+  }
+  less.next = moreList.next;
+  more.next = null;
+  return lessList.next;
 };
 ```
 
