@@ -12,40 +12,14 @@
   - 异步
     - [为什么使用 Promise](js/promise)
     - [async/await 的原理](js/async)
+  - 工程化
+    - [模块化与 webpack 原理](js/module.md)
   - 学习 underscore
     - [概述](js/functional/readme.md)
     - [函数篇](js/functional/function.md)
+  - [正则表达式](js/regexp.md)
   - [如何提高代码质量](js/tips.md)
   - [代码收藏](js/tricks.md)
-
-- Mini Project
-
-  - [Simple React](mini-project/simple-react.md)
-  - [轮播组件](mini-project/slider.md)
-  - [TicTac](mini-project/tictac.md)
-  - [Flex Playground](mini-project/flex-playground.md)
-
-- 设计模式
-
-  - [发布-订阅模式（观察者模式）](pattern/observer.md)
-  - [职责链模式](pattern/chain.md)
-  - [适配器模式](pattern/adapter.md)
-  - [策略模式](pattern/strategy.md)
-  - [装饰者模式](pattern/decorator.md)
-  - [单例模式](pattern/singleton.md)
-
-- React
-
-  - 构造简单的 React
-
-    - [项目概述](react/build/basic.md)
-    - [JSX 和 ReactDOM](react/build/jsx-reactdom.md)
-    - [组件和生命周期](react/build/component.md)
-    - [diff 算法](react/build/diff.md)
-    - [setState 异步处理](react/build/setState.md)
-
-  - [Simple Redux & React-Redux](react/react-redux.md)
-  - [虚拟 DOM 与实际 DOM 的比较](react/virtual-dom.md)
 
 - 浏览器
 
@@ -64,6 +38,35 @@
   - [HTTP 请求过程](network/request-process.md)
   - [HTTP 状态码](network/http-code)
   - [HTTPS](network/https)
+
+- React
+
+  - 构造简单的 React
+
+    - [项目概述](react/build/basic.md)
+    - [JSX 和 ReactDOM](react/build/jsx-reactdom.md)
+    - [组件和生命周期](react/build/component.md)
+    - [diff 算法](react/build/diff.md)
+    - [setState 异步处理](react/build/setState.md)
+
+  - [Simple Redux & React-Redux](react/react-redux.md)
+  - [虚拟 DOM 与实际 DOM 的比较](react/virtual-dom.md)
+
+- Mini Project
+
+  - [Simple React](mini-project/simple-react.md)
+  - [轮播组件](mini-project/slider.md)
+  - [TicTac](mini-project/tictac.md)
+  - [Flex Playground](mini-project/flex-playground.md)
+
+- 设计模式
+
+  - [发布-订阅模式（观察者模式）](pattern/observer.md)
+  - [职责链模式](pattern/chain.md)
+  - [适配器模式](pattern/adapter.md)
+  - [策略模式](pattern/strategy.md)
+  - [装饰者模式](pattern/decorator.md)
+  - [单例模式](pattern/singleton.md)
 
 - 数据结构
 
