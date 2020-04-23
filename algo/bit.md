@@ -43,7 +43,7 @@ x & ~x === 0
  * @param {number} n - a positive integer
  * @return {number}
  */
-var hammingWeight = function(n) {
+var hammingWeight = function (n) {
   let count = 0;
   while (n !== 0) {
     count++;
@@ -56,7 +56,7 @@ var hammingWeight = function(n) {
  * @param {number} n - a positive integer
  * @return {number}
  */
-var hammingWeight = function(n) {
+var hammingWeight = function (n) {
   let count = 0;
   while (n !== 0) {
     count += n & 1;
@@ -77,7 +77,7 @@ n 的二进制表示只有一个 1，那么这个数就是 2 的幂。
  * @param {number} n
  * @return {boolean}
  */
-var isPowerOfTwo = function(n) {
+var isPowerOfTwo = function (n) {
   return n > 0 && (n & (n - 1)) === 0;
 };
 ```
@@ -91,7 +91,7 @@ var isPowerOfTwo = function(n) {
  * @param {number} n - a positive integer
  * @return {number} - a positive integer
  */
-var reverseBits = function(n) {
+var reverseBits = function (n) {
   let res = 0;
   for (let i = 0; i < 32; i++) {
     res *= 2; // 左移对符号位为 1 的不成立
@@ -99,6 +99,28 @@ var reverseBits = function(n) {
     n >>>= 1;
   }
   return res;
+};
+```
+
+## 数字范围按位与
+
+[LeetCode](https://leetcode.com/problems/bitwise-and-of-numbers-range/)
+
+```js
+/**
+ * @param {number} m
+ * @param {number} n
+ * @return {number}
+ */
+var rangeBitwiseAnd = function (m, n) {
+  if (m === 0) return 0;
+  let move = 1;
+  while (m !== n) {
+    m >>= 1;
+    n >>= 1;
+    move <<= 1;
+  }
+  return m * move;
 };
 ```
 
@@ -111,9 +133,9 @@ var reverseBits = function(n) {
  * @param {number} n
  * @return {number}
  */
-var totalNQueens = function(n) {
+var totalNQueens = function (n) {
   let count = 0;
-  let DFS = function(n, row, col, left, right) {
+  let DFS = function (n, row, col, left, right) {
     if (row >= n) {
       count++;
       return;
@@ -143,7 +165,7 @@ var totalNQueens = function(n) {
  * @param {number} num
  * @return {number[]}
  */
-var countBits = function(num) {
+var countBits = function (num) {
   let res = Array(num + 1).fill(0);
   let i = 0,
     b = 1;
@@ -168,7 +190,7 @@ var countBits = function(num) {
  * @param {number} num
  * @return {number[]}
  */
-var countBits = function(num) {
+var countBits = function (num) {
   let res = Array(num + 1).fill(0);
   for (let i = 0; i <= num; i++) {
     res[i] = res[Math.floor(i / 2)] + (i % 2);
