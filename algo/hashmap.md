@@ -10,7 +10,7 @@
  * @param {string} t
  * @return {boolean}
  */
-var isAnagram = function(s, t) {
+var isAnagram = function (s, t) {
   if (s.length !== t.length) return false;
   let map = {};
   for (let c of s) {
@@ -29,7 +29,7 @@ var isAnagram = function(s, t) {
       map[c] = count;
     }
   }
-  return Object.values(map).every(value => value === 0);
+  return Object.values(map).every((value) => value === 0);
 };
 ```
 
@@ -42,7 +42,7 @@ var isAnagram = function(s, t) {
  * @param {string[]} strs
  * @return {string[][]}
  */
-var groupAnagrams = function(strs) {
+var groupAnagrams = function (strs) {
   let map = {};
   for (let s of strs) {
     let key = s
@@ -68,7 +68,7 @@ var groupAnagrams = function(strs) {
  * @param {number} target
  * @return {number[]}
  */
-var twoSum = function(nums, target) {
+var twoSum = function (nums, target) {
   let buff = {};
   for (let i = 0; i < nums.length; i++) {
     if (nums[i] in buff) {
@@ -89,7 +89,7 @@ var twoSum = function(nums, target) {
  * @param {number[]} nums
  * @return {number}
  */
-var singleNumber = function(nums) {
+var singleNumber = function (nums) {
   let map = {};
   for (let num of nums) {
     if (!map[num]) {
@@ -98,10 +98,39 @@ var singleNumber = function(nums) {
       map[num]++;
     }
   }
-  Object.keys(map).forEach(num => {
+  Object.keys(map).forEach((num) => {
     if (map[num] === 1) {
       return num;
     }
   });
+};
+```
+
+## 和为K的子数组
+
+[LeetCode](https://leetcode.com/problems/subarray-sum-equals-k/)
+
+```js
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var subarraySum = function (nums, k) {
+  const map = new Map();
+  map.set(0, 1);
+  let res = 0,
+    sum = 0;
+  for (let num of nums) {
+    sum += num;
+    if (map.has(sum - k)) {
+      res += map.get(sum - k);
+    }
+    if (!map.has(sum)) {
+      map.set(sum, 0);
+    }
+    map.set(sum, map.get(sum) + 1);
+  }
+  return res;
 };
 ```
