@@ -10,11 +10,11 @@
  * @param {number} amount
  * @return {number}
  */
-var coinChange = function(coins, amount) {
+var coinChange = function (coins, amount) {
   return helper(coins, amount, new Array(amount + 1));
 };
 
-var helper = function(coins, rem, memo) {
+var helper = function (coins, rem, memo) {
   if (rem < 0) return -1;
   if (rem === 0) return 0;
   if (memo[rem]) return memo[rem];
@@ -43,7 +43,7 @@ var helper = function(coins, rem, memo) {
  * @param {number[]} prices
  * @return {number}
  */
-var maxProfit = function(prices) {
+var maxProfit = function (prices) {
   let res = 0;
   for (let i = 1; i < prices.length; i++) {
     if (prices[i] > prices[i - 1]) {
@@ -64,7 +64,7 @@ var maxProfit = function(prices) {
  * @param {number[]} s
  * @return {number}
  */
-var findContentChildren = function(g, s) {
+var findContentChildren = function (g, s) {
   g = g.sort((a, b) => a - b);
   s = s.sort((a, b) => a - b);
   let i = 0;
@@ -90,7 +90,7 @@ var findContentChildren = function(g, s) {
  * @param {number[]} nums
  * @return {boolean}
  */
-var canJump = function(nums) {
+var canJump = function (nums) {
   if (!nums) return false;
   let endReachable = nums.length - 1;
   for (let i = nums.length - 1; i >= 0; i--) {
@@ -99,6 +99,22 @@ var canJump = function(nums) {
     }
   }
   return endReachable === 0;
+};
+```
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var canJump = function (nums) {
+  if (!nums) return false;
+  let k = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (i > k) return false;
+    k = Math.max(k, i + nums[i]);
+  }
+  return true;
 };
 ```
 
