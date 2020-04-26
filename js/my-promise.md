@@ -119,4 +119,83 @@ function resolvePromise(promise2, x, resolve, reject) {
     resolve(x);
   }
 }
+promise.prototype.catch = function (onRejected) {
+  return this.then(null, onRejected);
+};
+promise.prototype.finally = function (callback) {
+  return this.then(
+    (v) => {
+      return promise.resolve(callback()).then((v) => v);
+    },
+    (r) => {
+      return promise.resolve(callback()).then((r) => {
+        throw r;
+      });
+    }
+  );
+};
+promise.resolve = function (value) {
+  if (value instanceof promise) return value;
+  return new promise((resolve, reject) => {
+    if (value && value.then && typeof value.then === "function") {
+      setTimeout(() => {
+        value.then(resolve, reject);
+      });
+    } else {
+      resolve(value);
+    }
+  });
+};
+promise.reject = function (reason) {
+  return new promise((resolve, reject) => {
+    reject(reason);
+  });
+};
+promise.all = function (promises) {
+  return new promise((resolve, reject) => {
+    let result = [];
+    let count = 0;
+    if (promises.length === 0) {
+      resolve(result);
+    } else {
+      function processValue(index, data) {
+        result[index] = data;
+        if (++count === result.length) {
+          resolve(result);
+        }
+      }
+      for (let i = 0; i < promises.length; i++) {
+        promise.resolve(promises[i]).then(
+          (v) => {
+            processValue(i, v);
+          },
+          (r) => {
+            reject(r);
+            return;
+          }
+        );
+      }
+    }
+  });
+};
+promise.race = function (promises) {
+  return new promise((resolve, reject) => {
+    if (promises.length === 0) {
+      return;
+    } else {
+      for (let i = 0; i < promises.length; i++) {
+        promise.resolve(promises[i]).then(
+          (v) => {
+            resolve(v);
+            return;
+          },
+          (r) => {
+            reject(v);
+            return;
+          }
+        );
+      }
+    }
+  });
+};
 ```

@@ -11,6 +11,7 @@
     - [比较 undefined 和 null](js/undefined)
   - 异步
     - [为什么使用 Promise](js/promise)
+    - [手动实现 Promise](js/my-promise.md)
     - [async/await 的原理](js/async)
   - 工程化
     - [模块化与 webpack 原理](js/module.md)
