@@ -242,3 +242,72 @@ var mergeTwoLists = function (l1, l2) {
   return newList.next;
 };
 ```
+
+## 删除排序链表中的重复元素
+
+[LeetCode](https://leetcode.com/problems/remove-duplicates-from-sorted-list/)
+
+```js
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var deleteDuplicates = function (head) {
+  let fakeHead = new ListNode();
+  fakeHead.next = head;
+  let cur = head,
+    prev = fakeHead;
+  while (cur) {
+    while (cur.next && cur.val === cur.next.val) {
+      cur = cur.next;
+    }
+    prev = prev.next = cur;
+    cur = cur.next;
+  }
+  return fakeHead.next;
+};
+```
+
+## 删除排序链表中的重复元素 II
+
+[LeetCode](https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/)
+
+```js
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var deleteDuplicates = function (head) {
+  // write code here
+  let fakeHead = new ListNode();
+  fakeHead.next = head;
+  let pre = fakeHead;
+  let cur = head;
+  while (cur !== null) {
+    while (cur.next !== null && cur.val === cur.next.val) {
+      cur = cur.next;
+    }
+    if (pre.next === cur) {
+      pre = pre.next;
+    } else {
+      pre.next = cur.next;
+    }
+    cur = cur.next;
+  }
+  return fakeHead.next;
+};
+```
