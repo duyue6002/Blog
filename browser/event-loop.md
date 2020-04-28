@@ -229,6 +229,29 @@ console.log(9);
 
 上述打印结果为：`1 9 7 8 2 3 10 11 12 13`
 
+```js
+// 字节面试题
+console.log("1");
+setTimeout(() => {
+  console.log("2");
+}, 100);
+console.log("3");
+let a = new Promise((resolve) => {
+  setTimeout(() => {
+    resolve();
+    console.log("4");
+  });
+});
+console.log("5");
+a.then(() => {
+  console.log("6");
+});
+```
+
+`resolve()`在`setTimeout`内，打印结果为：`1 3 5 4 6 2`
+
+`resolve()`在`setTimeout`外，打印结果为：`1 3 5 6 4 2`
+
 #### MutationObserver
 
 Web 需要监视 DOM 变化并及时做出响应。
