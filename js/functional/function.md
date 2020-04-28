@@ -142,6 +142,37 @@ function throttle(func, wait, options) {
 
 > Tips
 >
-> clearTimeout(timerId) 代表不执行对应的回调
+> `clearTimeout(timerId)`代表不执行对应的回调
 >
-> timerId = null 是为了防止内存泄漏，因为 clearTimeout 并没有对 timerId 值做操作
+> `timerId = null`是为了防止内存泄漏，因为`clearTimeout`并没有对`timerId`值做操作
+
+## 柯里化
+
+```js
+// 需求
+function add(a, b, c) {
+  return a + b + c;
+}
+let addCurry = curry(add);
+console.log(addCurry(1, 2, 3)); // 6
+console.log(addCurry(1)(2, 3)); // 6
+console.log(addCurry(1, 2)(3)); // 6
+console.log(addCurry(1)(2)(3)); // 6
+// 普通写法
+function curry(fn, args) {
+  let length = fn.length;
+  args = args || [];
+  return function() {
+    let _args = args.concat(...arguments);
+    if (_args.length < length) {
+      return curry.call(this, fn, _args);
+    } else {
+      return fn.apply(this, _args);
+    }
+  }
+}
+// ES 6
+function curry(fn, ...args) {
+  return fn.length <= args.length ? fn(...args) : curry.bind(null, fn, ...args);
+}
+```
