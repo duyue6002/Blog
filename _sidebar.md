@@ -17,6 +17,9 @@
   - 学习 underscore
     - [概述](js/functional/readme.md)
     - [函数篇](js/functional/function.md)
+  - Polyfill
+    - [Promise](js/polyfill/promise.md)
+    - [Fetch](js/polyfill/fetch.md)
   - [正则表达式](js/regexp.md)
   - [如何提高代码质量](js/tips.md)
   - [代码收藏](js/tricks.md)
