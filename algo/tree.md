@@ -1,17 +1,21 @@
 # 树
 
+```js
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+```
+
 ## 二叉树的中序遍历
 
 [LeetCode](https://leetcode.com/problems/binary-tree-inorder-traversal/)
 
 ```js
-/**
- * Definition for a binary tree node.
- * function TreeNode(val) {
- *     this.val = val;
- *     this.left = this.right = null;
- * }
- */
 /**
  * @param {TreeNode} root
  * @return {number[]}
@@ -53,13 +57,6 @@ var helper = function (node, memo) {
 
 ```js
 /**
- * Definition for a binary tree node.
- * function TreeNode(val) {
- *     this.val = val;
- *     this.left = this.right = null;
- * }
- */
-/**
  * @param {TreeNode} root
  * @return {number[]}
  */
@@ -83,13 +80,6 @@ var preorderTraversal = function (root) {
 [LeetCode](https://leetcode.com/problems/n-ary-tree-postorder-traversal/)
 
 ```js
-/**
- * // Definition for a Node.
- * function Node(val,children) {
- *    this.val = val;
- *    this.children = children;
- * };
- */
 /**
  * @param {Node} root
  * @return {number[]}
@@ -117,13 +107,6 @@ var postorder = function (root) {
 
 ```js
 /**
- * // Definition for a Node.
- * function Node(val,children) {
- *    this.val = val;
- *    this.children = children;
- * };
- */
-/**
  * @param {Node} root
  * @return {number[]}
  */
@@ -141,13 +124,6 @@ var helper = function (node, memo) {
   }
 };
 
-/**
- * // Definition for a Node.
- * function Node(val,children) {
- *    this.val = val;
- *    this.children = children;
- * };
- */
 /**
  * @param {Node} root
  * @return {number[]}
@@ -174,13 +150,6 @@ var preorder = function (root) {
 [LeetCode](https://leetcode.com/problems/n-ary-tree-level-order-traversal/)
 
 ```js
-/**
- * // Definition for a Node.
- * function Node(val,children) {
- *    this.val = val;
- *    this.children = children;
- * };
- */
 /**
  * @param {Node} root
  * @return {number[][]}
@@ -212,13 +181,6 @@ var levelOrder = function (root) {
 
 ```js
 /**
- * Definition for a binary tree node.
- * function TreeNode(val) {
- *     this.val = val;
- *     this.left = this.right = null;
- * }
- */
-/**
  * @param {TreeNode} root
  * @return {number}
  */
@@ -236,18 +198,87 @@ var diameterOfBinaryTree = function (root) {
 };
 ```
 
+## 二叉树中的最大路径和
+
+[LeetCode](https://leetcode.com/problems/binary-tree-maximum-path-sum/)
+
+```js
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var maxPathSum = function (root) {
+  let max = Number.MIN_SAFE_INTEGER;
+  function helper(node) {
+    if (!node) return 0;
+    let left = Math.max(0, helper(node.left));
+    let right = Math.max(0, helper(node.right));
+    max = Math.max(max, left + right + node.val);
+    return Math.max(left, right) + node.val;
+  }
+  helper(root);
+  return max;
+};
+```
+
+## [路径总和]
+
+[LeetCode](https://leetcode.com/problems/path-sum/)
+
+```js
+/**
+ * @param {TreeNode} root
+ * @param {number} sum
+ * @return {boolean}
+ */
+var hasPathSum = function (root, sum) {
+  if (!root) return false;
+  if (!root.left && !root.right && root.val === sum) return true;
+  return (
+    hasPathSum(root.left, sum - root.val) ||
+    hasPathSum(root.right, sum - root.val)
+  );
+};
+```
+
+## [路径总和 II]
+
+[LeetCode](https://leetcode.com/problems/path-sum-ii/)
+
+```js
+/**
+ * @param {TreeNode} root
+ * @param {number} sum
+ * @return {number[][]}
+ */
+var pathSum = function (root, sum) {
+  let result = [];
+  helper(root, sum, 0, [], result);
+  return result;
+};
+
+var helper = function (node, sum, cur, path, result) {
+  if (!node) return;
+  path.push(node.val);
+  cur += node.val;
+  if (cur === sum && !node.left && !node.right) {
+    result.push(path.slice());
+  }
+  if (node.left) {
+    helper(node.left, sum, cur, path, result);
+  }
+  if (node.right) {
+    helper(node.right, sum, cur, path, result);
+  }
+  path.pop();
+};
+```
+
 ## 先序遍历构造二叉树
 
 [LeetCode](https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/)
 
 ```js
-/**
- * Definition for a binary tree node.
- * function TreeNode(val) {
- *     this.val = val;
- *     this.left = this.right = null;
- * }
- */
 /**
  * @param {number[]} preorder
  * @return {TreeNode}
