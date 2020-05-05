@@ -198,3 +198,21 @@ var countBits = function (num) {
   return res;
 };
 ```
+
+## 十进制整数的反码
+
+[LeetCode](https://leetcode.com/problems/complement-of-base-10-integer/)
+
+```js
+/**
+ * @param {number} N
+ * @return {number}
+ */
+var bitwiseComplement = function (N) {
+  let x = 1;
+  while (N > x) {
+    x = x * 2 + 1;
+  }
+  return x - N;
+};
+```
