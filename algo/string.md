@@ -83,7 +83,7 @@ var numJewelsInStones = function (J, S) {
  * @param {string} magazine
  * @return {boolean}
  */
-var canConstruct = function(ransomNote, magazine) {
+var canConstruct = function (ransomNote, magazine) {
   let map = new Map();
   for (let c of magazine) {
     if (map.has(c)) {
@@ -99,9 +99,29 @@ var canConstruct = function(ransomNote, magazine) {
   return true;
 };
 ```
+
 ### 字符串中的第一个唯一字符
 
 [LeetCode](https://leetcode.com/problems/first-unique-character-in-a-string/)
+
+```js
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var firstUniqChar = function (s) {
+  let res = Array(s.length).fill(0);
+  for (let i = 0; i < s.length; i++) {
+    let index = s.indexOf(s[i]);
+    if (i === index) {
+      res[i] = 1;
+    } else {
+      res[index] = 0;
+    }
+  }
+  return res.indexOf(1);
+};
+```
 
 ```js
 /**
@@ -593,7 +613,7 @@ var findAnagrams = function (s, p) {
  * @param {string} s
  * @return {number}
  */
-var lengthOfLongestSubstring = function(s) {
+var lengthOfLongestSubstring = function (s) {
   if (s.length === 0) return 0;
   let map = new Map();
   let res = 0;
