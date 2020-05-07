@@ -9,6 +9,14 @@
 
 ## XSS 的注入方式
 
+- 在 HTML 中内嵌的文本中，恶意内容以 script 标签形成注入。
+- 在内联的 JavaScript 中，拼接的数据突破了原本的限制（字符串，变量，方法名等）。
+- 在标签属性中，恶意内容包含引号，从而突破属性值的限制，注入其他属性或者标签。
+- 在标签的 href、src 等属性中，包含 javascript: 等可执行代码。
+- 在 onload、onerror、onclick 等事件中，注入不受控制代码。
+- 在 style 属性和标签中，包含类似 background-image:url("javascript:..."); 的代码（新版本浏览器已经可以防范）。
+- 在 style 属性和标签中，包含类似 expression(...) 的 CSS 表达式代码（新版本浏览器已经可以防范）。
+
 ### 存储型 XSS
 
 - hacker 将恶意 JS 代码提交到网站数据库中
@@ -29,6 +37,8 @@
 
 ## 如何阻止 XSS 攻击
 
+> [如何防止 XSS 攻击？](https://juejin.im/post/5bad9140e51d450e935c6d64)
+
 需要阻止**恶意脚本的注入**和**恶意消息的发送**。
 
 1. 服务器对输入脚本进行过滤或转码
@@ -38,3 +48,39 @@
    3. 禁止执行内联脚本和未授权的脚本
    4. 提供了上报机制
 3. 使用 HttpOnly 属性。在响应头的 set-cookie 里添加 HttpOnly 字段，那么站点的 Cookie 只能在 HTTP 请求中使用，JS 无法读取这段 Cookie
+
+### 输入过滤
+
+underscore 里的`escape`将以下字符做了转义，使用 hex code 代替这些字符：
+
+```js
+// List of HTML entities for escaping.
+var escapeMap = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;",
+  "'": "&#x27;",
+  "`": "&#x60;",
+};
+// origin
+("<script>alert('XSS');</script>");
+// escaped
+("&lt;script&gt;alert(&#x27;XSS&#x27;);&lt;/script&gt;");
+```
+
+这种过滤对于内联样式、内联 JS、内联 JSON 并不起效，需要使用更完善的转义策略。Java 工程库中常用的转义库为`org.owasp.encoder`.
+
+> 与`encodeURI`和`encodeURIComponent`不同，这两个 API 将 URL 中的特殊符号转成 utf-8 的 16 进制表示。
+
+### 预防 DOM 型的 XSS
+
+- 在使用 `.innerHTML`、`.outerHTML`、`document.write()` 时要特别小心，不要把不可信的数据作为 HTML 插到页面上，而应尽量使用 `.textContent`、`.setAttribute()` 等。
+- 用 Vue/React 技术栈，并且不使用 `v-html`/`dangerouslySetInnerHTML` 功能，就在前端 render 阶段避免 `innerHTML`、`outerHTML` 的 XSS 隐患。
+- 避免使用 DOM 中的内联事件监听器，如 `location=字符串`、`onclick`、`onerror`、`onload`、`onmouseover` 等 API，用`addEventListener`更合适。
+- `<a>` 标签的 `href=字符串` ，避免使用 `eval()`、`setTimeout()`、`setInterval()` 等 API，不能拼接代码。
+
+### React 如何预防 XSS
+
+1. `createElement`会把`script`的 JSX，使用`innerHTML`的形式，包在一个`div`里，防止`script`执行。
+2. `updateDOMProperties`判断是否通过`dangerouslySetInnerHTML`设置，如果是使用这个 API，则会用`setInnerHTML`去设置`innerHTML`，否则会用`setTextContent`把输入设置成文本。
