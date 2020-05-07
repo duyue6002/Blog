@@ -34,6 +34,7 @@
     - [XSS 攻击](browser/xss.md)
     - [CSRF 攻击](browser/csrf.md)
   - [事件循环机制](browser/event-loop.md)
+  - [跨页面通信实战](browser/cross-communication.md)
 
 - 网络
 
