@@ -221,7 +221,7 @@ var maxPathSum = function (root) {
 };
 ```
 
-## [路径总和]
+## 路径总和
 
 [LeetCode](https://leetcode.com/problems/path-sum/)
 
@@ -241,7 +241,7 @@ var hasPathSum = function (root, sum) {
 };
 ```
 
-## [路径总和 II]
+## 路径总和 II
 
 [LeetCode](https://leetcode.com/problems/path-sum-ii/)
 

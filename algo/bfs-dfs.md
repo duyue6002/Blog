@@ -39,6 +39,44 @@ var levelOrder = function (root) {
 };
 ```
 
+## 二叉树的堂兄弟节点
+
+[LeetCode](https://leetcode.com/problems/cousins-in-binary-tree/)
+
+```js
+/**
+ * @param {TreeNode} root
+ * @param {number} x
+ * @param {number} y
+ * @return {boolean}
+ */
+var isCousins = function (root, x, y) {
+  let queue = [root];
+  while (queue.length > 0) {
+    let size = queue.length;
+    let xx = false, yy = false;
+    for (let i = 0; i < size; i++) {
+      let node = queue.shift();
+      if (node.val === x) xx = true;
+      if (node.val === y) yy = true;
+      if (node.left && node.right) {
+        if (node.left.val === x && node.right.val === y) return false;
+        if (node.left.val === y && node.right.val === x) return false;
+      }
+      if (node.left) {
+        queue.push(node.left);
+      }
+      if (node.right) {
+        queue.push(node.right);
+      }
+    }
+    if (xx && yy) return true;
+    else if (xx || yy) return false;
+  }
+  return false;
+};
+```
+
 ## 最小基因变化
 
 [LeetCode](https://leetcode.com/problems/minimum-genetic-mutation/#/description)
@@ -185,13 +223,14 @@ var ladderLength = function (beginWord, endWord, wordList) {
  * @param {character[][]} grid
  * @return {number}
  */
-var numIslands = function(grid) {
+var numIslands = function (grid) {
   if (grid.length === 0 || (grid && grid[0].length === 0)) return 0;
-  const m = grid.length, n = grid[0].length;
+  const m = grid.length,
+    n = grid[0].length;
   let count = 0;
   for (let i = 0; i < m; i++) {
     for (let j = 0; j < n; j++) {
-      if (grid[i][j] === '1') {
+      if (grid[i][j] === "1") {
         count++;
         dfs(i, j, grid, m, n);
       }
@@ -200,14 +239,19 @@ var numIslands = function(grid) {
   return count;
 };
 
-var dfs = function(i, j, grid, m, n) {
-  if (i >= m || j >= n || i < 0 || j < 0 || grid[i][j] === '0') return;
-  grid[i][j] = '0';
-  const map = [[0, -1], [0, 1], [1, 0], [-1, 0]];
+var dfs = function (i, j, grid, m, n) {
+  if (i >= m || j >= n || i < 0 || j < 0 || grid[i][j] === "0") return;
+  grid[i][j] = "0";
+  const map = [
+    [0, -1],
+    [0, 1],
+    [1, 0],
+    [-1, 0],
+  ];
   for (const [x, y] of map) {
     dfs(i + x, j + y, grid, m, n);
   }
-}
+};
 ```
 
 ## 扫雷游戏
