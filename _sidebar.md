@@ -63,6 +63,10 @@
   - [TicTac](mini-project/tictac.md)
   - [Flex Playground](mini-project/flex-playground.md)
 
+- CSS
+
+  - [transform & transition & animation](css/animation.md)
+
 - 设计模式
 
   - [发布-订阅模式（观察者模式）](pattern/observer.md)
@@ -98,9 +102,6 @@
   - [位运算](algo/bit.md)
   - [排序](algo/sort.md)
 
-- CSS
-
-  - [CSS Tricks 自实现](https://github.com/duyue6002/Blog/issues/15)
 
 - 数学
 
