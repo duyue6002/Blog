@@ -9,13 +9,13 @@
  * @param {number} n
  * @return {string[]}
  */
-var generateParenthesis = function(n) {
+var generateParenthesis = function (n) {
   let result = [];
   helper(0, 0, n, "", result);
   return result;
 };
 
-var helper = function(left, right, n, s, memo) {
+var helper = function (left, right, n, s, memo) {
   //   terminate
   if (left === n && right === n) {
     memo.push(s);
@@ -39,7 +39,7 @@ var helper = function(left, right, n, s, memo) {
  * @param {number} n
  * @return {number}
  */
-var myPow = function(x, n) {
+var myPow = function (x, n) {
   if (n < 0) {
     x = 1 / x;
     n = -n;
@@ -74,7 +74,7 @@ var myPow = function(x, n) {
 //   return result;
 // };
 
-var helper = function(nums, index, cur, memo) {
+var helper = function (nums, index, cur, memo) {
   //   terminator
   if (index === nums.length) {
     memo.push(cur);
@@ -92,7 +92,7 @@ var helper = function(nums, index, cur, memo) {
  * @param {number[]} nums
  * @return {number[][]}
  */
-var subsets = function(nums) {
+var subsets = function (nums) {
   let result = [[]];
   for (let num of nums) {
     let newset = [];
@@ -119,7 +119,7 @@ var subsets = function(nums) {
  * @param {string} digits
  * @return {string[]}
  */
-var letterCombinations = function(digits) {
+var letterCombinations = function (digits) {
   let res = [];
   if (digits === "") return res;
   let map = {
@@ -130,13 +130,13 @@ var letterCombinations = function(digits) {
     "6": "mno",
     "7": "pqrs",
     "8": "tuv",
-    "9": "wxyz"
+    "9": "wxyz",
   };
   helper(res, digits, 0, "", map);
   return res;
 };
 
-var helper = function(arr, digits, index, str, map) {
+var helper = function (arr, digits, index, str, map) {
   if (digits.length === index) {
     arr.push(str);
     return;
@@ -157,13 +157,13 @@ var helper = function(arr, digits, index, str, map) {
  * @param {number} n
  * @return {string[][]}
  */
-var solveNQueens = function(n) {
+var solveNQueens = function (n) {
   let memo = [];
   helper(0, n, [], [], [], [], memo);
   return format(memo);
 };
 
-var helper = function(row, n, cols, left, right, state, memo) {
+var helper = function (row, n, cols, left, right, state, memo) {
   if (row >= n) {
     memo.push(state);
     return;
@@ -180,7 +180,7 @@ var helper = function(row, n, cols, left, right, state, memo) {
   }
 };
 
-var format = function(memo) {
+var format = function (memo) {
   let result = [];
   for (let arr of memo) {
     let ele = [];
@@ -190,5 +190,46 @@ var format = function(memo) {
     result.push(ele);
   }
   return result;
+};
+```
+
+## Kth Largest Element in an Array
+
+[LeetCode](https://leetcode.com/problems/kth-largest-element-in-an-array/)
+
+```js
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var findKthLargest = function (nums, k) {
+  k = nums.length - k;
+  let begin = 0,
+    end = nums.length - 1;
+  while (begin < end) {
+    let pivot = partition(nums, begin, end);
+    if (pivot < k) {
+      begin = pivot + 1;
+    } else if (pivot > k) {
+      end = pivot - 1;
+    } else {
+      break;
+    }
+  }
+  return nums[k];
+};
+
+var partition = function (nums, begin, end) {
+  let p = begin,
+    q = end + 1;
+  while (true) {
+    while (p < end && nums[++p] < nums[begin]);
+    while (q > begin && nums[--q] > nums[begin]);
+    if (p >= q) break;
+    [nums[p], nums[q]] = [nums[q], nums[p]];
+  }
+  [nums[begin], nums[q]] = [nums[q], nums[begin]];
+  return q;
 };
 ```
