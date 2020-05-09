@@ -17,7 +17,7 @@
   - 学习 underscore
     - [概述](js/functional/readme.md)
     - [函数篇](js/functional/function.md)
-  - Polyfill
+  - 编程实战
     - [Promise](js/polyfill/promise.md)
     - [Fetch](js/polyfill/fetch.md)
   - [正则表达式](js/regexp.md)
@@ -34,7 +34,7 @@
     - [XSS 攻击](browser/xss.md)
     - [CSRF 攻击](browser/csrf.md)
   - [事件循环机制](browser/event-loop.md)
-  - [跨页面通信实战](browser/cross-communication.md)
+  - [跨页面通信实战](browser/ctc.md)
 
 - 网络
 
