@@ -37,3 +37,19 @@ function flatten(input, shallow, output) {
   return output;
 }
 ```
+
+## reduce & reduceRight
+
+```js
+function createReduce(direction) {
+  return function (list, iteratee, memo) {
+    let index = direction > 0 ? 0 : list.length - 1;
+    for (index; index >= 0 && index < list.length; index += direction) {
+      memo = iteratee(memo, list[index], index, list);
+    }
+    return memo;
+  };
+}
+var reduce = createReduce(1);
+var reduceRight = createReduce(-1);
+```
