@@ -82,7 +82,7 @@
   - [字符串](algo/string.md)
   - [数组](algo/array.md)
   - [栈与队列](algo/stack-queue.md)
-  - [哈希表](algo/hash.md)
+  - [哈希表](algo/hashmap.md)
   - [树 & 二叉树 & BST](algo/tree.md)
   - [链表](algo/linkedlist.md)
   - [布隆过滤器和 LRU 缓存](algo/bloom-filter.md)
