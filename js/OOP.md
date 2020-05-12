@@ -137,6 +137,38 @@ var person = new Person("ts");
 
 使用 class 语法糖，其实是**原型 + 构造函数**，`constructor`里的内容相当于构造函数，属性方法就是在其原型上添加方法，但这些方法都是**不可枚举的**。
 
+```js
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+  sayName() {
+    console.log(this.name);
+  }
+}
+// 等价于
+let Person = (function () {
+  const Person = function (name) {
+    if (typeof new.target === "undefined") {
+      throw new Error("需要使用 new 调用");
+    }
+    this.name = name;
+  };
+  Object.defineProperty(Person.prototype, "sayName", {
+    value: function () {
+      if (typeof new.target !== "undefined") {
+        throw new Error("不可以使用 new 调用");
+      }
+      console.log(this.name);
+    },
+    enumerable: false,
+    writable: true,
+    configurable: false,
+  });
+  return Person;
+})();
+```
+
 ## 继承
 
 JS 支持实现继承，继承实际的方法，依赖原型链实现。
