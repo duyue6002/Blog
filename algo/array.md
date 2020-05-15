@@ -281,3 +281,24 @@ var plusOne = function(digits) {
   return digits;
 };
 ```
+
+## 有序数组中的单一元素
+
+[LeetCode](https://leetcode.com/problems/single-element-in-a-sorted-array/)
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var singleNonDuplicate = function(nums) {
+  let i = 0;
+  for (let j = 1; j < nums.length; j++) {
+    if (nums[j] !== nums[i] && j - i === 1) return nums[i];
+    if (j - i > 1) {
+      i = j;
+    }
+  }
+  return nums[i];
+};
+```
