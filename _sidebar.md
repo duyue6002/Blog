@@ -19,8 +19,8 @@
     - [函数篇](js/functional/function.md)
     - [数组篇](js/functional/array.md)
   - 编程实战
-    - [Promise](js/polyfill/promise.md)
-    - [Fetch](js/polyfill/fetch.md)
+    - [Promise](js/inaction/promise.md)
+    - [Fetch](js/inaction/fetch.md)
   - [正则表达式](js/regexp.md)
   - [如何提高代码质量](js/tips.md)
   - [代码收藏](js/tricks.md)
@@ -56,6 +56,7 @@
 
   - [Simple Redux & React-Redux](react/react-redux.md)
   - [虚拟 DOM 与实际 DOM 的比较](react/virtual-dom.md)
+  - [React-Router 原理](react/react-router.md)
 
 - Mini Project
 
@@ -103,8 +104,7 @@
   - [位运算](algo/bit.md)
   - [排序](algo/sort.md)
 
-
-- 数学
+* 数学
 
   - [二进制](math/binary)
   - [余数与哈希](math/mod)

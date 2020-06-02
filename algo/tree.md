@@ -175,6 +175,33 @@ var levelOrder = function (root) {
 };
 ```
 
+## 翻转二叉树
+
+[LeetCode](https://leetcode.com/problems/invert-binary-tree/)
+
+```js
+// 递归
+var invertTree = function (root) {
+  if (!root) return null;
+  invertTree(root.left);
+  invertTree(root.right);
+  [root.left, root.right] = [root.right, root.left];
+  return root;
+};
+// 迭代
+var invertTree = function (root) {
+  if (!root) return null;
+  let queue = [root];
+  while (queue.length > 0) {
+    const node = queue.shift();
+    [node.left, node.right] = [node.right, node.left];
+    node.left && queue.push(node.left);
+    node.right && queue.push(node.right);
+  }
+  return root;
+};
+```
+
 ## 二叉树的直径
 
 [LeetCode](https://leetcode.com/problems/diameter-of-binary-tree/)
