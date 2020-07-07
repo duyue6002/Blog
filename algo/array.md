@@ -9,7 +9,7 @@
  * @param {number[]} height
  * @return {number}
  */
-var maxArea = function(height) {
+var maxArea = function (height) {
   let max = 0;
   for (let i = 0, j = height.length - 1; i < j; ) {
     let minHeight = height[i] < height[j] ? height[i++] : height[j--];
@@ -19,7 +19,7 @@ var maxArea = function(height) {
   return max;
 };
 
-var maxArea = function(height) {
+var maxArea = function (height) {
   let max = 0;
   for (let i = 0; i < height.length - 1; i++) {
     for (let j = i + 1; j < height.length - 1; j++) {
@@ -41,7 +41,7 @@ var maxArea = function(height) {
  * @param {number[]} nums
  * @return {void} Do not return anything, modify nums in-place instead.
  */
-var moveZeroes = function(nums) {
+var moveZeroes = function (nums) {
   for (let i = 0; i <= nums.length; i++) {
     if (nums[i] === 0) {
       // find no-zero number
@@ -65,7 +65,7 @@ var moveZeroes = function(nums) {
  * method 2
  * @param {*} nums
  */
-var moveZeroes = function(nums) {
+var moveZeroes = function (nums) {
   let j = 0;
   for (let i = 0; i < nums.length; i++) {
     if (nums[i] !== 0) {
@@ -88,7 +88,7 @@ var moveZeroes = function(nums) {
  * @param {number} n
  * @return {number}
  */
-var climbStairs = function(n) {
+var climbStairs = function (n) {
   if (n <= 2) return n;
   let f1 = 1,
     f2 = 2,
@@ -111,7 +111,7 @@ var climbStairs = function(n) {
  * @param {number[]} nums
  * @return {number[][]}
  */
-var threeSum = function(nums) {
+var threeSum = function (nums) {
   nums = nums.sort((a, b) => a - b);
   let result = [];
   for (let k = 0; k < nums.length; k++) {
@@ -149,7 +149,7 @@ var threeSum = function(nums) {
  * @param {number[]} nums
  * @return {number}
  */
-var removeDuplicates = function(nums) {
+var removeDuplicates = function (nums) {
   if (nums.length === 0) return 0;
   let i = 0;
   for (let j = 1; j < nums.length; j++) {
@@ -172,7 +172,7 @@ var removeDuplicates = function(nums) {
  * @param {number} k
  * @return {void} Do not return anything, modify nums in-place instead.
  */
-var rotate = function(nums, k) {
+var rotate = function (nums, k) {
   let length = nums.length;
   k %= length;
   reverse(nums, 0, length - 1);
@@ -180,13 +180,13 @@ var rotate = function(nums, k) {
   reverse(nums, k, length - 1);
 };
 
-var reverse = function(nums, start, end) {
+var reverse = function (nums, start, end) {
   while (start < end) {
     [nums[start], nums[end]] = [nums[end], nums[start]];
     start++;
     end--;
   }
-}
+};
 ```
 
 ## 合并两个有序数组
@@ -201,11 +201,13 @@ var reverse = function(nums, start, end) {
  * @param {number} n
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
-var merge = function(nums1, m, nums2, n) {
+var merge = function (nums1, m, nums2, n) {
   let copy = nums1.slice(0, m);
-  let i = 0, j = 0, k = 0;
+  let i = 0,
+    j = 0,
+    k = 0;
   while (i < m && j < n) {
-    nums1[k++] = (copy[i] < nums2[j]) ? copy[i++] : nums2[j++];
+    nums1[k++] = copy[i] < nums2[j] ? copy[i++] : nums2[j++];
   }
   while (i < m) {
     nums1[k++] = copy[i++];
@@ -226,7 +228,7 @@ var merge = function(nums1, m, nums2, n) {
  * @param {number} target
  * @return {number[]}
  */
-var twoSum = function(nums, target) {
+var twoSum = function (nums, target) {
   let buff = {};
   for (let i = 0; i < nums.length; i++) {
     if (nums[i] in buff) {
@@ -247,7 +249,7 @@ var twoSum = function(nums, target) {
  * @param {number[]} digits
  * @return {number[]}
  */
-var plusOne = function(digits) {
+var plusOne = function (digits) {
   let flag = true;
   let index = digits.length - 1;
   while (flag && index >= 0) {
@@ -269,7 +271,7 @@ var plusOne = function(digits) {
  * @param {number[]} digits
  * @return {number[]}
  */
-var plusOne = function(digits) {
+var plusOne = function (digits) {
   for (let i = digits.length - 1; i >= 0; i--) {
     if (digits[i] !== 9) {
       digits[i]++;
@@ -291,7 +293,7 @@ var plusOne = function(digits) {
  * @param {number[]} nums
  * @return {number}
  */
-var singleNonDuplicate = function(nums) {
+var singleNonDuplicate = function (nums) {
   let i = 0;
   for (let j = 1; j < nums.length; j++) {
     if (nums[j] !== nums[i] && j - i === 1) return nums[i];
@@ -300,5 +302,45 @@ var singleNonDuplicate = function(nums) {
     }
   }
   return nums[i];
+};
+```
+
+## 岛屿周长
+
+[LeetCode](https://leetcode.com/problems/island-perimeter)
+
+```js
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var islandPerimeter = function (grid) {
+  const m = grid.length,
+    n = grid[0].length;
+  let res = 0;
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      if (grid[i][j] === 1) {
+        res = calculate(grid, i, j, m, n, res);
+      }
+    }
+  }
+  return res;
+};
+
+var calculate = function (grid, i, j, m, n, res) {
+  res += 4;
+  const map = [
+    [0, -1],
+    [-1, 0],
+  ];
+  for (let [x, y] of map) {
+    let dx = i + x,
+      dy = j + y;
+    if (dx >= 0 && dx < m && dy >= 0 && dy < n && grid[dx][dy] === 1) {
+      res -= 2;
+    }
+  }
+  return res;
 };
 ```
