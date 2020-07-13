@@ -77,6 +77,22 @@ var moveZeroes = function (nums) {
     }
   }
 };
+
+/**
+ * method 3
+ * @param {*} nums
+ */
+var moveZeroes = function (nums) {
+  let i = 0;
+  for (let num of nums) {
+    if (num !== 0) {
+      nums[i++] = num;
+    }
+  }
+  while (i < nums.length) {
+    nums[i++] = 0;
+  }
+};
 ```
 
 ## 爬楼梯
@@ -185,6 +201,26 @@ var reverse = function (nums, start, end) {
     [nums[start], nums[end]] = [nums[end], nums[start]];
     start++;
     end--;
+  }
+};
+```
+
+## 旋转图像
+
+[LeetCode](https://leetcode.com/problems/rotate-image/)
+
+```js
+/**
+ * @param {number[][]} matrix
+ * @return {void} Do not return anything, modify matrix in-place instead.
+ */
+var rotate = function (matrix) {
+  const n = matrix.length;
+  matrix.reverse();
+  for (let i = 0; i < n; i++) {
+    for (let j = i + 1; j < n; j++) {
+      [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];
+    }
   }
 };
 ```
@@ -342,5 +378,67 @@ var calculate = function (grid, i, j, m, n, res) {
     }
   }
   return res;
+};
+```
+
+## 两个数组的交集 II
+
+[LeetCode](https://leetcode.com/problems/intersection-of-two-arrays-ii/)
+
+```js
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+var intersect = function (nums1, nums2) {
+  let map = {},
+    res = [];
+  for (let num of nums1) {
+    if (map[num]) {
+      map[num]++;
+    } else {
+      map[num] = 1;
+    }
+  }
+  for (let num of nums2) {
+    if (map[num] && map[num] > 0) {
+      res.push(num);
+      map[num]--;
+    }
+  }
+  return res;
+};
+```
+
+## 有效的数独
+
+[LeetCode](https://leetcode.com/problems/valid-sudoku/)
+
+```js
+/**
+ * @param {character[][]} board
+ * @return {boolean}
+ */
+var isValidSudoku = function (board) {
+  const row = Array.apply(null, { length: 9 }).map(() => ({}));
+  const col = Array.apply(null, { length: 9 }).map(() => ({}));
+  const block = Array.apply(null, { length: 9 }).map(() => ({}));
+  for (let i = 0; i < 9; i++) {
+    for (let j = 0; j < 9; j++) {
+      const num = board[i][j];
+      if (num !== ".") {
+        const index = Math.floor(i / 3) * 3 + Math.floor(j / 3);
+        if (num in row[i] || num in col[j] || num in block[index]) {
+          return false;
+        } else {
+          row[i][num] = true;
+          col[j][num] = true;
+          block[index][num] = true;
+        }
+      }
+    }
+  }
+  return true;
 };
 ```

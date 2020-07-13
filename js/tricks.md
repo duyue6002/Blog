@@ -36,6 +36,12 @@ s = s
 arr = Array.from(Array(m), () => Array(n).fill(0));
 ```
 
+### 创建包含 N 个空对象的数组
+
+```js
+arr = Array.apply(null, { length: n }).map(() => ({}));
+```
+
 ### 创建 1-n 的数组
 
 ```js

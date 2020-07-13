@@ -148,6 +148,27 @@ var firstUniqChar = function (s) {
 };
 ```
 
+```js
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var firstUniqChar = function(s) {
+  const map = {};
+  for (let c of s) {
+    if (c in map) {
+      map[c]++;
+    } else {
+      map[c] = 1;
+    }
+  }
+  for (let c in map) {
+    if (map[c] === 1) return s.indexOf(c);
+  }
+  return -1;
+};
+```
+
 ### 字符串转换整数 (atoi)
 
 [LeetCode](https://leetcode.com/problems/string-to-integer-atoi/)
@@ -270,6 +291,22 @@ var reverseString = function (s) {
   let mid = s.length >> 1;
   for (let i = 0; i < mid; i++) {
     [s[i], s[end - i]] = [s[end - i], s[i]];
+  }
+};
+```
+
+```js
+/**
+ * @param {character[]} s
+ * @return {void} Do not return anything, modify s in-place instead.
+ */
+var reverseString = function (s) {
+  let i = 0,
+    j = s.length - 1;
+  while (i < j) {
+    [s[i], s[j]] = [s[j], s[i]];
+    i++;
+    j--;
   }
 };
 ```
@@ -403,6 +440,26 @@ var reverseOnlyLetters = function (S) {
 
 var isLetter = function (ch) {
   return (ch >= "A" && ch <= "Z") || (ch >= "a" && ch <= "z");
+};
+```
+
+## 翻转数字
+
+[LeetCode](https://leetcode.com/problems/reverse-integer/)
+
+```js
+/**
+ * @param {number} x
+ * @return {number}
+ */
+var reverse = function (x) {
+  const MAX = Math.pow(2, 31) - 1,
+    MIN = -Math.pow(2, 31);
+  const sign = x > 0 ? 1 : -1;
+  x = x > 0 ? x : -x;
+  x = sign * x.toString().split("").reverse().join("");
+  if (x > MAX || x < MIN) return 0;
+  return x;
 };
 ```
 
@@ -613,7 +670,7 @@ var findAnagrams = function (s, p) {
  * @param {string} s2
  * @return {boolean}
  */
-var checkInclusion = function(s1, s2) {
+var checkInclusion = function (s1, s2) {
   let hashtable = {};
   for (let ch of s1) {
     if (hashtable[ch]) {
@@ -626,7 +683,9 @@ var checkInclusion = function(s1, s2) {
   for (let ch of s2) {
     window[ch] = 0;
   }
-  let left = 0, right = 0, match = 0;
+  let left = 0,
+    right = 0,
+    match = 0;
   while (right < s2.length) {
     let c1 = s2[right];
     if (c1 in hashtable) {

@@ -14,7 +14,7 @@
  * @param {number} n
  * @returns {number}
  */
-var climbStairs = function(n) {
+var climbStairs = function (n) {
   let memo = Array(n + 1).fill(0);
   memo[1] = 1;
   memo[2] = 2;
@@ -26,7 +26,7 @@ var climbStairs = function(n) {
  * @param {number[]} memo
  * @param {number} n
  */
-var helper = function(memo, n) {
+var helper = function (memo, n) {
   if (n <= 0) return 0;
   if (!!memo[n]) return memo[n];
   memo[n] = helper(memo, n - 1) + helper(memo, n - 2);
@@ -43,13 +43,13 @@ var helper = function(memo, n) {
  * @param {number} n
  * @return {string[]}
  */
-var generateParenthesis = function(n) {
+var generateParenthesis = function (n) {
   let result = Array();
   helper(result, "", n, 0, 0);
   return result;
 };
 
-var helper = function(result, str, n, left, right) {
+var helper = function (result, str, n, left, right) {
   if (left === n && right === n) {
     result.push(str);
     return;
@@ -74,14 +74,14 @@ var helper = function(result, str, n, left, right) {
  * @param {number} n
  * @return {string[][]}
  */
-var solveNQueens = function(n) {
+var solveNQueens = function (n) {
   if (n < 1) return [];
   let result = [];
   DFS(result, 0, n, [], [], [], []);
   return result;
 };
 
-var DFS = function(result, row, n, cols, left, right, cur) {
+var DFS = function (result, row, n, cols, left, right, cur) {
   if (row >= n) {
     result.push(cur.slice());
     return;
@@ -122,6 +122,34 @@ var DFS = function(result, row, n, cols, left, right, cur) {
 
 [LeetCode](https://leetcode.com/problems/valid-sudoku/)
 
+```js
+/**
+ * @param {character[][]} board
+ * @return {boolean}
+ */
+var isValidSudoku = function (board) {
+  const row = Array.apply(null, { length: 9 }).map(() => ({}));
+  const col = Array.apply(null, { length: 9 }).map(() => ({}));
+  const block = Array.apply(null, { length: 9 }).map(() => ({}));
+  for (let i = 0; i < 9; i++) {
+    for (let j = 0; j < 9; j++) {
+      const num = board[i][j];
+      if (num !== ".") {
+        const index = Math.floor(i / 3) * 3 + Math.floor(j / 3);
+        if (num in row[i] || num in col[j] || num in block[index]) {
+          return false;
+        } else {
+          row[i][num] = true;
+          col[j][num] = true;
+          block[index][num] = true;
+        }
+      }
+    }
+  }
+  return true;
+};
+```
+
 ### 解数独
 
 [LeetCode](https://leetcode.com/problems/sudoku-solver/)
@@ -133,7 +161,7 @@ var DFS = function(result, row, n, cols, left, right, cur) {
  * @param {character[][]} board
  * @return {void} Do not return anything, modify board in-place instead.
  */
-var solveSudoku = function(board) {
+var solveSudoku = function (board) {
   if ((board && board.length !== 9) || (board[0] && board[0].length !== 9))
     return;
   let rows = generateArray();
@@ -159,13 +187,13 @@ var solveSudoku = function(board) {
   backtrack(0, empty, board, rows, cols, blocks);
 };
 
-var generateArray = function() {
+var generateArray = function () {
   return Array.from(Array(9), () =>
-    [...Array(9).keys()].map(x => (x + 1).toString())
+    [...Array(9).keys()].map((x) => (x + 1).toString())
   );
 };
 
-var backtrack = function(iter, empty, board, rows, cols, blocks) {
+var backtrack = function (iter, empty, board, rows, cols, blocks) {
   if (iter === empty.length) return true;
 
   let [i, j] = empty[iter];
@@ -201,13 +229,13 @@ var backtrack = function(iter, empty, board, rows, cols, blocks) {
  * @param {character[][]} board
  * @return {void} Do not return anything, modify board in-place instead.
  */
-var solveSudoku = function(board) {
+var solveSudoku = function (board) {
   if ((board && board.length !== 9) || (board[0] && board[0].length !== 9))
     return;
   DFS(board);
 };
 
-var DFS = function(board) {
+var DFS = function (board) {
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {
       if (board[i][j] === ".") {
@@ -226,7 +254,7 @@ var DFS = function(board) {
   return true;
 };
 
-var isValidSudoku = function(board, row, col, c) {
+var isValidSudoku = function (board, row, col, c) {
   for (let i = 0; i < 9; i++) {
     if (board[row][i] !== "." && board[row][i] === c) return false;
     if (board[i][col] !== "." && board[i][col] === c) return false;
@@ -252,7 +280,7 @@ var isValidSudoku = function(board, row, col, c) {
  * @param {string} word
  * @return {boolean}
  */
-var exist = function(board, word) {
+var exist = function (board, word) {
   if (!board || board.length === 0 || (board && board[0].length === 0))
     return false;
   let m = board.length,
@@ -271,7 +299,7 @@ var exist = function(board, word) {
   return false;
 };
 
-var DFS = function(board, word, current, row, col, table) {
+var DFS = function (board, word, current, row, col, table) {
   current += board[row][col];
   table[row][col] = 1;
 
@@ -285,7 +313,7 @@ var DFS = function(board, word, current, row, col, table) {
     [-1, 0],
     [1, 0],
     [0, -1],
-    [0, 1]
+    [0, 1],
   ];
 
   for (let [dx, dy] of direction) {
@@ -324,7 +352,7 @@ var DFS = function(board, word, current, row, col, table) {
  * @param {string[]} wordList
  * @return {number}
  */
-var ladderLength = function(beginWord, endWord, wordList) {
+var ladderLength = function (beginWord, endWord, wordList) {
   let queue = [];
   let dict = new Set(wordList);
   queue.push(beginWord);
@@ -361,7 +389,7 @@ var ladderLength = function(beginWord, endWord, wordList) {
  * @param {string[]} wordList
  * @return {number}
  */
-var ladderLength = function(beginWord, endWord, wordList) {
+var ladderLength = function (beginWord, endWord, wordList) {
   if (!wordList.includes(endWord)) return 0;
   let beginQueue = [],
     endQueue = [];
@@ -417,7 +445,7 @@ var ladderLength = function(beginWord, endWord, wordList) {
  * @param {number[][]} grid
  * @return {number}
  */
-var shortestPathBinaryMatrix = function(grid) {
+var shortestPathBinaryMatrix = function (grid) {
   if ((grid && grid.length === 0) || (grid[0] && grid[0].length === 0))
     return -1;
   let n = grid.length;
@@ -442,13 +470,13 @@ var shortestPathBinaryMatrix = function(grid) {
           y >= 0 &&
           y < n &&
           grid[x][y] === 0 &&
-          !visited.some(v => v[0] === x && v[1] === y)
+          !visited.some((v) => v[0] === x && v[1] === y)
         ) {
           pq.push([
             distance + 1 + heuristic(x, y, n - 1),
             x,
             y,
-            he + heuristic(x, y, n - 1)
+            he + heuristic(x, y, n - 1),
           ]);
         }
       }
@@ -460,7 +488,7 @@ var shortestPathBinaryMatrix = function(grid) {
   return -1;
 };
 
-var heuristic = function(x, y, n) {
+var heuristic = function (x, y, n) {
   return Math.max(Math.abs(n - x), Math.abs(n - y));
 };
 ```
