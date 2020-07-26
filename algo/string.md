@@ -153,7 +153,7 @@ var firstUniqChar = function (s) {
  * @param {string} s
  * @return {number}
  */
-var firstUniqChar = function(s) {
+var firstUniqChar = function (s) {
   const map = {};
   for (let c of s) {
     if (c in map) {
@@ -205,6 +205,34 @@ var myAtoi = function (str) {
   if (res < MIN) return MIN;
   if (res > MAX) return MAX;
   return res;
+};
+```
+
+### count and say
+
+[LeetCode](https://leetcode.com/problems/count-and-say/)
+
+```js
+/**
+ * @param {number} n
+ * @return {string}
+ */
+var countAndSay = function (n) {
+  let str = "1";
+  for (let i = 1; i < n; i++) {
+    let arr = str.split("");
+    str = "";
+    let count = 1;
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[j] !== arr[j + 1]) {
+        str += count + arr[j];
+        count = 1;
+      } else {
+        count++;
+      }
+    }
+  }
+  return str;
 };
 ```
 
