@@ -311,3 +311,30 @@ var deleteDuplicates = function (head) {
   return fakeHead.next;
 };
 ```
+
+## 删除链表的倒数第 N 个节点
+
+[LeetCode](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
+
+```js
+/**
+ * @param {ListNode} head
+ * @param {number} n
+ * @return {ListNode}
+ */
+var removeNthFromEnd = function (head, n) {
+  const dummy_head = new ListNode(0);
+  dummy_head.next = head;
+  let fast = dummy_head,
+    slow = dummy_head;
+  for (let i = 1; i <= n + 1; i++) {
+    fast = fast.next;
+  }
+  while (fast) {
+    slow = slow.next;
+    fast = fast.next;
+  }
+  slow.next = slow.next.next;
+  return dummy_head.next;
+};
+```
