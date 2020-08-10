@@ -67,27 +67,17 @@ var swapPairs = function (head) {
 
 ```js
 /**
- * Definition for singly-linked list.
- * function ListNode(val) {
- *     this.val = val;
- *     this.next = null;
- * }
- */
-
-/**
  * @param {ListNode} head
  * @return {boolean}
  */
-var hasCycle = function (head) {
-  if (!head || !head.next) return false;
-  let slow = head.next;
-  let fast = head.next.next;
-  while (slow !== fast) {
-    if (!fast || !fast.next) return false;
-    slow = slow.next;
+var hasCycle = function(head) {
+  let slow = head, fast = head?.next;
+  while (fast && fast.next) {
+    if (slow === fast) return true;
     fast = fast.next.next;
+    slow = slow.next;
   }
-  return true;
+  return false;
 };
 ```
 
@@ -205,41 +195,77 @@ var partition = function (head, x) {
 
 ```js
 /**
- * Definition for singly-linked list.
- * function ListNode(val) {
- *     this.val = val;
- *     this.next = null;
- * }
- */
-/**
  * @param {ListNode} l1
  * @param {ListNode} l2
  * @return {ListNode}
  */
 var mergeTwoLists = function (l1, l2) {
-  const newList = new ListNode();
-  let node = newList,
-    n1 = l1,
-    n2 = l2;
-  while (n1 && n2) {
-    if (n1.val < n2.val) {
-      node.next = n1;
-      n1 = n1.next;
+  let head = new ListNode();
+  let node = head;
+  while (l1 && l2) {
+    if (l1.val < l2.val) {
+      node.next = l1;
+      l1 = l1.next;
     } else {
-      node.next = n2;
-      n2 = n2.next;
+      node.next = l2;
+      l2 = l2.next;
     }
     node = node.next;
   }
-  while (n1) {
-    node = node.next = n1;
-    n1 = n1.next;
+  if (l1) {
+    node.next = l1;
   }
-  while (n2) {
-    node = node.next = n2;
-    n2 = n2.next;
+  if (l2) {
+    node.next = l2;
   }
-  return newList.next;
+  return head.next;
+};
+```
+
+## 回文链表
+
+[LeetCode](https://leetcode.com/problems/palindrome-linked-list/)
+
+```js
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {boolean}
+ */
+var isPalindrome = function (head) {
+  let slow = head,
+    fast = head;
+  while (fast && fast.next) {
+    fast = fast.next.next;
+    slow = slow.next;
+  }
+  slow = reverse(slow);
+  fast = head;
+  while (slow) {
+    if (slow.val !== fast.val) {
+      return false;
+    }
+    slow = slow.next;
+    fast = fast.next;
+  }
+  return true;
+};
+
+var reverse = function (head) {
+  let prev = null;
+  while (head) {
+    let cur = head;
+    head = cur.next;
+    cur.next = prev;
+    prev = cur;
+  }
+  return prev;
 };
 ```
 
