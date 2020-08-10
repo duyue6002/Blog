@@ -334,3 +334,82 @@ var construct = function (node, preorder, start, end) {
   return node;
 };
 ```
+
+## 二叉树的最大深度
+
+[LeetCode](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
+
+```js
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var maxDepth = function(root) {
+  if (!root) return 0;
+  return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+};
+```
+
+## 验证二叉搜索树
+
+[LeetCode](https://leetcode.com/problems/validate-binary-search-tree/)
+
+```js
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var isValidBST = function(root) {
+  return helper(root, Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER);
+};
+
+var helper = function(node, lower, upper) {
+  if (!node) return true;
+  if (node.val <= lower || node.val >= upper) return false;
+  return helper(node.left, lower, node.val) && helper(node.right, node.val, upper);
+}
+```
+
+## 对称二叉树
+
+[LeetCode](https://leetcode.com/problems/symmetric-tree/)
+
+```js
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var isSymmetric = function(root) {
+  return isMirror(root, root);
+};
+
+var isMirror = function(t1, t2) {
+  if (!t1 && !t2) return true;
+  if (!t1 || !t2) return false;
+  return (t1.val === t2.val) && isMirror(t1.left, t2.right) && isMirror(t1.right, t2.left);
+}
+```
+
+## 将有序数组转换为二叉搜索树
+
+[LeetCode](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/)
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {TreeNode}
+ */
+var sortedArrayToBST = function(nums) {
+  if (nums.length === 0) return null;
+  return helper(nums, 0, nums.length - 1);
+};
+
+var helper = function(nums, left, right) {
+  if (left > right) return null;
+  let mid = left + ((right - left) >> 1);
+  let node = new TreeNode(nums[mid]);
+  node.left = helper(nums, left, mid - 1);
+  node.right = helper(nums, mid + 1, right);
+  return node;
+}
+```
