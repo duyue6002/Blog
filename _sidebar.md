@@ -19,8 +19,8 @@
     - [函数篇](js/functional/function.md)
     - [数组篇](js/functional/array.md)
   - 编程实战
-    - [Promise](js/inaction/promise.md)
-    - [Fetch](js/inaction/fetch.md)
+    - [Promise](js/action/promise.md)
+    - [Fetch](js/action/fetch.md)
   - [正则表达式](js/regexp.md)
   - [如何提高代码质量](js/tips.md)
   - [代码收藏](js/tricks.md)
