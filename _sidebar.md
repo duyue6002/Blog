@@ -69,6 +69,12 @@
 
   - [transform & transition & animation](css/animation.md)
 
+- 服务端开发
+
+  - 学习 Go
+
+    - [Go 基础](go/basic.md)
+
 - 设计模式
 
   - [发布-订阅模式（观察者模式）](pattern/observer.md)
