@@ -74,6 +74,7 @@
   - 学习 Go
 
     - [Go 基础](go/basic.md)
+    - [Go 面向对象编程](go/oop.md)
 
 - 设计模式
 
