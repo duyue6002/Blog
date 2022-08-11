@@ -219,3 +219,17 @@ func TestStringToRune(t *testing.T) {
 ## 函数
 
 defer 关键字可以延迟函数的执行。
+
+## 错误处理
+
+### panic 和 os.Exit
+
+#### panic
+
+- 用于不可以恢复的错误
+- 退出前会执行 defer 指定的内容
+
+#### os.Exit
+
+- 退出前不会执行 defer
+- 不会打印调用栈信息

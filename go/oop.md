@@ -173,7 +173,7 @@ func TestEmptyInterfaceAssertion(t *testing.T) {
 }
 ```
 
-### Go 接口的最佳实践
+## Go 接口的最佳实践
 
 - 多使用小的接口定义，一个接口只包含一个方法
   ```go
