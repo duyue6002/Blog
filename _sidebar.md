@@ -1,29 +1,7 @@
-- JavaScript
+- Go
 
-  - V8 系列
-    - [V8 如何执行 JS 代码](js/v8-process.md)
-    - [V8 的内存机制](js/v8-gc.md)
-    - [V8 如何实现对象继承](js/v8-inheritance.md)
-    - [V8 类型系统](js/v8-type.md)
-  - 基础语法
-    - [JS 中的对象](js/OOP)
-    - [理解 instanceof](js/instanceof)
-    - [比较 undefined 和 null](js/undefined)
-  - 异步
-    - [为什么使用 Promise](js/promise)
-    - [async/await 的原理](js/async)
-  - 工程化
-    - [模块化与 webpack 原理](js/module.md)
-  - 学习 underscore
-    - [概述](js/functional/readme.md)
-    - [函数篇](js/functional/function.md)
-    - [数组篇](js/functional/array.md)
-  - 编程实战
-    - [Promise](js/action/promise.md)
-    - [Fetch](js/action/fetch.md)
-  - [正则表达式](js/regexp.md)
-  - [如何提高代码质量](js/tips.md)
-  - [代码收藏](js/tricks.md)
+  - [Go 基础](go/basic.md)
+  - [Go 面向对象编程](go/oop.md)
 
 - 浏览器
 
@@ -43,38 +21,6 @@
   - [HTTP 请求过程](network/request-process.md)
   - [HTTP 状态码](network/http-code)
   - [HTTPS](network/https)
-
-- React
-
-  - 构造简单的 React
-
-    - [项目概述](react/build/basic.md)
-    - [JSX 和 ReactDOM](react/build/jsx-reactdom.md)
-    - [组件和生命周期](react/build/component.md)
-    - [diff 算法](react/build/diff.md)
-    - [setState 异步处理](react/build/setState.md)
-
-  - [Simple Redux & React-Redux](react/react-redux.md)
-  - [虚拟 DOM 与实际 DOM 的比较](react/virtual-dom.md)
-  - [React-Router 原理](react/react-router.md)
-
-- Mini Project
-
-  - [Simple React](mini-project/simple-react.md)
-  - [轮播组件](mini-project/slider.md)
-  - [TicTac](mini-project/tictac.md)
-  - [Flex Playground](mini-project/flex-playground.md)
-
-- CSS
-
-  - [transform & transition & animation](css/animation.md)
-
-- 服务端开发
-
-  - 学习 Go
-
-    - [Go 基础](go/basic.md)
-    - [Go 面向对象编程](go/oop.md)
 
 - 设计模式
 
@@ -111,9 +57,53 @@
   - [位运算](algo/bit.md)
   - [排序](algo/sort.md)
 
-* 数学
+- 数学
 
   - [二进制](math/binary)
   - [余数与哈希](math/mod)
   - [迭代](math/iterator)
   - [递归](math/recursive)
+
+- 前端
+
+  - JavaScript
+
+    - V8 系列
+      - [V8 如何执行 JS 代码](js/v8-process.md)
+      - [V8 的内存机制](js/v8-gc.md)
+      - [V8 如何实现对象继承](js/v8-inheritance.md)
+      - [V8 类型系统](js/v8-type.md)
+    - 基础语法
+      - [JS 中的对象](js/OOP)
+      - [理解 instanceof](js/instanceof)
+      - [比较 undefined 和 null](js/undefined)
+    - 异步
+      - [为什么使用 Promise](js/promise)
+      - [async/await 的原理](js/async)
+    - 工程化
+      - [模块化与 webpack 原理](js/module.md)
+    - 学习 underscore
+      - [概述](js/functional/readme.md)
+      - [函数篇](js/functional/function.md)
+      - [数组篇](js/functional/array.md)
+    - 编程实战
+      - [Promise](js/action/promise.md)
+      - [Fetch](js/action/fetch.md)
+    - [正则表达式](js/regexp.md)
+    - [如何提高代码质量](js/tips.md)
+    - [代码收藏](js/tricks.md)
+
+  - React
+
+    - 构造简单的 React
+      - [项目概述](react/build/basic.md)
+      - [JSX 和 ReactDOM](react/build/jsx-reactdom.md)
+      - [组件和生命周期](react/build/component.md)
+      - [diff 算法](react/build/diff.md)
+      - [setState 异步处理](react/build/setState.md)
+    - [Simple Redux & React-Redux](react/react-redux.md)
+    - [虚拟 DOM 与实际 DOM 的比较](react/virtual-dom.md)
+    - [React-Router 原理](react/react-router.md)
+
+  - CSS
+    - [transform & transition & animation](css/animation.md)
